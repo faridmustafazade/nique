@@ -1,0 +1,188 @@
+.drop {
+  display: flex;
+  justify-content: space-between;
+  font-family: chillax;
+  gap: 100px;
+  font-weight: 500;
+  font-size: 16px;
+  color: black !important;
+  border-bottom: 1px solid rgb(223, 219, 219);
+}
+.blog {
+  border: none;
+  padding-bottom: 10px;
+}
+h3 {
+  padding-top: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  font-family: chillax-regular;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+#full-footer {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .footer {
+    background-color: #ffffff;
+    width: 650px;
+    padding: 10px 10px 10px 25px;
+    border-radius: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media only screen and (max-width: 767px) {
+      width: 350px;
+    }
+
+    .dropbtn {
+      font-size: 25px;
+      border-radius: 50%;
+      padding: 10px 10px 5px;
+      border: none;
+      background-color: white;
+      transition: 0.5s;
+      cursor: pointer;
+      @media only screen and (max-width: 478px) {
+        padding: 10px 0 5px 10px;
+      }
+    }
+
+    .dropbtn:hover {
+      background-color: #ddd;
+    }
+
+    .clock {
+      position: relative;
+      display: inline-block;
+      transition: 1s;
+      .clock-content {
+        display: none;
+        position: absolute;
+        bottom: 50px;
+        padding: 12px 0;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        width: 250px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+
+        a {
+          font-weight: 500;
+          font-size: 16px;
+          font-family: chillax;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        a:hover {
+          background-color: #ddd;
+        }
+        .open {
+          font-weight: 400;
+          font-size: 20px;
+          font-family: chillax-regular;
+          padding: 0 16px 6px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        .day {
+          padding: 6px 16px;
+          display: flex;
+          justify-content: space-between;
+          font-weight: 500;
+          font-size: 16px;
+          font-family: chillax;
+          span {
+            font-family: chillax-regular;
+          }
+        }
+        .drop {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+      .clockbtn {
+        font-size: 25px;
+        border: none;
+        border-radius: 50%;
+        padding: 10px 10px 5px;
+        background-color: white;
+        transition: 0.5s;
+        cursor: pointer;
+        @media only screen and (max-width: 478px) {
+          padding: 10px 0 5px;
+        }
+      }
+    }
+
+    .clock:hover .clock-content {
+      display: block;
+    }
+    .clock:hover .clockbtn {
+      background-color: #ddd;
+    }
+    .basket {
+      font-size: 25px;
+      border-radius: 50%;
+      padding: 10px 10px 5px;
+      transition: 0.5s;
+      cursor: pointer;
+      @media only screen and (max-width: 478px) {
+        padding: 10px 0 5px;
+      }
+    }
+  }
+  .basket:hover {
+    background-color: #ddd;
+  }
+  .links {
+    @media only screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+  .footer-btn {
+    font-family: chillax;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    padding: 15px 25px;
+    border-radius: 25px;
+    border: none;
+    background-color: #090a0a;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 1s;
+
+    @media only screen and (max-width: 978px) {
+      font-size: 0.6rem;
+    }
+    &:hover {
+      color: #090a0a;
+      background-color: rgba(173, 167, 167, 0.6);
+    }
+  }
+  a {
+    font-weight: 500;
+    font-size: 16px;
+    font-family: chillax;
+    color: black;
+    padding: 12px 2px;
+    text-decoration: none;
+    border-radius: 30px;
+    display: block;
+    transition: 0.5s;
+    &:hover {
+      color: #face8d;
+    }
+  }
+  
+}
