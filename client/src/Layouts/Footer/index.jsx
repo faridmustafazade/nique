@@ -39,7 +39,7 @@ const Footer = () => {
     {
       key: "4",
       label: (
-        <Link className="drop">
+        <Link className="drop" to="/contact">
           Contact <BsArrowRight />
         </Link>
       ),

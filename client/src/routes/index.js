@@ -1,4 +1,5 @@
 import Classes from "../Pages/site/Classes";
+import Contact from "../Pages/site/Contact";
 import Home from "../Pages/site/Home";
 import MainRoot from "../Pages/site/MainRoot";
 import Menu from "../Pages/site/Menu";
@@ -27,9 +28,13 @@ export const ROUTES = [
         element: <Classes />,
       },
       {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
         path: "*",
-        element:<NotFound/>
-      }
+        element: <NotFound />,
+      },
     ],
   },
 ];
