@@ -23,7 +23,7 @@ const Footer = () => {
     {
       key: "2",
       label: (
-        <Link className="drop" to="">
+        <Link className="drop" to="/restaurant">
           Restaurant <BsArrowRight />
         </Link>
       ),
@@ -31,7 +31,7 @@ const Footer = () => {
     {
       key: "3",
       label: (
-        <Link className="drop">
+        <Link className="drop" to="/classes">
           Classes <BsArrowRight />
         </Link>
       ),
@@ -100,7 +100,7 @@ const Footer = () => {
         <Link className="links" to="/restaurant">
           Restaurant
         </Link>
-        <Link className="links" to="">
+        <Link className="links" to="/classes">
           Classes
         </Link>
         <button className="footer-btn">Book A Table</button>

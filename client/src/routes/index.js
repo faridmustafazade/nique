@@ -1,3 +1,4 @@
+import Classes from "../Pages/site/Classes";
 import Home from "../Pages/site/Home";
 import MainRoot from "../Pages/site/MainRoot";
 import Menu from "../Pages/site/Menu";
@@ -20,6 +21,10 @@ export const ROUTES = [
       {
         path: "/restaurant",
         element: <Restaurant />,
+      },
+      {
+        path: "/classes",
+        element: <Classes />,
       },
       {
         path: "*",

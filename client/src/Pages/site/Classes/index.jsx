@@ -1,8 +1,9 @@
 import React from "react";
+import "./style.scss"
 import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/Footer";
-import "./style.scss";
-const Restaurant = () => {
+
+const Classes = () => {
   return (
     <>
       <div class="outer-wrapper">
@@ -12,8 +13,7 @@ const Restaurant = () => {
           <div class="slide three"></div>
           <div class="slide four"></div>
           <div class="slide five"></div>
-          <div class="slide six"></div>
-          <div class="slide seven"></div>
+          
         </div>
       </div>
       <div className="restaurant">
@@ -25,14 +25,10 @@ const Restaurant = () => {
             />
           </Link>
         </div>
-        <div className="name">
-          <h1 className="pure">Discover</h1>
-          <h1 className="country">nique.</h1>
-        </div>
       </div>
-      <Footer />
+      <Footer /> 
     </>
   );
 };
 
-export default Restaurant;
+export default Classes;
