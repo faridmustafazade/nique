@@ -154,24 +154,25 @@ h3 {
   }
   .footer-btn {
     font-family: chillax;
-    font-size: 0.875rem;
-    letter-spacing: 1px;
-    padding: 15px 25px;
     border-radius: 25px;
     border: none;
     background-color: #090a0a;
-    color: white;
     font-weight: 500;
     text-transform: uppercase;
     cursor: pointer;
-    transition: 1s;
-
+    a {
+      padding: 15px 25px;
+      letter-spacing: 1px;
+      font-size: 0.875rem;
+      color: white;
+      transition: 1s;
+      &:hover {
+        color: #090a0a;
+        background-color: rgba(173, 167, 167, 0.6);
+      }
+    }
     @media only screen and (max-width: 978px) {
       font-size: 0.6rem;
-    }
-    &:hover {
-      color: #090a0a;
-      background-color: rgba(173, 167, 167, 0.6);
     }
   }
   a {
@@ -188,5 +189,4 @@ h3 {
       color: #face8d;
     }
   }
-  
 }

@@ -1,0 +1,270 @@
+html {
+  scroll-behavior: smooth;
+}
+#full-shop {
+  height: 100vh;
+  .shop {
+    display: flex;
+    justify-content: space-between;
+    @media only screen and (max-width: 991px) {
+      display: block;
+    }
+    .side-left {
+      position: fixed;
+      height: 100vh;
+      width: 50%;
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/63258f5dcd40a873d5f20850_page-licensing-p-800.webp");
+      background-position: center;
+      background-size: cover;
+
+      @media only screen and (max-width: 991px) {
+        position: static;
+        width: 100%;
+      }
+      .side-left-shop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 200px;
+        @media only screen and (max-width: 991px) {
+          gap: 140px;
+        }
+        .logo {
+          padding: 3rem 0;
+        }
+        .name {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-items: center;
+          .shop {
+            text-transform: capitalize;
+            color: #face8d;
+            font-family: bitter-rose;
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 12px;
+            @media only screen and (max-width: 991px) {
+              font-size: 4rem;
+              line-height: 52px;
+            }
+            @media only screen and (max-width: 767px) {
+              font-size: 4rem;
+              line-height: 36px;
+            }
+            @media only screen and (max-width: 478px) {
+              font-size: 3rem;
+            }
+          }
+          .give {
+            color: #ffffff;
+            font-family: chillax;
+            font-size: 5rem;
+            font-weight: 500;
+            line-height: 120px;
+            text-align: center;
+            @media only screen and (max-width: 991px) {
+              font-size: 4rem;
+            }
+            @media only screen and (max-width: 767px) {
+              font-size: 3.125rem;
+            }
+            @media only screen and (max-width: 478px) {
+              font-size: 2.5rem;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+    .side-right {
+      position: absolute;
+      right: 0;
+      width: 50%;
+      background-color: black;
+      color: #ffff;
+      padding-top: 60px;
+      @media only screen and (max-width: 991px) {
+        position: static;
+        width: 100%;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        padding-bottom: 45px;
+        padding-left: 60px;
+        padding-right: 60px;
+        @media only screen and (max-width: 478px) {
+          display: block;
+          padding-left: 0;
+          padding-right: 0;
+        }
+        .card-image {
+          width: 50%;
+          @media only screen and (max-width: 478px) {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+          .img {
+            width: 90%;
+            border-radius: 10px;
+            overflow: hidden;
+            img {
+              border-radius: 10px;
+              width: 100%;
+              transition: 0.7s;
+              &:hover {
+                scale: 1.08;
+              }
+            }
+          }
+        }
+        .card-text {
+          padding-left: 20px;
+          width: 60%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          @media only screen and (max-width: 478px) {
+            width: 100%;
+            padding-right: 15px;
+          }
+          .card-cost {
+            font-family: chillax-regular;
+            font-weight: 400;
+            font-size: 0.875rem;
+            color: #face8d;
+            .cost-span {
+              padding-left: 10px;
+              text-decoration: line-through;
+              color: rgba(255, 255, 255, 0.6);
+            }
+          }
+          .card-name {
+            font-family: chillax-regular;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-transform: capitalize;
+          }
+          .card-about {
+            font-family: chillax-regular;
+            font-weight: 400;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+          }
+        }
+      }
+      .shop-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        padding-left: 60px;
+        padding-right: 60px;
+        @media only screen and (max-width: 478px) {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        .nique {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          gap: 35px;
+          align-items: flex-start;
+          @media only screen and (max-width: 767px) {
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 100px;
+          }
+          .founder {
+            font-family: chillax-regular;
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            span {
+              color: #face8d;
+            }
+          }
+        }
+        .menu-pages {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          @media only screen and (max-width: 767px) {
+            text-align: center;
+            width: 45%;
+          }
+          .page-h3 {
+            padding: 0;
+            color: white;
+            font-family: chillax-regular;
+            font-size: 1.125rem;
+            font-weight: 400;
+          }
+          ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            li {
+              font-weight: 400;
+              font-family: chillax-regular;
+              font-size: 1rem;
+              a {
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.6);
+                transition: 0.3s;
+                &:hover {
+                  color: #face8d;
+                }
+              }
+            }
+          }
+        }
+        .menu-utility {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          @media only screen and (max-width: 767px) {
+            text-align: center;
+            width: 45%;
+          }
+          .uti-h3 {
+            padding: 0;
+            color: white;
+            font-family: chillax-regular;
+            font-size: 1.125rem;
+            font-weight: 400;
+          }
+          ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            li {
+              font-weight: 400;
+              font-family: chillax-regular;
+              font-size: 1rem;
+              a {
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.6);
+                transition: 0.3s;
+                &:hover {
+                  color: #face8d;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

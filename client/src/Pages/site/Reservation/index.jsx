@@ -3,14 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/Footer";
 import "./style.scss";
-const Contact = () => {
+const Reservation = () => {
   return (
     <>
-      <div id="full-contact">
-        <div className="contact">
+      <div id="full-reservation">
+        <div className="reservation">
           <div className="side-left">
             <div className="container">
-              <div className="side-left-contact">
+              <div className="side-left-reservation">
                 <div className="logo">
                   <Link to="/">
                     <img
@@ -20,14 +20,15 @@ const Contact = () => {
                   </Link>
                 </div>
                 <div className="name">
-                  <h1 className="contact">contact</h1>
-                  <h1 className="get">Get in Touch</h1>
+                  <h1 className="book">Book a table</h1>
+                  <h1 className="reservation">reservation</h1>
                 </div>
               </div>
               <Footer />
             </div>
           </div>
           <div className="side-right">
+            <h2 className="book-h2">Book a table</h2>
             <p className="right-about">
               Volutpat maecenas volutpat blandit aliquam etiam erat velit
               scelerisque. Arcu non odio euismod lacinia. Tortor aliquam nulla
@@ -40,14 +41,20 @@ const Contact = () => {
                   <Input className="input" placeholder="Enter your name" />
                 </div>
                 <div className="form">
-                  <label className="label">Email</label>
-                  <Input className="input" placeholder="Your email address" />
+                  <label className="label">Number of Guests</label>
+                  <Input className="input" type="number" placeholder="2" />
                 </div>
-                <div className="form">
-                  <label className="label">Message</label>
-                  <Input className="input email" placeholder="Your message" />
+                <div className="date-form">
+                  <div className="form dates">
+                    <label className="label">Date</label>
+                    <Input className="input date" placeholder="01.05.2003" />
+                  </div>
+                  <div className="form times">
+                    <label className="label">Time</label>
+                    <Input className="input time" placeholder="6pm" />
+                  </div>
                 </div>
-                <button className="send">send message</button>
+                <button className="send">book a table</button>
                 <div className="contact-footer">
                   <div className="nique">
                     <img
@@ -119,4 +126,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Reservation;

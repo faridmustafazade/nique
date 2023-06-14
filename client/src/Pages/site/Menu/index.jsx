@@ -396,19 +396,19 @@ const Menu = () => {
                         <Link to="/restaurant">Restaurant</Link>
                       </li>
                       <li>
-                        <Link>Classes</Link>
+                        <Link to="/classes">Classes</Link>
                       </li>
                       <li>
                         <Link>Book a Table</Link>
                       </li>
                       <li>
-                        <Link>Contact</Link>
+                        <Link to="/contact">Contact</Link>
                       </li>
                       <li>
-                        <Link>Blog</Link>
+                        <Link to="/blog">Blog</Link>
                       </li>
                       <li>
-                        <Link>Shops</Link>
+                        <Link to="/shop">Shop</Link>
                       </li>
                     </ul>
                   </div>

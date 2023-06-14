@@ -1,9 +1,9 @@
 html {
   scroll-behavior: smooth;
 }
-#full-contact {
+#full-reservation {
   height: 100vh;
-  .contact {
+  .reservation {
     display: flex;
     justify-content: space-between;
     @media only screen and (max-width: 991px) {
@@ -13,7 +13,7 @@ html {
       position: fixed;
       height: 100vh;
       width: 50%;
-      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/63258f5d520348caf6e1e79e_page-changelog.webp");
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf41f9793bf94a0c2326_restaurant-gallery-01-p-800.webp");
       background-position: center;
       background-size: cover;
 
@@ -21,7 +21,7 @@ html {
         position: static;
         width: 100%;
       }
-      .side-left-contact {
+      .side-left-reservation {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -37,8 +37,7 @@ html {
           flex-direction: column;
           flex-wrap: wrap;
           align-items: center;
-          .contact {
-            text-transform: capitalize;
+          .book {
             color: #face8d;
             font-family: bitter-rose;
             font-size: 5rem;
@@ -56,13 +55,14 @@ html {
               font-size: 3rem;
             }
           }
-          .get {
+          .reservation {
             color: #ffffff;
             font-family: chillax;
             font-size: 5rem;
             font-weight: 500;
             line-height: 120px;
             text-align: center;
+            text-transform: capitalize;
             @media only screen and (max-width: 991px) {
               font-size: 4rem;
             }
@@ -87,12 +87,25 @@ html {
         position: static;
         width: 100%;
       }
+      .book-h2 {
+        font-family: chillax;
+        padding-top: 65px;
+        padding-left: 65px;
+        font-weight: 500;
+        font-size: 2.5rem;
+        color: white;
+        @media only screen and (max-width: 767px) {
+          font-size: 2rem;
+        }
+        @media only screen and (max-width: 478px) {
+            padding-right: 65px;
+          }
+      }
       .right-about {
         font-family: chillax-regular;
         font-weight: 400;
         font-size: 1.25rem;
         color: rgba(255, 255, 255, 0.6);
-        padding-top: 65px;
         padding-left: 65px;
         padding-right: 110px;
         line-height: 33px;
@@ -134,7 +147,7 @@ html {
             font-family: chillax-regular;
             background: transparent;
             border: 1px solid hsla(0, 0%, 100%, 0.1);
-            padding: 20px 0 20px 30px;
+            padding: 20px 20px 20px 30px;
             margin-top: 10px;
             border-radius: 10px;
             &::placeholder {
@@ -143,15 +156,38 @@ html {
               font-size: 17px;
             }
           }
-          textarea:focus,
-          input:focus,
-          input[type]:focus,
-          .uneditable-input:focus {
-            border-color: #face8d;
-            outline: 0 none;
+        }
+        textarea:focus,
+        input:focus,
+        input[type]:focus,
+        .uneditable-input:focus {
+          border-color: #face8d;
+          outline: 0 none;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        .date-form {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          @media only screen and (max-width: 478px) {
+            display: block;
           }
-          .email {
-            padding: 70px 0 70px 30px;
+          .dates {
+            width: 45%;
+            @media only screen and (max-width: 478px) {
+              width: 100%;
+            }
+          }
+          .times {
+            width: 45%;
+            @media only screen and (max-width: 478px) {
+              padding-top: 45px;
+              width: 100%;
+            }
           }
         }
         .send {
