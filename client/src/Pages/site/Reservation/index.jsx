@@ -1,9 +1,16 @@
 import { Input } from "antd";
+import Aos from "aos";
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/Footer";
+import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
+import "aos/dist/aos.css";
+
 const Reservation = () => {
+  useEffect(() => {
+    Aos.init({});
+  }, []);
   return (
     <>
       <div id="full-reservation">
@@ -20,8 +27,20 @@ const Reservation = () => {
                   </Link>
                 </div>
                 <div className="name">
-                  <h1 className="book">Book a table</h1>
-                  <h1 className="reservation">reservation</h1>
+                  <h1
+                    className="book"
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                  >
+                    Book a table
+                  </h1>
+                  <h1
+                    className="reservation"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    reservation
+                  </h1>
                 </div>
               </div>
               <Footer />

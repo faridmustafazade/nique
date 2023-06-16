@@ -1,9 +1,41 @@
 import { Input } from "antd";
-import React from "react";
+import Aos from "aos";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/Footer";
+import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
+import "aos/dist/aos.css";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
+import { ContactForm } from "./schema/ContactForm";
+
 const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(ContactForm),
+  });
+
+  const postData = () => {
+    const values = getValues();
+    axios.post("http://localhost:2003/api/contact", {
+      image: values.image,
+      name: values.name,
+      price: values.price,
+      category: values.category,
+      about: values.about,
+    });
+  };
+
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
   return (
     <>
       <div id="full-contact">
@@ -20,8 +52,12 @@ const Contact = () => {
                   </Link>
                 </div>
                 <div className="name">
-                  <h1 className="contact">contact</h1>
-                  <h1 className="get">Get in Touch</h1>
+                  <h1 className="contact" data-aos="fade-down">
+                    contact
+                  </h1>
+                  <h1 className="get" data-aos="fade-up">
+                    Get in Touch
+                  </h1>
                 </div>
               </div>
               <Footer />
@@ -34,20 +70,93 @@ const Contact = () => {
               facilisi cras fermentum odio eu.
             </p>
             <div className="container">
-              <div className="side-down">
+              <form onSubmit={handleSubmit(postData)} className="side-down">
                 <div className="form">
                   <label className="label">Name</label>
-                  <Input className="input" placeholder="Enter your name" />
+                  <input
+                    {...register("name")}
+                    className="input"
+                    placeholder="Enter your name"
+                  />
+                  {errors.name?.message && (
+                    <p style={{ color: "#face8d" }}>{errors.name?.message}</p>
+                  )}
                 </div>
                 <div className="form">
                   <label className="label">Email</label>
-                  <Input className="input" placeholder="Your email address" />
+                  <input
+                    {...register("email")}
+                    className="input"
+                    placeholder="Your email address"
+                  />
+                  {errors.email?.message && (
+                    <p style={{ color: "#face8d" }}>{errors.email?.message}</p>
+                  )}
                 </div>
                 <div className="form">
                   <label className="label">Message</label>
-                  <Input className="input email" placeholder="Your message" />
+                  <input
+                    {...register("message")}
+                    className="input email"
+                    placeholder="Your message"
+                  />
+                  {errors.message?.message && (
+                    <p style={{ color: "#face8d" }}>
+                      {errors.message?.message}
+                    </p>
+                  )}
                 </div>
                 <button className="send">send message</button>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "40px",
+                  }}
+                >
+                  <div>
+                    <iframe
+                      title="1"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.410253093737!2d48.8498886756875!3d38.7542934551357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4022ff641ec22c1b%3A0x25f93462f1dcc9eb!2sDosa%20Mall!5e0!3m2!1sen!2saz!4v1686816034956!5m2!1sen!2saz"
+                      width="600"
+                      height="400"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                    <p
+                      style={{ color: "white", fontFamily: "chillax-regular" }}
+                    >
+                      Phone:{" "}
+                      <a
+                        style={{
+                          color: "white",
+                          fontFamily: "chillax",
+                          textDecoration: "none",
+                        }}
+                        href="tel:+994-050-523-58-01"
+                      >
+                        (+994)-50-523-58-01
+                      </a>
+                    </p>
+                    <p
+                      style={{ color: "white", fontFamily: "chillax-regular" }}
+                    >
+                      Mail:{" "}
+                      <a
+                        style={{
+                          color: "white",
+                          fontFamily: "chillax",
+                          textDecoration: "none",
+                        }}
+                        href="mailto:mustafazadefaridm@gmail.com?body=My custom mail body"
+                      >
+                        mustafazadefaridm@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
                 <div className="contact-footer">
                   <div className="nique">
                     <img
@@ -110,7 +219,7 @@ const Contact = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

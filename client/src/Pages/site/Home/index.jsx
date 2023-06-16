@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/Footer";
+import Footer from "../../../Layouts/client/Footer";
 import { Helmet } from "react-helmet";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Home = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 2000
+    });
+  }, []);
   return (
     <>
-    <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Home</title>
       </Helmet>
@@ -23,9 +30,9 @@ const Home = () => {
               </Link>
             </div>
             <div className="name">
-              <h1 className="pure">The pure taste of</h1>
-              <h1 className="country">Azerbaijan</h1>
-              <p className="name-about">
+              <h1 className="pure"  data-aos="fade-down">The pure taste of</h1>
+              <h1 className="country" data-aos="fade-up">Azerbaijan</h1>
+              <p className="name-about" data-aos="fade-up">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore.
               </p>

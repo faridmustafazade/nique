@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/Footer";
-
+import Footer from "../../../Layouts/client/Footer";
 import { Helmet } from "react-helmet";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const NotFound = () => {
+  useEffect(() => {
+    Aos.init({
+    });
+  }, []);
   return (
     <>
       <Helmet>
@@ -24,8 +29,8 @@ const NotFound = () => {
               </Link>
             </div>
             <div className="name">
-              <h1 className="pure">Page not found</h1>
-              <h1 className="country">404</h1>
+              <h1 className="pure"  data-aos="fade-down"  data-aos-duration="2000">Page not found</h1>
+              <h1 className="country" data-aos="fade-up"  data-aos-duration="2000">404</h1>
             </div>
           </div>
         </div>

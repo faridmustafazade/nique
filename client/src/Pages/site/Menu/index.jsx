@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/Footer";
+import Footer from "../../../Layouts/client/Footer";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import axios from "axios";
 
 const Menu = () => {
+  const [data, setData] = useState([]);
+  const getData = async () => {
+    const res = await axios.get("http://localhost:2003/api/menu");
+    setData(res.data);
+  };
+  useEffect(() => {
+    getData();
+    Aos.init({
+      duration: 1000,
+    });
+  }, []);
   return (
     <>
       <div id="full-menu">
@@ -20,8 +34,20 @@ const Menu = () => {
                   </Link>
                 </div>
                 <div className="name">
-                  <h1 className="check">Check out</h1>
-                  <h1 className="our-menu">Our Menu</h1>
+                  <h1
+                    className="check"
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                  >
+                    Check out
+                  </h1>
+                  <h1
+                    className="our-menu"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    Our Menu
+                  </h1>
                 </div>
               </div>
               <Footer />
@@ -46,330 +72,105 @@ const Menu = () => {
             </nav>
             <div className="container">
               <div className="side-down">
-                <div id="starters">
+                <div id="starters" data-aos="fade-up" data-aos-duration="2000">
                   <div className="up">Starters</div>
-                  <div className="starters-menu">
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfe0ebb94925875d95f_menu-tomato-toast.webp"
-                            alt=""
-                          />
+                  {data
+                    .filter((item) =>
+                      item.category.toLowerCase().includes("starters")
+                    )
+                    .map((d) => (
+                      <div className="starters-menu">
+                        <div className="eat">
+                          <div className="eat-image">
+                            <div className="image">
+                              <img src={d.image} alt="" />
+                            </div>
+                          </div>
+                          <div className="texts">
+                            <div className="cost">
+                              <h3 className="food-name">{d.name}</h3>
+                              <p className="amount">$ {d.price}</p>
+                            </div>
+                            <p className="food-about">{d.about}</p>
+                          </div>
                         </div>
                       </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Tomato Soup</h3>
-                          <p className="amount">$ 4.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfe3f4c8b7cc88b25f7_menu-noodle-soup.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Noodle Soup</h3>
-                          <p className="amount">$ 5.50</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfeaccfb04b0713ee16_menu-pumpkin-soup.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Pumpkin Soup</h3>
-                          <p className="amount">
-                            <span
-                              style={{
-                                textDecoration: "line-through",
-                                color: "rgba(255, 255, 255, 0.6)",
-                              }}
-                            >
-                              $ 4.90
-                            </span>{" "}
-                            $ 6.90
-                          </p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    ))}
                 </div>
-                <div id="breakfast">
+                <div id="breakfast" data-aos="fade-up" data-aos-duration="2000">
                   <div className="up">Breakfast</div>
-                  <div className="starters-menu">
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfd807e7a0ec31c4cb3_menu-delicious-pancakes.webp"
-                            alt=""
-                          />
+                  {data
+                    .filter((item) =>
+                      item.category.toLowerCase().includes("breakfast")
+                    )
+                    .map((d) => (
+                      <div className="starters-menu">
+                        <div className="eat">
+                          <div className="eat-image">
+                            <div className="image">
+                              <img src={d.image} alt="" />
+                            </div>
+                          </div>
+                          <div className="texts">
+                            <div className="cost">
+                              <h3 className="food-name">{d.name}</h3>
+                              <p className="amount">$ {d.price}</p>
+                            </div>
+                            <p className="food-about">{d.about}</p>
+                          </div>
                         </div>
                       </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Delicious Pancakes</h3>
-                          <p className="amount">$ 8.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfeb74070b437ee104c_menu-sweet-heaven.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Sweet Heaven</h3>
-                          <p className="amount">$ 9.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfef9793b2e8b0c0d57_menu-oatmeak-spirit.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Oatmeal Spirit</h3>
-                          <p className="amount">$ 9.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfd49201e59aa71d9ed_menu-avocado-smash.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Avocado Smash</h3>
-                          <p className="amount">$ 7.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    ))}
                 </div>
-                <div id="lunch">
+                <div id="lunch" data-aos="fade-up" data-aos-duration="2000">
                   <div className="up">Lunch</div>
-                  <div className="starters-menu">
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfe6028d9e2fcf33a00_menu-italian-pizza.webp"
-                            alt=""
-                          />
+                  {data
+                    .filter((item) =>
+                      item.category.toLowerCase().includes("lunch")
+                    )
+                    .map((d) => (
+                      <div className="starters-menu">
+                        <div className="eat">
+                          <div className="eat-image">
+                            <div className="image">
+                              <img src={d.image} alt="" />
+                            </div>
+                          </div>
+                          <div className="texts">
+                            <div className="cost">
+                              <h3 className="food-name">{d.name}</h3>
+                              <p className="amount">$ {d.price}</p>
+                            </div>
+                            <p className="food-about">{d.about}</p>
+                          </div>
                         </div>
                       </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Italian Pizza</h3>
-                          <p className="amount">$ 12.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324ce1f2d7ac5ff9103be98_menu-vegan-burger.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Vegan Burger</h3>
-                          <p className="amount">$ 13.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfe2e736192104b3b38_menu-sea-curry.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Sea Curry</h3>
-                          <p className="amount">
-                            <span
-                              style={{
-                                textDecoration: "line-through",
-                                color: "rgba(255, 255, 255, 0.6)",
-                              }}
-                            >
-                              $ 14.90
-                            </span>{" "}
-                            $ 9.90
-                          </p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfd2e73617d074b3b33_menu-noodle-bowl.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Noodle Bowl</h3>
-                          <p className="amount">$ 9.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    ))}
                 </div>
-                <div id="drinks">
+                <div id="drinks" data-aos="fade-up" data-aos-duration="2000">
                   <div className="up">Drinks</div>
-                  <div className="starters-menu">
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfde5861b2d12ae2db0_menu-penthouse-tonic.webp"
-                            alt=""
-                          />
+                  {data
+                    .filter((item) =>
+                      item.category.toLowerCase().includes("drinks")
+                    )
+                    .map((d) => (
+                      <div className="starters-menu">
+                        <div className="eat">
+                          <div className="eat-image">
+                            <div className="image">
+                              <img src={d.image} alt="" />
+                            </div>
+                          </div>
+                          <div className="texts">
+                            <div className="cost">
+                              <h3 className="food-name">{d.name}</h3>
+                              <p className="amount">$ {d.price}</p>
+                            </div>
+                            <p className="food-about">{d.about}</p>
+                          </div>
                         </div>
                       </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Panthouse Tonic</h3>
-                          <p className="amount">$ 10.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfdaba5197f1fb6f7ec_menu-apple-breeze.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Apple Breeze</h3>
-                          <p className="amount">$ 13.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfeeaaecd642994bb12_menu-frenchman-blitz.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Frenchman Blitz</h3>
-                          <p className="amount">$ 8.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img
-                            src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bdfd2e73617d074b3b33_menu-noodle-bowl.webp"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">Noodle Bowl</h3>
-                          <p className="amount">$ 9.90</p>
-                        </div>
-                        <p className="food-about">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    ))}
                 </div>
                 <div className="menu-footer">
                   <div className="nique">

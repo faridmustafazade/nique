@@ -1,0 +1,164 @@
+import React, { useState } from "react";
+import "./style.scss";
+import { Link } from "react-router-dom";
+import { AiFillCaretRight } from "react-icons/ai";
+
+const Aside = () => {
+  const [menu, setMenu] = useState(false);
+  const [classes, setClasses] = useState(false);
+  const [users, setUsers] = useState(false);
+
+  // const items = [
+  //   {
+  //     label: (
+  //       <a className="modal" href="https://www.antgroup.com">
+  //         Show Menu
+  //       </a>
+  //     ),
+  //     key: "0",
+  //   },
+  //   {
+  //     type: "divider",
+  //   },
+  //   {
+  //     label: (
+  //       <a className="modal" href="https://www.aliyun.com">
+  //         Add Menu
+  //       </a>
+  //     ),
+  //     key: "1",
+  //   },
+  // ];
+
+  return (
+    <>
+      <div className="full-aside">
+        <div className="aside">
+          <div className="images">
+            <img
+              src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/632593ede9b8135aac346328_favicon.jpg"
+              alt=""
+            />
+            <h1 className="title">nique</h1>
+          </div>
+          <p
+            style={{
+              fontFamily: "bitter-rose",
+              color: "#face8d",
+              fontSize: "36px",
+              paddingTop: 5,
+            }}
+          >
+            Admin Dashboard
+          </p>
+          <div className="aside-down">
+            <div className="asides">
+              <img
+                src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36aff1c8c85281c3125_Icons-1.svg"
+                alt=""
+              />
+              <p>
+                <Link className="asides-text" to="/admin">
+                  dashboard
+                </Link>
+              </p>
+            </div>
+            <div className="asides class" onClick={() => setMenu(!menu)}>
+              <div className="show">
+                <img
+                  src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6220c2b492ca1738f08b5e52_Bar.svg"
+                  alt=""
+                />
+                <Link className="asides-text">menu</Link>
+              </div>
+              {menu && (
+                <ul>
+                  <li>
+                    <Link className="asides-text textss" to="/admin/menu">
+                      <AiFillCaretRight /> show menu
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="asides-text textss" to="/admin/add-menu">
+                    <AiFillCaretRight /> add menu
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
+            <div className="asides class" onClick={() => setClasses(!classes)}>
+              <div className="show">
+                <img
+                  src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36bde33ea34634eb44e_Icons-6.svg"
+                  alt=""
+                />
+                <Link className="asides-text">classes</Link>
+              </div>
+              {classes && (
+                <ul>
+                  <li>
+                    {/* <NavLink to={"/admin/doctors-list"}> */}
+                    <AiFillCaretRight /> show classes
+                    {/* </NavLink> */}
+                  </li>
+                  <li>
+                    {/* <NavLink to={"/admin/add-doctor"}> */}
+                    <AiFillCaretRight /> add class
+                    {/* </NavLink> */}
+                  </li>
+                </ul>
+              )}
+            </div>
+            <div className="asides class" onClick={() => setUsers(!users)}>
+              <div className="show">
+                <img
+                  src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
+                  alt=""
+                />
+                <Link className="asides-text">users</Link>
+              </div>
+              {users && (
+                <ul>
+                  <li>
+                    {/* <NavLink to={"/admin/doctors-list"}> */}
+                    <AiFillCaretRight /> show users
+                    {/* </NavLink> */}
+                  </li>
+                  <li>
+                    {/* <NavLink to={"/admin/add-doctor"}> */}
+                    <AiFillCaretRight /> update users
+                    {/* </NavLink> */}
+                  </li>
+                </ul>
+              )}
+            </div>
+            <div className="asides">
+              <img
+                src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36bd99012ee364da3aa_Icons-5.svg"
+                alt=""
+              />
+              <p>
+                <Link className="asides-text" to="/admin">
+                  transaction
+                </Link>
+              </p>
+            </div>
+            <div className="asides">
+              <img
+                src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36969cb732c1d5166a2_Icons-33.svg"
+                alt=""
+              />
+              <p>
+                <Link className="asides-text" to="/admin">
+                  message
+                </Link>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Aside;

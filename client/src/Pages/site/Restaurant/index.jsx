@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/Footer";
+import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const Restaurant = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
+
   return (
     <>
       <div class="outer-wrapper">
@@ -26,8 +35,12 @@ const Restaurant = () => {
           </Link>
         </div>
         <div className="name">
-          <h1 className="pure">Discover</h1>
-          <h1 className="country">nique.</h1>
+          <h1 className="pure" data-aos="fade-down">
+            Discover
+          </h1>
+          <h1 className="country" data-aos="fade-up">
+            nique.
+          </h1>
         </div>
       </div>
       <Footer />

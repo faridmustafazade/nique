@@ -1,8 +1,14 @@
-import React from "react";
+import Aos from "aos";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/Footer";
+import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
+import "aos/dist/aos.css";
+
 const Blog = () => {
+  useEffect(() => {
+    Aos.init({});
+  }, []);
   return (
     <>
       <div id="full-blog">
@@ -19,15 +25,27 @@ const Blog = () => {
                   </Link>
                 </div>
                 <div className="name">
-                  <h1 className="blog">blog</h1>
-                  <h1 className="news">latest news</h1>
+                  <h1
+                    className="blog"
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                  >
+                    blog
+                  </h1>
+                  <h1
+                    className="news"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    latest news
+                  </h1>
                 </div>
               </div>
               <Footer />
             </div>
           </div>
           <div className="side-right">
-            <div className="card">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img
@@ -45,7 +63,7 @@ const Blog = () => {
                 </p>
               </div>
             </div>
-            <div className="card">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img
@@ -63,7 +81,7 @@ const Blog = () => {
                 </p>
               </div>
             </div>
-            <div className="card">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img
@@ -81,7 +99,7 @@ const Blog = () => {
                 </p>
               </div>
             </div>
-            <div className="card">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img
@@ -99,7 +117,7 @@ const Blog = () => {
                 </p>
               </div>
             </div>
-            <div className="card">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img
