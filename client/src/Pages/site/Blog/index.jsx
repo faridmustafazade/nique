@@ -163,7 +163,7 @@ const Blog = () => {
                     <Link to="/classes">Classes</Link>
                   </li>
                   <li>
-                    <Link>Book a Table</Link>
+                    <Link to="/reservation">Book a Table</Link>
                   </li>
                   <li>
                     <Link to="/contact">Contact</Link>

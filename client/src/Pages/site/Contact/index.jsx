@@ -1,4 +1,3 @@
-import { Input } from "antd";
 import Aos from "aos";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -11,6 +10,7 @@ import axios from "axios";
 import { ContactForm } from "./schema/ContactForm";
 
 const Contact = () => {
+
   const {
     register,
     handleSubmit,
@@ -23,11 +23,9 @@ const Contact = () => {
   const postData = () => {
     const values = getValues();
     axios.post("http://localhost:2003/api/contact", {
-      image: values.image,
       name: values.name,
-      price: values.price,
-      category: values.category,
-      about: values.about,
+      email: values.email,
+      message: values.message,
     });
   };
 
@@ -97,7 +95,7 @@ const Contact = () => {
                   <label className="label">Message</label>
                   <input
                     {...register("message")}
-                    className="input email"
+                    className="input message"
                     placeholder="Your message"
                   />
                   {errors.message?.message && (
@@ -106,7 +104,7 @@ const Contact = () => {
                     </p>
                   )}
                 </div>
-                <button className="send">send message</button>
+                <button type="submit" className="send">send message</button>
                 <div
                   style={{
                     display: "flex",
@@ -185,7 +183,7 @@ const Contact = () => {
                         <Link to="/classes">Classes</Link>
                       </li>
                       <li>
-                        <Link>Book a Table</Link>
+                        <Link to="/reservation">Book a Table</Link>
                       </li>
                       <li>
                         <Link to="/contact">Contact</Link>

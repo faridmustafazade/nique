@@ -1,7 +1,9 @@
 import AdminRoot from "../Pages/admin/AdminRoot";
-import Dashboard from "../Pages/admin/Dashboard";
+import Profile from "../Pages/admin/Profile";
 import AddMenu from "../Pages/admin/Menu/Add";
 import Show from "../Pages/admin/Menu/Show";
+import Message from "../Pages/admin/Message";
+import MessageDetails from "../Pages/admin/Message/Details";
 import Blog from "../Pages/site/Blog";
 import Classes from "../Pages/site/Classes";
 import Contact from "../Pages/site/Contact";
@@ -62,7 +64,7 @@ export const ROUTES = [
     children: [
       {
         path: "/admin",
-        element: <Dashboard />,
+        element: <Profile />,
       },
       {
         path: "/admin/menu",
@@ -72,14 +74,14 @@ export const ROUTES = [
         path: "/admin/add-menu",
         element: <AddMenu />,
       },
-      // {
-      //   path: "/classes",
-      //   element: <Classes />,
-      // },
-      // {
-      //   path: "/contact",
-      //   element: <Contact />,
-      // },
+      {
+        path: "/admin/message",
+        element: <Message />,
+      },
+      {
+        path: "/admin/message/:id",
+        element: <MessageDetails />,
+      },
       // {
       //   path: "/shop",
       //   element: <Shop />,

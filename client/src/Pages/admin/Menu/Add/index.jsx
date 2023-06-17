@@ -1,4 +1,3 @@
-import { message } from "antd";
 import React from "react";
 import Aside from "../../../../Layouts/admin/Aside";
 import Header from "../../../../Layouts/admin/Header";
@@ -9,14 +8,6 @@ import "./style.scss";
 import axios from "axios";
 
 const AddMenu = () => {
-  const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
-    messageApi.open({
-      type: "success",
-      content: "Post is success",
-    });
-  };
-
   const {
     register,
     handleSubmit,
@@ -28,7 +19,7 @@ const AddMenu = () => {
 
   const postData = () => {
     const values = getValues();
-    axios.post("http://localhost:2003/api/menu", {
+    axios.post("https://nique.onrender.com/api/menu", {
       image: values.image,
       name: values.name,
       price: values.price,
@@ -82,15 +73,9 @@ const AddMenu = () => {
                 )}
               </div>
 
-              {contextHolder}
-
-              <button className="editing" type="submit" onClick={success}>
+              <button className="editing" type="submit">
                 Create
               </button>
-
-              {/* <button type="submit" className="editing">
-                Create
-              </button> */}
             </form>
           </div>
         </div>

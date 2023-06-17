@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./style.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillCaretRight } from "react-icons/ai";
 
 const Aside = () => {
   const [menu, setMenu] = useState(false);
   const [classes, setClasses] = useState(false);
   const [users, setUsers] = useState(false);
-
+const navigate = useNavigate()
   // const items = [
   //   {
   //     label: (
@@ -52,15 +52,13 @@ const Aside = () => {
             Admin Dashboard
           </p>
           <div className="aside-down">
-            <div className="asides">
+            <div className="asides" onClick={()=>navigate("/admin")}>
               <img
                 src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36aff1c8c85281c3125_Icons-1.svg"
                 alt=""
               />
-              <p>
-                <Link className="asides-text" to="/admin">
-                  dashboard
-                </Link>
+              <p className="asides-text">
+                  profile
               </p>
             </div>
             <div className="asides class" onClick={() => setMenu(!menu)}>
@@ -132,26 +130,22 @@ const Aside = () => {
                 </ul>
               )}
             </div>
-            <div className="asides">
+            <div className="asides" onClick={()=>navigate("/admin")}>
               <img
                 src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36bd99012ee364da3aa_Icons-5.svg"
                 alt=""
               />
-              <p>
-                <Link className="asides-text" to="/admin">
+              <p className="asides-text">
                   transaction
-                </Link>
               </p>
             </div>
-            <div className="asides">
+            <div className="asides" onClick={()=>navigate("/admin/message")}>
               <img
                 src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36969cb732c1d5166a2_Icons-33.svg"
                 alt=""
               />
-              <p>
-                <Link className="asides-text" to="/admin">
+              <p className="asides-text">
                   message
-                </Link>
               </p>
             </div>
           </div>

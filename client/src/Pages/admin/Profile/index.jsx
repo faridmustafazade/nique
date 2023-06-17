@@ -2,7 +2,7 @@ import React from "react";
 import Aside from "../../../Layouts/admin/Aside";
 import "./style.scss";
 import Header from "../../../Layouts/admin/Header";
-const Dashboard = () => {
+const Profile = () => {
   return (
     <>
       <div className="dashboard-full">
@@ -10,7 +10,7 @@ const Dashboard = () => {
         <div className="side-right">
           <Header />
           <div className="side-down">
-            <h1 className="down-h1">Dashboard</h1>
+            <h1 className="down-h1">Profile</h1>
             <div className="white-div"></div>
           </div>
         </div>
@@ -19,4 +19,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Profile;
