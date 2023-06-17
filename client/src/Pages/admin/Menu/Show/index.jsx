@@ -8,6 +8,7 @@ import { Button, Input, Modal, Select } from "antd";
 const { Option } = Select;
 const Show = () => {
   const [data, setData] = useState([]);
+
   const [state, setState] = useState({
     image: "",
     name: "",
@@ -15,6 +16,7 @@ const Show = () => {
     about: "",
     price: "",
   });
+
   const [userId, setUserId] = useState("");
   const [value, setValue] = useState("");
   const [category, setCategory] = useState("");
@@ -30,6 +32,7 @@ const Show = () => {
     const res = await axios.get("http://localhost:2003/api/menu_category");
     setCat(res.data);
   };
+
   const deletingMenu = async (id) => {
     await axios.delete(`http://localhost:2003/api/menu/${id}`);
     await getData();
@@ -75,6 +78,7 @@ const Show = () => {
     }
     setData(res);
   };
+
   useEffect(() => {
     getData();
     getCategory();
@@ -168,6 +172,7 @@ const Show = () => {
                     </div>
                   </div>
                 ))}
+
               <Modal
                 title="Vertically centered modal dialog"
                 centered
@@ -211,12 +216,18 @@ const Show = () => {
                 />
 
                 <label>Choose a category</label>
-                <Input
+                <select value={state.category} name={state.category}>
+                  {cat.map((c) => (
+                    <option value={c.category}>{c.category}</option>
+                  ))}
+                </select>
+
+                {/* <Input
                   name="category"
                   value={state.category}
                   onChange={handleChange}
                   placeholder="Enter category"
-                />
+                /> */}
               </Modal>
             </div>
           </div>

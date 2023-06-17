@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Aside from "../../../../Layouts/admin/Aside";
 import Header from "../../../../Layouts/admin/Header";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import "./style.scss";
 import axios from "axios";
 
 const AddMenu = () => {
+  const [categories, setCategories] = useState([]);
   const {
     register,
     handleSubmit,
@@ -19,6 +20,7 @@ const AddMenu = () => {
 
   const postData = () => {
     const values = getValues();
+    console.log(values);
     axios.post("http://localhost:2003/api/menu", {
       image: values.image,
       name: values.name,
@@ -27,6 +29,15 @@ const AddMenu = () => {
       about: values.about,
     });
   };
+
+  const getCategory = async () => {
+    const response = await axios.get("http://localhost:2003/api/menu_category");
+    setCategories(response.data);
+  };
+
+  useEffect(() => {
+    getCategory();
+  });
 
   return (
     <>
@@ -67,10 +78,19 @@ const AddMenu = () => {
               </div>
               <div>
                 <label>Enter category</label>
-                <input {...register("category")} placeholder="Enter category" />
-                {errors.category?.message && (
+
+                <select name="categories">
+                  {categories.map((c) => (
+                    <option {...register("category")} value={c.categories}>
+                      {c.category}
+                    </option>
+                  ))}
+                </select>
+
+                {/* <input {...register("category")} placeholder="Enter category" /> */}
+                {/* {errors.category?.message && (
                   <p style={{ color: "#face8d" }}>{errors.category?.message}</p>
-                )}
+                )} */}
               </div>
 
               <button className="editing" type="submit">

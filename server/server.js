@@ -15,18 +15,18 @@ app.use(bodyParser.json());
 
 app.use("/api/menu", router);
 app.use("/api/menu_category", categoryRouter);
-app.use("/api/contact", contactRouter );
+app.use("/api/contact", contactRouter);
 
 const Port = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 
 mongoose
-  .connect(DB_URL)
-  .then(() => {
-    console.log("Mongo DB connect");
-  })
-  .then(
-    app.listen(Port, () => {
-      console.log("Server is run");
+    .connect(DB_URL)
+    .then(() => {
+        console.log("Mongo DB connect");
     })
-  );
+    .then(
+        app.listen(Port, () => {
+            console.log("Server is run");
+        })
+    );
