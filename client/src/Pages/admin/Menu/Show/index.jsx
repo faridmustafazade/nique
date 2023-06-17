@@ -137,8 +137,10 @@ const Show = () => {
                       </div>
                       <div className="texts">
                         <div className="cost">
-                          <h3 className="food-name">{d.name}</h3>
-                          <h4 className="amount">{d.category}</h4>
+                          <div className="type">
+                            <h3 className="food-name">{d.name}</h3>
+                            <h4 className="amount">{d.category}</h4>
+                          </div>
                           <p className="amount">$ {d.price}</p>
                         </div>
                         <div className="about">

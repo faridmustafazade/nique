@@ -19,7 +19,7 @@ const AddMenu = () => {
 
   const postData = () => {
     const values = getValues();
-    axios.post("https://nique.onrender.com/api/menu", {
+    axios.post("http://localhost:2003/api/menu", {
       image: values.image,
       name: values.name,
       price: values.price,

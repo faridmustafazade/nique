@@ -14,6 +14,7 @@ import NotFound from "../Pages/site/Not-Found";
 import Reservation from "../Pages/site/Reservation";
 import Restaurant from "../Pages/site/Restaurant";
 import Shop from "../Pages/site/Shop";
+import MenuDetails from "../Pages/site/Menu/Details";
 
 export const ROUTES = [
   {
@@ -27,6 +28,10 @@ export const ROUTES = [
       {
         path: "/menu",
         element: <Menu />,
+      },
+      {
+        path: "/menu/:category",
+        element: <MenuDetails />,
       },
       {
         path: "/restaurant",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../../Layouts/client/Footer";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -8,12 +8,20 @@ import axios from "axios";
 
 const Menu = () => {
   const [data, setData] = useState([]);
+  const [category, setCategory] = useState([]);
+  const navigate = useNavigate();
+
   const getData = async () => {
     const res = await axios.get("http://localhost:2003/api/menu");
     setData(res.data);
   };
+  const getCategory = async () => {
+    const res = await axios.get("http://localhost:2003/api/menu_category");
+    setCategory(res.data);
+  };
   useEffect(() => {
     getData();
+    getCategory();
     Aos.init({
       duration: 1000,
     });
@@ -72,106 +80,46 @@ const Menu = () => {
             </nav>
             <div className="container">
               <div className="side-down">
-                <div id="starters" data-aos="fade-up" data-aos-duration="2000">
-                  <div className="up">Starters</div>
-                  {data
-                    .filter((item) =>
-                      item.category.toLowerCase().includes("starters")
-                    )
-                    .map((d) => (
-                      <div className="starters-menu">
-                        <div className="eat">
-                          <div className="eat-image">
-                            <div className="image">
-                              <img src={d.image} alt="" />
+                {category.map((c) => (
+                  <div
+                    id="starters"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    <div className="up">{c.category}</div>
+                    {data
+                      .filter((item) =>
+                        item.category.toLowerCase().includes(c.category)
+                      )
+                      .splice(0, 3)
+                      .map((d) => (
+                        <div className="starters-menu">
+                          <div className="eat">
+                            <div className="eat-image">
+                              <div className="image">
+                                <img src={d.image} alt="" />
+                              </div>
                             </div>
-                          </div>
-                          <div className="texts">
-                            <div className="cost">
-                              <h3 className="food-name">{d.name}</h3>
-                              <p className="amount">$ {d.price}</p>
+                            <div className="texts">
+                              <div className="cost">
+                                <h3 className="food-name">{d.name}</h3>
+                                <p className="amount">$ {d.price}</p>
+                              </div>
+                              <p className="food-about">{d.about}</p>
                             </div>
-                            <p className="food-about">{d.about}</p>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                </div>
-                <div id="breakfast" data-aos="fade-up" data-aos-duration="2000">
-                  <div className="up">Breakfast</div>
-                  {data
-                    .filter((item) =>
-                      item.category.toLowerCase().includes("breakfast")
-                    )
-                    .map((d) => (
-                      <div className="starters-menu">
-                        <div className="eat">
-                          <div className="eat-image">
-                            <div className="image">
-                              <img src={d.image} alt="" />
-                            </div>
-                          </div>
-                          <div className="texts">
-                            <div className="cost">
-                              <h3 className="food-name">{d.name}</h3>
-                              <p className="amount">$ {d.price}</p>
-                            </div>
-                            <p className="food-about">{d.about}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-                <div id="lunch" data-aos="fade-up" data-aos-duration="2000">
-                  <div className="up">Lunch</div>
-                  {data
-                    .filter((item) =>
-                      item.category.toLowerCase().includes("lunch")
-                    )
-                    .map((d) => (
-                      <div className="starters-menu">
-                        <div className="eat">
-                          <div className="eat-image">
-                            <div className="image">
-                              <img src={d.image} alt="" />
-                            </div>
-                          </div>
-                          <div className="texts">
-                            <div className="cost">
-                              <h3 className="food-name">{d.name}</h3>
-                              <p className="amount">$ {d.price}</p>
-                            </div>
-                            <p className="food-about">{d.about}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-                <div id="drinks" data-aos="fade-up" data-aos-duration="2000">
-                  <div className="up">Drinks</div>
-                  {data
-                    .filter((item) =>
-                      item.category.toLowerCase().includes("drinks")
-                    )
-                    .map((d) => (
-                      <div className="starters-menu">
-                        <div className="eat">
-                          <div className="eat-image">
-                            <div className="image">
-                              <img src={d.image} alt="" />
-                            </div>
-                          </div>
-                          <div className="texts">
-                            <div className="cost">
-                              <h3 className="food-name">{d.name}</h3>
-                              <p className="amount">$ {d.price}</p>
-                            </div>
-                            <p className="food-about">{d.about}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
+                      ))}
+                    <div className="button">
+                      <button
+                        className="more"
+                        onClick={() => navigate(c.category)}
+                      >
+                        More
+                      </button>
+                    </div>
+                  </div>
+                ))}
                 <div className="menu-footer">
                   <div className="nique">
                     <img

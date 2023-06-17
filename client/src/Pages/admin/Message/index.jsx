@@ -1,3 +1,4 @@
+import { Button, Input } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +9,8 @@ import "./style.scss";
 const Message = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-
+  const [value, setValue] = useState("");
+  const [sorting, setSorting] = useState(true);
   const getData = async () => {
     const res = await axios.get("http://localhost:2003/api/contact");
     setData(res.data);
@@ -17,6 +19,25 @@ const Message = () => {
     await axios.delete(`http://localhost:2003/api/contact/${id}`);
     await getData();
   };
+  const Sorting = () => {
+    let res = [];
+    if (sorting === true) {
+      setSorting(false);
+      res = [...data].sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    } else {
+      setSorting(true);
+      res = [...data].sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
+    }
+    setData(res);
+  };
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -29,44 +50,17 @@ const Message = () => {
           <div className="side-down">
             <h1 className="down-h1">Messages</h1>
             <div className="white-div">
-              {/* <div className="inputs">
-                <div className="inp">
-                  <Input
-                    className="input"
-                    onChange={onChange}
-                    placeholder="Search by name"
-                  />
-                  <Select
-                    defaultValue=""
-                    style={{ width: 200, textTransform: "capitalize" }}
-                    onChange={changeCategory}
-                  >
-                    <Option style={{ fontFamily: "chillax" }} value="">
-                      Filter by category
-                    </Option>
-                    {cat.map((c) => (
-                      <Option
-                        style={{
-                          width: 200,
-                          fontFamily: "chillax",
-                          textTransform: "capitalize",
-                        }}
-                        value={c.category}
-                      >
-                        {c.category}
-                        </Option>
-                        ))}
-                        </Select>
-                        </div>
-                        <Button onClick={Sorting}>Sort by price</Button>
-                      </div> */}
+              <div className="filters">
+                <Input
+                  onChange={onChange}
+                  placeholder="Search by name"
+                />
+                <Button onClick={Sorting}>Filter by name</Button>
+              </div>
               {data
-
-                // .filter(
-                //   (item) =>
-                //     item.name.toLowerCase().includes(value.toLowerCase()) &&
-                //     (category === "" || item.category === category)
-                // )
+                .filter((item) =>
+                  item.name.toLowerCase().includes(value.toLowerCase())
+                )
                 .map((d) => (
                   <div key={d._id} className="div-menu">
                     <div className="msgs">

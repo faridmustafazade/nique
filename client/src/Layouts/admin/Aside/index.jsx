@@ -8,27 +8,6 @@ const Aside = () => {
   const [classes, setClasses] = useState(false);
   const [users, setUsers] = useState(false);
 const navigate = useNavigate()
-  // const items = [
-  //   {
-  //     label: (
-  //       <a className="modal" href="https://www.antgroup.com">
-  //         Show Menu
-  //       </a>
-  //     ),
-  //     key: "0",
-  //   },
-  //   {
-  //     type: "divider",
-  //   },
-  //   {
-  //     label: (
-  //       <a className="modal" href="https://www.aliyun.com">
-  //         Add Menu
-  //       </a>
-  //     ),
-  //     key: "1",
-  //   },
-  // ];
 
   return (
     <>

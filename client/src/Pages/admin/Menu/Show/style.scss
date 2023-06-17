@@ -2,6 +2,8 @@
   display: flex;
   .side-right {
     width: 100%;
+    height: 100vh;
+    background-color: #eff3f6;
     .side-down {
       background-color: #eff3f6;
       display: flex;
@@ -58,11 +60,13 @@
               color: #face8d;
               .texts {
                 .cost {
-                  .food-name {
-                    color: #face8d;
-                  }
-                  .amount {
-                    color: #face8d;
+                  .type {
+                    .food-name {
+                      color: #face8d;
+                    }
+                    .amount {
+                      color: #face8d;
+                    }
                   }
                 }
                 .about {
@@ -119,17 +123,34 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                .food-name {
-                  text-transform: capitalize;
-                  font-family: chillax-regular;
-                  font-weight: 400;
-                  font-size: 1.5rem;
-                  padding: 0;
-                  color: #192d43;
-                  transition: 0.5s;
+                .type {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  width: 70%;
+                  .food-name {
+                    text-transform: capitalize;
+                    font-family: chillax-regular;
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    padding: 0;
+                    color: #192d43;
+                    transition: 0.5s;
 
-                  @media only screen and (max-width: 478px) {
-                    font-size: 1rem;
+                    @media only screen and (max-width: 478px) {
+                      font-size: 1rem;
+                    }
+                  }
+                  .amount {
+                    font-family: chillax-regular;
+                    font-weight: 400;
+                    font-size: 1.25rem;
+                    text-transform: capitalize;
+                    transition: 0.5s;
+
+                    @media only screen and (max-width: 478px) {
+                      font-size: 0.8rem;
+                    }
                   }
                 }
                 .amount {
@@ -163,6 +184,7 @@
               padding-left: 30px;
               gap: 5px;
               .deleting {
+                cursor: pointer;
                 border: none;
                 background-color: #192d43;
                 padding: 10px 30px;
@@ -175,6 +197,7 @@
                 }
               }
               .editing {
+                cursor: pointer;
                 border: none;
                 background-color: #192d43;
                 padding: 10px 30px;

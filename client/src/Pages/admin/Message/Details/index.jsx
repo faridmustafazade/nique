@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Aside from "../../../../Layouts/admin/Aside";
 import Header from "../../../../Layouts/admin/Header";
 import "./style.scss";
@@ -20,6 +20,7 @@ const MessageDetails = () => {
     );
     setData(res.data);
   };
+  
   useEffect(() => {
     getData();
   }, []);

@@ -10,6 +10,11 @@ const CategoryController = {
     const getOne = await Category.findById(getID);
     res.send(getOne);
   },
+  getOne: async (req, res) => {
+    const getCategory = req.params.category;
+    const getOne = await Category.findOne(getCategory);
+    res.send(getOne);
+  },
   post: async (req, res) => {
     const getBody = req.body;
     const post = await new Category(getBody);
