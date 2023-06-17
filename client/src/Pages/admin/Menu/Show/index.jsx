@@ -52,6 +52,7 @@ const Show = () => {
   };
 
   const updateData = async () => {
+    console.log(state);
     await axios.put(`http://localhost:2003/api/menu/${userId}`, state);
     await getData();
   };
@@ -216,9 +217,15 @@ const Show = () => {
                 />
 
                 <label>Choose a category</label>
-                <select value={state.category} name={state.category}>
+                <select
+                  value={state.category}
+                  name="category"
+                  onChange={handleChange}
+                >
                   {cat.map((c) => (
-                    <option value={c.category}>{c.category}</option>
+                    <option key={c._id} value={c.category}>
+                      {c.category}
+                    </option>
                   ))}
                 </select>
 

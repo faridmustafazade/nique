@@ -9,6 +9,7 @@ import axios from "axios";
 
 const AddMenu = () => {
   const [categories, setCategories] = useState([]);
+
   const {
     register,
     handleSubmit,
@@ -79,9 +80,9 @@ const AddMenu = () => {
               <div>
                 <label>Enter category</label>
 
-                <select name="categories">
+                <select name="category" {...register("category")}>
                   {categories.map((c) => (
-                    <option {...register("category")} value={c.categories}>
+                    <option key={c._id} value={c.categories}>
                       {c.category}
                     </option>
                   ))}
