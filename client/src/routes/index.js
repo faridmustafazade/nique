@@ -15,6 +15,9 @@ import Reservation from "../Pages/site/Reservation";
 import Restaurant from "../Pages/site/Restaurant";
 import Shop from "../Pages/site/Shop";
 import MenuDetails from "../Pages/site/Menu/Details";
+import AddClasses from "../Pages/admin/Classes/Add";
+import ShowClass from "../Pages/admin/Classes/Show";
+import ClassesDetails from "../Pages/site/Classes/Details";
 
 export const ROUTES = [
   {
@@ -40,6 +43,10 @@ export const ROUTES = [
       {
         path: "/classes",
         element: <Classes />,
+      },
+      {
+        path: "/classes/:id",
+        element: <ClassesDetails />,
       },
       {
         path: "/contact",
@@ -80,6 +87,14 @@ export const ROUTES = [
         element: <AddMenu />,
       },
       {
+        path: "/admin/classes",
+        element: <ShowClass />,
+      },
+      {
+        path: "/admin/add-classes",
+        element: <AddClasses />,
+      },
+      {
         path: "/admin/message",
         element: <Message />,
       },
@@ -87,14 +102,6 @@ export const ROUTES = [
         path: "/admin/message/:id",
         element: <MessageDetails />,
       },
-      // {
-      //   path: "/shop",
-      //   element: <Shop />,
-      // },
-      // {
-      //   path: "/blog",
-      //   element: <Blog />,
-      // },
       // {
       //   path: "/reservation",
       //   element: <Reservation />,

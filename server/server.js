@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const router = require("./routes/menu.routes");
 const categoryRouter = require("./routes/category.routes");
 const contactRouter = require("./routes/contact.routes");
+const classesRouter = require("./routes/classes.routes");
 
 dotenv.config();
 
@@ -16,17 +17,18 @@ app.use(bodyParser.json());
 app.use("/api/menu", router);
 app.use("/api/menu_category", categoryRouter);
 app.use("/api/contact", contactRouter);
+app.use("/api/classes", classesRouter);
 
 const Port = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 
 mongoose
-    .connect(DB_URL)
-    .then(() => {
-        console.log("Mongo DB connect");
+  .connect(DB_URL)
+  .then(() => {
+    console.log("Mongo DB connect");
+  })
+  .then(
+    app.listen(Port, () => {
+      console.log("Server is run");
     })
-    .then(
-        app.listen(Port, () => {
-            console.log("Server is run");
-        })
-    );
+  );

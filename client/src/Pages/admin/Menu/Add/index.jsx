@@ -9,6 +9,7 @@ import axios from "axios";
 
 const AddMenu = () => {
   const [categories, setCategories] = useState([]);
+  const [data, setData] = useState([]);
 
   const {
     register,
@@ -28,6 +29,7 @@ const AddMenu = () => {
       price: values.price,
       category: values.category,
       about: values.about,
+      class: values.class,
     });
   };
 
@@ -35,9 +37,14 @@ const AddMenu = () => {
     const response = await axios.get("http://localhost:2003/api/menu_category");
     setCategories(response.data);
   };
+  const getClasses = async () => {
+    const res = await axios.get("http://localhost:2003/api/classes");
+    setData(res.data);
+  };
 
   useEffect(() => {
     getCategory();
+    getClasses();
   });
 
   return (
@@ -77,21 +84,25 @@ const AddMenu = () => {
                   <p style={{ color: "#face8d" }}>{errors.price?.message}</p>
                 )}
               </div>
-              <div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
                 <label>Enter category</label>
-
                 <select name="category" {...register("category")}>
                   {categories.map((c) => (
-                    <option key={c._id} value={c.categories}>
+                    <option key={c._id} value={c.category}>
                       {c.category}
                     </option>
                   ))}
                 </select>
-
-                {/* <input {...register("category")} placeholder="Enter category" /> */}
-                {/* {errors.category?.message && (
-                  <p style={{ color: "#face8d" }}>{errors.category?.message}</p>
-                )} */}
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <label>Enter class</label>
+                <select name="class" {...register("class")}>
+                  {data.map((d) => (
+                    <option key={d._id} value={d.class}>
+                      {d.class}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <button className="editing" type="submit">

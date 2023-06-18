@@ -74,7 +74,7 @@ const Reservation = () => {
                   </div>
                 </div>
                 <button className="send">book a table</button>
-                <div className="contact-footer">
+                <div className="reservation-footer">
                   <div className="nique">
                     <img
                       src="https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6321d4f35eab748617c65799_logo.svg"

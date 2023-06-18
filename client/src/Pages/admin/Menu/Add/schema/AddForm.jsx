@@ -8,5 +8,6 @@ export const AddForm = yup
     price: yup.string().required(),
     category: yup.string().required(),
     about: yup.string().required(),
+    class: yup.string().required(),
   })
   .required();

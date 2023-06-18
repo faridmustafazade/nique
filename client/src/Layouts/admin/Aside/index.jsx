@@ -7,7 +7,7 @@ const Aside = () => {
   const [menu, setMenu] = useState(false);
   const [classes, setClasses] = useState(false);
   const [users, setUsers] = useState(false);
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <>
@@ -31,14 +31,12 @@ const navigate = useNavigate()
             Admin Dashboard
           </p>
           <div className="aside-down">
-            <div className="asides" onClick={()=>navigate("/admin")}>
+            <div className="asides" onClick={() => navigate("/admin")}>
               <img
                 src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36aff1c8c85281c3125_Icons-1.svg"
                 alt=""
               />
-              <p className="asides-text">
-                  profile
-              </p>
+              <p className="asides-text">profile</p>
             </div>
             <div className="asides class" onClick={() => setMenu(!menu)}>
               <div className="show">
@@ -57,7 +55,7 @@ const navigate = useNavigate()
                   </li>
                   <li>
                     <Link className="asides-text textss" to="/admin/add-menu">
-                    <AiFillCaretRight /> add menu
+                      <AiFillCaretRight /> add menu
                     </Link>
                   </li>
                 </ul>
@@ -74,14 +72,17 @@ const navigate = useNavigate()
               {classes && (
                 <ul>
                   <li>
-                    {/* <NavLink to={"/admin/doctors-list"}> */}
-                    <AiFillCaretRight /> show classes
-                    {/* </NavLink> */}
+                    <Link className="asides-text textss" to={"/admin/classes"}>
+                      <AiFillCaretRight /> show classes
+                    </Link>
                   </li>
                   <li>
-                    {/* <NavLink to={"/admin/add-doctor"}> */}
-                    <AiFillCaretRight /> add class
-                    {/* </NavLink> */}
+                    <Link
+                      className="asides-text textss"
+                      to={"/admin/add-classes"}
+                    >
+                      <AiFillCaretRight /> add class
+                    </Link>
                   </li>
                 </ul>
               )}
@@ -109,23 +110,19 @@ const navigate = useNavigate()
                 </ul>
               )}
             </div>
-            <div className="asides" onClick={()=>navigate("/admin")}>
+            <div className="asides" onClick={() => navigate("/admin")}>
               <img
                 src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36bd99012ee364da3aa_Icons-5.svg"
                 alt=""
               />
-              <p className="asides-text">
-                  transaction
-              </p>
+              <p className="asides-text">transaction</p>
             </div>
-            <div className="asides" onClick={()=>navigate("/admin/message")}>
+            <div className="asides" onClick={() => navigate("/admin/message")}>
               <img
                 src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36969cb732c1d5166a2_Icons-33.svg"
                 alt=""
               />
-              <p className="asides-text">
-                  message
-              </p>
+              <p className="asides-text">message</p>
             </div>
           </div>
         </div>

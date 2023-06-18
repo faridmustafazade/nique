@@ -1,0 +1,124 @@
+import Aside from "../../../../Layouts/admin/Aside";
+import Header from "../../../../Layouts/admin/Header";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { AddForm } from "./schema/AddForm";
+import "./style.scss";
+import axios from "axios";
+
+const AddClasses = () => {
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(AddForm),
+  });
+
+  const postData = () => {
+    const values = getValues();
+    console.log(values);
+    axios.post("http://localhost:2003/api/classes", {
+      chefImage: values.chefImage,
+      chefName: values.chefName,
+      chefAbout: values.chefAbout,
+      class: values.class,
+      type: values.type,
+      price: values.price,
+      about: values.about,
+      image: values.image,
+    });
+  };
+
+  return (
+    <>
+      <div className="add-full">
+        <Aside />
+        <div className="side-right">
+          <Header />
+          <div className="side-down">
+            <h1 className="down-h1">Add Class</h1>
+            <form onSubmit={handleSubmit(postData)} className="white-div">
+              <div>
+                <label>Enter chef image</label>
+                <input
+                  {...register("chefImage")}
+                  placeholder="Enter chef image"
+                />
+                {errors.chefImage?.message && (
+                  <p style={{ color: "#face8d" }}>
+                    {errors.chefImage?.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label>Enter chef name</label>
+                <input
+                  {...register("chefName")}
+                  placeholder="Enter chef name"
+                />
+                {errors.chefName?.message && (
+                  <p style={{ color: "#face8d" }}>{errors.chefName?.message}</p>
+                )}
+              </div>
+              <div>
+                <label>Enter chef about</label>
+                <input
+                  {...register("chefAbout")}
+                  placeholder="Enter chef about"
+                />
+                {errors.chefAbout?.message && (
+                  <p style={{ color: "#face8d" }}>
+                    {errors.chefAbout?.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label>Enter class</label>
+                <input {...register("class")} placeholder="Enter class" />
+                {errors.class?.message && (
+                  <p style={{ color: "#face8d" }}>{errors.class?.message}</p>
+                )}
+              </div>
+              <div>
+                <label>Enter tpye</label>
+                <input {...register("type")} placeholder="Enter type" />
+                {errors.type?.message && (
+                  <p style={{ color: "#face8d" }}>{errors.type?.message}</p>
+                )}
+              </div>
+              <div>
+                <label>Enter price</label>
+                <input {...register("price")} placeholder="Enter price" />
+                {errors.price?.message && (
+                  <p style={{ color: "#face8d" }}>{errors.price?.message}</p>
+                )}
+              </div>
+              <div>
+                <label>Enter about</label>
+                <input {...register("about")} placeholder="Enter about" />
+                {errors.about?.message && (
+                  <p style={{ color: "#face8d" }}>{errors.about?.message}</p>
+                )}
+              </div>
+              <div>
+                <label>Enter class image</label>
+                <input {...register("image")} placeholder="Enter class image" />
+                {errors.image?.message && (
+                  <p style={{ color: "#face8d" }}>{errors.image?.message}</p>
+                )}
+              </div>
+
+              <button className="editing" type="submit">
+                Create
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default AddClasses;

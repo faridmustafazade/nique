@@ -1,32 +1,32 @@
-const Menu = require("../models/menu.model");
+const Classes = require("../models/classes.model");
 
-const MenuController = {
+const ClassesController = {
   getAll: async (req, res) => {
-    const getAll = await Menu.find({});
+    const getAll = await Classes.find({});
     res.send(getAll);
   },
   getOne: async (req, res) => {
     const getID = req.params.id;
-    const getOne = await Menu.findById(getID);
+    const getOne = await Classes.findById(getID);
     res.send(getOne);
   },
   post: async (req, res) => {
     const getBody = req.body;
-    const post = await new Menu(getBody);
+    const post = await new Classes(getBody);
     post.save();
     res.send(post);
   },
   delete: async (req, res) => {
     const getID = req.params.id;
-    const deleteOne = await Menu.findByIdAndDelete(getID);
+    const deleteOne = await Classes.findByIdAndDelete(getID);
     res.send("Deleting successfully");
   },
   put: async (req, res) => {
     const getID = req.params.id;
     const getBody = req.body;
-    const putOne = await Menu.findByIdAndUpdate(getID, getBody);
+    const putOne = await Classes.findByIdAndUpdate(getID, getBody);
     res.send(putOne);
   },
 };
 
-module.exports = MenuController;
+module.exports = ClassesController;

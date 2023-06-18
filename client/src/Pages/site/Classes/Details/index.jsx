@@ -5,53 +5,38 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import Footer from "../../../../Layouts/client/Footer";
-import { Input } from "antd";
+// import { Input } from "antd";
 
-const MenuDetails = () => {
+const ClassesDetails = () => {
+  const [data, setData] = useState({});
+  const [menu, setMenu] = useState([]);
   const params = useParams();
-  const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const [sorting, setSorting] = useState(true);
-  const [value, setValue] = useState("");
 
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api/menu");
+    const res = await axios.get(
+      `http://localhost:2003/api/classes/${params.id}`
+    );
     setData(res.data);
   };
-
-  const onChange = (e) => {
-    setValue(e.target.value);
+  const getMenu = async () => {
+    const res = await axios.get("http://localhost:2003/api/menu");
+    setMenu(res.data);
   };
-
-  const Sorting = () => {
-    let res = [];
-    if (sorting === true) {
-      setSorting(false);
-      res = [...data].sort((a, b) => {
-        return a.price - b.price;
-      });
-    } else {
-      setSorting(true);
-      res = [...data].sort((a, b) => {
-        return b.price - a.price;
-      });
-    }
-    setData(res);
-  };
-
   useEffect(() => {
     getData();
+    getMenu();
     Aos.init({
       duration: 1000,
     });
   }, []);
   return (
     <>
-      <div id="full-menud">
-        <div className="menud">
+      <div id="full-classd">
+        <div className="classd">
           <div className="side-left">
             <div className="container">
-              <div className="side-left-menud">
+              <div className="side-left-classd">
                 <div className="logo">
                   <Link to="/">
                     <img
@@ -66,14 +51,14 @@ const MenuDetails = () => {
                     data-aos="fade-down"
                     data-aos-duration="2000"
                   >
-                    Check out
+                    {data.type}
                   </h1>
                   <h1
                     className="our-menud"
                     data-aos="fade-up"
                     data-aos-duration="2000"
                   >
-                    Our Menu
+                    {data.class}
                   </h1>
                 </div>
               </div>
@@ -83,47 +68,92 @@ const MenuDetails = () => {
           <div className="side-right">
             <div className="container">
               <div className="side-down">
-                <div id="starters" data-aos="fade-up" data-aos-duration="2000">
-                  <div className="up">{params.category}</div>
-                  <div className="inputs">
-                    <Input
-                      className="input"
-                      onChange={onChange}
-                      placeholder="Search by name"
-                    />
-
-                    <button className="more" onClick={Sorting}>
-                      Filter by price
-                    </button>
+                <div id="starters">
+                  <p
+                    className="cook"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    cooking class
+                  </p>
+                  <h2
+                    className="reservs"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    Reserve your spot
+                  </h2>
+                  <p
+                    className="about"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    {data.about}
+                  </p>
+                  <div
+                    className="buy"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    <button>book a spot</button>
+                    <h4 className="cost">${data.price}</h4>
                   </div>
-                  {data
-                    .filter(
-                      (item) =>
-                        item.category.toLowerCase().includes(params.category) &&
-                        item.name.toLowerCase().includes(value.toLowerCase())
-                    )
-
-                    .map((d) => (
-                      <div className="starters-menud">
+                  <h2
+                    className="menu"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    menu
+                  </h2>
+                  <div
+                    className="menus"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    {menu
+                      .filter((item) => item.class.includes(data.class))
+                      .map((m) => (
                         <div className="eat">
                           <div className="eat-image">
                             <div className="image">
-                              <img src={d.image} alt="" />
+                              <img src={m.image} alt="" />
                             </div>
                           </div>
                           <div className="texts">
-                            <div className="cost">
-                              <h3 className="food-name">{d.name}</h3>
-                              <p className="amount">$ {d.price}</p>
-                            </div>
-                            <p className="food-about">{d.about}</p>
+                            <h3 className="food-name">{m.name}</h3>
+                            <p className="food-about">{m.about}</p>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                  <div className="button">
-                    <button className="more" onClick={() => navigate("/menu")}>
-                      Go Back
+                      ))}
+                  </div>
+                  <h2
+                    className="chef"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    chef
+                  </h2>
+                  <div
+                    className="chef-about"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    <img src={data.chefImage} alt="" />
+                    <div className="texts">
+                      <h3 className="chef-name">{data.chefName}</h3>
+                      <p className="chef-about">{data.chefAbout}</p>
+                    </div>
+                  </div>
+                  <div
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                    className="button"
+                  >
+                    <button
+                      className="back"
+                      onClick={() => navigate("/classes")}
+                    >
+                      Go back
                     </button>
                   </div>
                 </div>
@@ -199,4 +229,4 @@ const MenuDetails = () => {
   );
 };
 
-export default MenuDetails;
+export default ClassesDetails;

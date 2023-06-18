@@ -3,10 +3,9 @@ import React, { useEffect, useState } from "react";
 import Aside from "../../../../Layouts/admin/Aside";
 import Header from "../../../../Layouts/admin/Header";
 import "./style.scss";
-import { Button, Input, Modal, Select } from "antd";
+import { Button, Input, Modal } from "antd";
 
-const { Option } = Select;
-const Show = () => {
+const ShowClass = () => {
   const [data, setData] = useState([]);
 
   const [state, setState] = useState({
@@ -19,27 +18,17 @@ const Show = () => {
 
   const [userId, setUserId] = useState("");
   const [value, setValue] = useState("");
-  const [category, setCategory] = useState("");
+  const [type, setType] = useState("");
   const [modal2Open, setModal2Open] = useState(false);
-  const [cat, setCat] = useState([]);
-  const [classe, setClasse] = useState([]);
   const [sorting, setSorting] = useState(true);
 
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api/menu");
-    setData(res.data);
-  };
-  const getCategory = async () => {
-    const res = await axios.get("http://localhost:2003/api/menu_category");
-    setCat(res.data);
-  };
-  const getClasses = async () => {
     const res = await axios.get("http://localhost:2003/api/classes");
-    setClasse(res.data);
+    setData(res.data);
   };
 
   const deletingMenu = async (id) => {
-    await axios.delete(`http://localhost:2003/api/menu/${id}`);
+    await axios.delete(`http://localhost:2003/api/classes/${id}`);
     await getData();
   };
   const handleChange = (e) => {
@@ -47,27 +36,29 @@ const Show = () => {
   };
   const editClick = (userData) => {
     setState({
-      image: userData.image,
-      name: userData.name,
-      category: userData.category,
-      about: userData.about,
-      price: userData.price,
+      chefImage: userData.chefImage,
+      chefName: userData.chefName,
+      chefAbout: userData.chefAbout,
       class: userData.class,
+      type: userData.type,
+      price: userData.price,
+      about: userData.about,
+      image: userData.image,
     });
     setUserId(userData._id);
   };
 
   const updateData = async () => {
     console.log(state);
-    await axios.put(`http://localhost:2003/api/menu/${userId}`, state);
+    await axios.put(`http://localhost:2003/api/classes/${userId}`, state);
     await getData();
   };
 
   const onChange = (e) => {
     setValue(e.target.value);
   };
-  const changeCategory = (value) => {
-    setCategory(value);
+  const onChangee = (e) => {
+    setType(e.target.value);
   };
 
   const Sorting = () => {
@@ -88,8 +79,6 @@ const Show = () => {
 
   useEffect(() => {
     getData();
-    getCategory();
-    getClasses();
   }, []);
 
   return (
@@ -99,7 +88,7 @@ const Show = () => {
         <div className="side-right">
           <Header />
           <div className="side-down">
-            <h1 className="down-h1">Menus</h1>
+            <h1 className="down-h1">Classes</h1>
             <div className="white-div">
               <div className="inputs">
                 <div className="inp">
@@ -108,27 +97,11 @@ const Show = () => {
                     onChange={onChange}
                     placeholder="Search by name"
                   />
-                  <Select
-                    defaultValue=""
-                    style={{ width: 200, textTransform: "capitalize" }}
-                    onChange={changeCategory}
-                  >
-                    <Option style={{ fontFamily: "chillax" }} value="">
-                      Filter by category
-                    </Option>
-                    {cat.map((c) => (
-                      <Option
-                        style={{
-                          width: 200,
-                          fontFamily: "chillax",
-                          textTransform: "capitalize",
-                        }}
-                        value={c.category}
-                      >
-                        {c.category}
-                      </Option>
-                    ))}
-                  </Select>
+                  <Input
+                    className="input"
+                    onChange={onChangee}
+                    placeholder="Search by type"
+                  />
                 </div>
                 <Button onClick={Sorting}>Sort by price</Button>
               </div>
@@ -136,8 +109,8 @@ const Show = () => {
 
                 .filter(
                   (item) =>
-                    item.name.toLowerCase().includes(value.toLowerCase()) &&
-                    (category === "" || item.category === category)
+                    item.class.toLowerCase().includes(value.toLowerCase()) &&
+                    item.type.toLowerCase().includes(type.toLowerCase())
                 )
                 .map((d) => (
                   <div className="div-menu">
@@ -150,13 +123,13 @@ const Show = () => {
                       <div className="texts">
                         <div className="cost">
                           <div className="type">
-                            <h3 className="food-name">{d.name}</h3>
-                            <h4 className="amount">{d.category}</h4>
+                            <h3 className="food-name">{d.class}</h3>
+                            <h4 className="amount">{d.type}</h4>
                           </div>
                           <p className="amount">$ {d.price}</p>
                         </div>
                         <div className="about">
-                          <p className="food-about">{d.about}</p>
+                          <p className="food-about">Chef: {d.chefName}</p>
                         </div>
                       </div>
                       <div className="buttons">
@@ -191,69 +164,66 @@ const Show = () => {
                 }}
                 onCancel={() => setModal2Open(false)}
               >
-                <label>Enter image</label>
+                <label>Enter chef image</label>
                 <Input
-                  name="image"
+                  name="chefImage"
                   onChange={handleChange}
-                  value={state.image}
-                  placeholder="Enter image"
+                  value={state.chefImage}
+                  placeholder="Enter chef image"
                 />
 
-                <label>Enter name</label>
+                <label>Enter chef name</label>
                 <Input
-                  name="name"
+                  name="chefName"
                   onChange={handleChange}
-                  value={state.name}
+                  value={state.chefName}
+                  placeholder="Enter chef name"
+                />
+
+                <label>Enter chef about</label>
+                <Input
+                  name="chefAbout"
+                  onChange={handleChange}
+                  value={state.chefAbout}
+                  placeholder="Enter chef about"
+                />
+
+                <label>Enter class</label>
+                <Input
+                  name="class"
+                  onChange={handleChange}
+                  value={state.class}
                   placeholder="Enter name"
                 />
 
-                <label>Enter about</label>
+                <label>Choose type</label>
                 <Input
-                  name="about"
+                  name="type"
                   onChange={handleChange}
-                  value={state.about}
-                  placeholder="Enter about"
+                  value={state.type}
+                  placeholder="Enter type"
                 />
-
-                <label>Enter price</label>
+                <label>Choose price</label>
                 <Input
                   name="price"
                   onChange={handleChange}
                   value={state.price}
                   placeholder="Enter price"
                 />
-
-                <label>Choose a category</label>
-                <select
-                  value={state.category}
-                  name="category"
+                <label>Choose about</label>
+                <Input
+                  name="about"
                   onChange={handleChange}
-                >
-                  {cat.map((c) => (
-                    <option key={c._id} value={c.category}>
-                      {c.category}
-                    </option>
-                  ))}
-                </select>
-                <label>Choose a class</label>
-                <select
-                  value={state.class}
-                  name="class"
+                  value={state.about}
+                  placeholder="Enter about"
+                />
+                <label>Choose class image</label>
+                <Input
+                  name="image"
                   onChange={handleChange}
-                >
-                  {classe.map((cla) => (
-                    <option key={cla._id} value={cla.class}>
-                      {cla.class}
-                    </option>
-                  ))}
-                </select>
-
-                {/* <Input
-                  name="category"
-                  value={state.category}
-                  onChange={handleChange}
-                  placeholder="Enter category"
-                /> */}
+                  value={state.image}
+                  placeholder="Enter class image"
+                />
               </Modal>
             </div>
           </div>
@@ -263,4 +233,4 @@ const Show = () => {
   );
 };
 
-export default Show;
+export default ShowClass;

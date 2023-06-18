@@ -3,6 +3,8 @@ html {
 }
 #full-menud {
   height: 100vh;
+  background-color: black;
+
   .menud {
     display: flex;
     justify-content: space-between;
@@ -110,6 +112,56 @@ html {
             font-weight: 400;
             color: #face8d;
           }
+          .inputs {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 40px;
+            padding-right: 40px;
+            gap: 10px;
+            @media only screen and (max-width: 478px) {
+              flex-direction: column;
+              padding-right: 0;
+            }
+            .input {
+              width: 80%;
+              color: #face8d;
+              background: transparent;
+              font-family: chillax-regular;
+              border: 1px solid hsla(0, 0%, 100%, 0.1);
+              &::placeholder {
+                font-size: 14px;
+                color: #face8d;
+                font-family: chillax-regular;
+              }
+              @media only screen and (max-width: 478px) {
+                width: 100%;
+              }
+            }
+            .more {
+              width: 20%;
+              border: none;
+              background-color: #192d43;
+              padding: 7px 0;
+              color: #face8d;
+              font-family: chillax-regular;
+              border-radius: 5px;
+              transition: 0.5s;
+              @media only screen and (max-width: 478px) {
+                width: 100%;
+              }
+              a {
+                color: #face8d;
+                text-decoration: none;
+              }
+              &:hover {
+                background-color: white;
+                color: #192d43;
+                cursor: pointer;
+              }
+            }
+          }
           .button {
             display: flex;
             justify-content: center;
@@ -212,7 +264,7 @@ html {
 
         .menu-footer {
           display: flex;
-          justify-content: flex-start;
+          justify-content: space-between;
           align-items: flex-start;
           flex-wrap: wrap;
           @media only screen and (max-width: 767px) {
