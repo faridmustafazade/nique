@@ -134,8 +134,9 @@ const SignUp = () => {
               value={authData.image}
             />
           </div>
-          <div className="link" onClick={() => navigate("/sign-in")}>
-            Have an account? Log in
+          <div className="link">
+            Have an account?
+            <span onClick={() => navigate("/sign-in")}> Log in</span>
           </div>
           <div onClick={authFunc} className="button">
             Sign Up

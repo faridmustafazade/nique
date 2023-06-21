@@ -90,7 +90,7 @@ const login = async (req, res) => {
 };
 
 const changePassword = async (req, res) => {
-  const { currentPassword, newPassword, confrimPassword, email } = req.body;
+  const { currentPassword, newPassword, confirmPassword, email } = req.body;
 
   const user = await AuthSchema.findOne({ email });
 
@@ -104,7 +104,7 @@ const changePassword = async (req, res) => {
   if (!isCurrentPasswordValid) {
     return res.status(400).send("Invalid current password");
   }
-  if (newPassword !== confrimPassword) {
+  if (newPassword !== confirmPassword) {
     return res.status(400).send("New password do not match");
   }
   const passwordHash = await bcrypt.hash(newPassword, 12);

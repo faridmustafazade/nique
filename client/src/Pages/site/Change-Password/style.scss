@@ -1,12 +1,17 @@
-.full-divs {
+.full-change {
   width: 100%;
+  height: 100vh;
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
   .div {
     width: 25%;
     border-radius: 0.75rem;
@@ -37,6 +42,11 @@
         font-size: 3rem;
       }
     }
+    .p {
+      text-align: center;
+      font-family: chillax;
+      font-size: 22px;
+    }
     .inputs {
       display: flex;
       flex-direction: column;
@@ -47,6 +57,7 @@
       margin-bottom: 1.25rem;
       .label {
         display: block;
+        margin-top: 10px;
         font-size: 1.125rem;
         line-height: 1.75rem;
         font-family: "chillax";
@@ -56,7 +67,6 @@
       }
       .input {
         margin-top: 10px;
-        margin-bottom: 25px;
         border: 1px solid rgb(190, 189, 189);
         padding: 0.5rem;
         font-size: 0.875rem;
@@ -74,16 +84,17 @@
       --tw-text-opacity: 1;
       font-size: 0.875rem;
       line-height: 1.25rem;
-      font-family: chillax;
+      font-family: "chillax";
+      cursor: pointer;
       margin-bottom: 1rem;
       span {
-        cursor: pointer;
         color: rgb(239 68 68 / var(--tw-text-opacity));
       }
     }
     .button {
+      border: none;
       cursor: pointer;
-      padding: 0.5rem;
+      padding: 0.7rem;
       text-align: center;
       font-family: chillax;
       --tw-bg-opacity: 1;

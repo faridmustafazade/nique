@@ -30,7 +30,7 @@ const SignIn = () => {
         <meta name="description" content="test on react-helmet" />
         <meta name="theme-color" content="#ccc" />
       </Helmet>
-      <div className="full-div">
+      <div className="full-sign">
         <div className="div">
           <h1 className="h1">Nique.</h1>
           <div className="inputs">
@@ -60,8 +60,12 @@ const SignIn = () => {
               className="input"
             />
           </div>
-          <div className="link" onClick={() => navigate("/sign-up")}>
-            Don't have an account? Sign up
+          <div className="changes" onClick={() => navigate("/change-password")}>
+            Change Password?
+          </div>
+          <div className="link">
+            Don't have an account?
+            <span onClick={() => navigate("/sign-up")}> Sign up</span>
           </div>
           <div onClick={authFunc} className="button">
             Log in

@@ -18,7 +18,6 @@ const Menu = () => {
   const [category, setCategory] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const wishlist = useSelector((state) => state.wishlist);
 
   const getData = async () => {

@@ -25,8 +25,8 @@ import SignIn from "../Pages/site/Sign-in";
 import SignUp from "../Pages/site/Sign-up";
 import UserProfile from "../Pages/User-Profile";
 import WishListPage from "../Pages/site/Wishlist";
+import ChangePassword from "../Pages/site/Change-Password";
 
-// const [token] = useToken();
 
 export const ROUTES = [
   {
@@ -84,6 +84,10 @@ export const ROUTES = [
       {
         path: "/wishlist",
         element: <WishListPage />,
+      },
+      {
+        path: "/change-password",
+        element: <ChangePassword />,
       },
       {
         path: "*",
