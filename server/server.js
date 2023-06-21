@@ -7,6 +7,7 @@ const router = require("./routes/menu.routes");
 const categoryRouter = require("./routes/category.routes");
 const contactRouter = require("./routes/contact.routes");
 const classesRouter = require("./routes/classes.routes");
+const authRouter = require("./routes/auth.routes");
 
 dotenv.config();
 
@@ -18,8 +19,9 @@ app.use("/api/menu", router);
 app.use("/api/menu_category", categoryRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/classes", classesRouter);
+app.use("/api", authRouter);
 
-const Port = process.env.PORT;
+const Port = process.env.PORT || 5000;
 const DB_URL = process.env.DB_URL;
 
 mongoose

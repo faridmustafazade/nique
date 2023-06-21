@@ -98,9 +98,9 @@ const Aside = () => {
               {users && (
                 <ul>
                   <li>
-                    {/* <NavLink to={"/admin/doctors-list"}> */}
-                    <AiFillCaretRight /> show users
-                    {/* </NavLink> */}
+                    <Link className="asides-text textss" to={"/admin/users"}>
+                      <AiFillCaretRight /> show users
+                    </Link>
                   </li>
                   <li>
                     {/* <NavLink to={"/admin/add-doctor"}> */}

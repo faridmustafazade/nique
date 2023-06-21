@@ -1,6 +1,6 @@
 import Aos from "aos";
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
 import "aos/dist/aos.css";
@@ -8,9 +8,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { ContactForm } from "./schema/ContactForm";
+import useToken from "../../../Hooks/useToken";
 
 const Contact = () => {
-
+  const [token] = useToken();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -22,11 +24,15 @@ const Contact = () => {
 
   const postData = () => {
     const values = getValues();
-    axios.post("http://localhost:2003/api/contact", {
-      name: values.name,
-      email: values.email,
-      message: values.message,
-    });
+    {
+      !token?.token
+        ? navigate("/sign-in")
+        : axios.post("http://localhost:2003/api/contact", {
+            name: values.name,
+            email: values.email,
+            message: values.message,
+          });
+    }
   };
 
   useEffect(() => {
@@ -104,8 +110,12 @@ const Contact = () => {
                     </p>
                   )}
                 </div>
-                <button type="submit" className="send">send message</button>
-                <div
+
+                <button type="submit" className="send">
+                  send message
+                </button>
+
+                {/* <div
                   style={{
                     display: "flex",
                     justifyContent: "center",
@@ -154,7 +164,7 @@ const Contact = () => {
                       </a>
                     </p>
                   </div>
-                </div>
+                </div> */}
                 <div className="contact-footer">
                   <div className="nique">
                     <img

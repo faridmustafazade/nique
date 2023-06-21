@@ -4,8 +4,12 @@ import Aside from "../../../../Layouts/admin/Aside";
 import Header from "../../../../Layouts/admin/Header";
 import "./style.scss";
 import { Button, Input, Modal } from "antd";
+import useToken from "../../../../Hooks/useToken";
+import { useNavigate } from "react-router-dom";
 
 const ShowClass = () => {
+  const [token] = useToken();
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   const [state, setState] = useState({
@@ -83,152 +87,158 @@ const ShowClass = () => {
 
   return (
     <>
-      <div className="show-full">
-        <Aside />
-        <div className="side-right">
-          <Header />
-          <div className="side-down">
-            <h1 className="down-h1">Classes</h1>
-            <div className="white-div">
-              <div className="inputs">
-                <div className="inp">
-                  <Input
-                    className="input"
-                    onChange={onChange}
-                    placeholder="Search by name"
-                  />
-                  <Input
-                    className="input"
-                    onChange={onChangee}
-                    placeholder="Search by type"
-                  />
+      {!token?.token ? (
+        navigate("/login-admin")
+      ) : token?.user?.isAdmin === true ? (
+        <div className="show-full">
+          <Aside />
+          <div className="side-right">
+            <Header />
+            <div className="side-down">
+              <h1 className="down-h1">Classes</h1>
+              <div className="white-div">
+                <div className="inputs">
+                  <div className="inp">
+                    <Input
+                      className="input"
+                      onChange={onChange}
+                      placeholder="Search by name"
+                    />
+                    <Input
+                      className="input"
+                      onChange={onChangee}
+                      placeholder="Search by type"
+                    />
+                  </div>
+                  <Button onClick={Sorting}>Sort by price</Button>
                 </div>
-                <Button onClick={Sorting}>Sort by price</Button>
-              </div>
-              {data
+                {data
 
-                .filter(
-                  (item) =>
-                    item.class.toLowerCase().includes(value.toLowerCase()) &&
-                    item.type.toLowerCase().includes(type.toLowerCase())
-                )
-                .map((d) => (
-                  <div className="div-menu">
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img src={d.image} alt="" />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <div className="type">
-                            <h3 className="food-name">{d.class}</h3>
-                            <h4 className="amount">{d.type}</h4>
+                  .filter(
+                    (item) =>
+                      item.class.toLowerCase().includes(value.toLowerCase()) &&
+                      item.type.toLowerCase().includes(type.toLowerCase())
+                  )
+                  .map((d) => (
+                    <div className="div-menu">
+                      <div className="eat">
+                        <div className="eat-image">
+                          <div className="image">
+                            <img src={d.image} alt="" />
                           </div>
-                          <p className="amount">$ {d.price}</p>
                         </div>
-                        <div className="about">
-                          <p className="food-about">Chef: {d.chefName}</p>
+                        <div className="texts">
+                          <div className="cost">
+                            <div className="type">
+                              <h3 className="food-name">{d.class}</h3>
+                              <h4 className="amount">{d.type}</h4>
+                            </div>
+                            <p className="amount">$ {d.price}</p>
+                          </div>
+                          <div className="about">
+                            <p className="food-about">Chef: {d.chefName}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="buttons">
-                        <button
-                          className="deleting"
-                          onClick={() => deletingMenu(d._id)}
-                        >
-                          Delete
-                        </button>
-                        <button
-                          type="primary"
-                          onClick={() => {
-                            setModal2Open(true);
-                            editClick(d);
-                          }}
-                          className="editing"
-                        >
-                          Edit
-                        </button>
+                        <div className="buttons">
+                          <button
+                            className="deleting"
+                            onClick={() => deletingMenu(d._id)}
+                          >
+                            Delete
+                          </button>
+                          <button
+                            type="primary"
+                            onClick={() => {
+                              setModal2Open(true);
+                              editClick(d);
+                            }}
+                            className="editing"
+                          >
+                            Edit
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
 
-              <Modal
-                title="Vertically centered modal dialog"
-                centered
-                open={modal2Open}
-                onOk={() => {
-                  setModal2Open(false);
-                  updateData();
-                }}
-                onCancel={() => setModal2Open(false)}
-              >
-                <label>Enter chef image</label>
-                <Input
-                  name="chefImage"
-                  onChange={handleChange}
-                  value={state.chefImage}
-                  placeholder="Enter chef image"
-                />
+                <Modal
+                  title="Vertically centered modal dialog"
+                  centered
+                  open={modal2Open}
+                  onOk={() => {
+                    setModal2Open(false);
+                    updateData();
+                  }}
+                  onCancel={() => setModal2Open(false)}
+                >
+                  <label>Enter chef image</label>
+                  <Input
+                    name="chefImage"
+                    onChange={handleChange}
+                    value={state.chefImage}
+                    placeholder="Enter chef image"
+                  />
 
-                <label>Enter chef name</label>
-                <Input
-                  name="chefName"
-                  onChange={handleChange}
-                  value={state.chefName}
-                  placeholder="Enter chef name"
-                />
+                  <label>Enter chef name</label>
+                  <Input
+                    name="chefName"
+                    onChange={handleChange}
+                    value={state.chefName}
+                    placeholder="Enter chef name"
+                  />
 
-                <label>Enter chef about</label>
-                <Input
-                  name="chefAbout"
-                  onChange={handleChange}
-                  value={state.chefAbout}
-                  placeholder="Enter chef about"
-                />
+                  <label>Enter chef about</label>
+                  <Input
+                    name="chefAbout"
+                    onChange={handleChange}
+                    value={state.chefAbout}
+                    placeholder="Enter chef about"
+                  />
 
-                <label>Enter class</label>
-                <Input
-                  name="class"
-                  onChange={handleChange}
-                  value={state.class}
-                  placeholder="Enter name"
-                />
+                  <label>Enter class</label>
+                  <Input
+                    name="class"
+                    onChange={handleChange}
+                    value={state.class}
+                    placeholder="Enter name"
+                  />
 
-                <label>Choose type</label>
-                <Input
-                  name="type"
-                  onChange={handleChange}
-                  value={state.type}
-                  placeholder="Enter type"
-                />
-                <label>Choose price</label>
-                <Input
-                  name="price"
-                  onChange={handleChange}
-                  value={state.price}
-                  placeholder="Enter price"
-                />
-                <label>Choose about</label>
-                <Input
-                  name="about"
-                  onChange={handleChange}
-                  value={state.about}
-                  placeholder="Enter about"
-                />
-                <label>Choose class image</label>
-                <Input
-                  name="image"
-                  onChange={handleChange}
-                  value={state.image}
-                  placeholder="Enter class image"
-                />
-              </Modal>
+                  <label>Choose type</label>
+                  <Input
+                    name="type"
+                    onChange={handleChange}
+                    value={state.type}
+                    placeholder="Enter type"
+                  />
+                  <label>Choose price</label>
+                  <Input
+                    name="price"
+                    onChange={handleChange}
+                    value={state.price}
+                    placeholder="Enter price"
+                  />
+                  <label>Choose about</label>
+                  <Input
+                    name="about"
+                    onChange={handleChange}
+                    value={state.about}
+                    placeholder="Enter about"
+                  />
+                  <label>Choose class image</label>
+                  <Input
+                    name="image"
+                    onChange={handleChange}
+                    value={state.image}
+                    placeholder="Enter class image"
+                  />
+                </Modal>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        navigate("/login-admin")
+      )}
     </>
   );
 };

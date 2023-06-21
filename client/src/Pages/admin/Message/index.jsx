@@ -2,11 +2,14 @@ import { Button, Input } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useToken from "../../../Hooks/useToken";
 import Aside from "../../../Layouts/admin/Aside";
 import Header from "../../../Layouts/admin/Header";
 import "./style.scss";
 
 const Message = () => {
+  const [token] = useToken();
+
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const [value, setValue] = useState("");
@@ -43,54 +46,54 @@ const Message = () => {
   }, []);
   return (
     <>
-      <div className="msg-full">
-        <Aside />
-        <div className="side-right">
-          <Header />
-          <div className="side-down">
-            <h1 className="down-h1">Messages</h1>
-            <div className="white-div">
-              <div className="filters">
-                <Input
-                  onChange={onChange}
-                  placeholder="Search by name"
-                />
-                <Button onClick={Sorting}>Filter by name</Button>
-              </div>
-              {data
-                .filter((item) =>
-                  item.name.toLowerCase().includes(value.toLowerCase())
-                )
-                .map((d) => (
-                  <div key={d._id} className="div-menu">
-                    <div className="msgs">
-                      <div className="texts">
-                        <div className="mail" onClick={() => navigate(d._id)}>
-                          <div className="name-bio">
-                            <h4>Name</h4>
-                            <h3 className="mail-name">{d.name}</h3>
+      {!token?.token ? (
+        navigate("/login-admin")
+      ) : token?.user?.isAdmin === true ? (
+        <div className="msg-full">
+          <Aside />
+          <div className="side-right">
+            <Header />
+            <div className="side-down">
+              <h1 className="down-h1">Messages</h1>
+              <div className="white-div">
+                <div className="filters">
+                  <Input onChange={onChange} placeholder="Search by name" />
+                  <Button onClick={Sorting}>Filter by name</Button>
+                </div>
+                {data
+                  .filter((item) =>
+                    item.name.toLowerCase().includes(value.toLowerCase())
+                  )
+                  .map((d) => (
+                    <div key={d._id} className="div-menu">
+                      <div className="msgs">
+                        <div className="texts">
+                          <div className="mail" onClick={() => navigate(d._id)}>
+                            <div className="name-bio">
+                              <h4>Name</h4>
+                              <h3 className="mail-name">{d.name}</h3>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="buttons">
-                        <div
-                          className="email-bio"
-                          onClick={() => navigate(d._id)}
-                        >
-                          <h4>Email</h4>
-                          <p className="email"> {d.email}</p>
+                        <div className="buttons">
+                          <div
+                            className="email-bio"
+                            onClick={() => navigate(d._id)}
+                          >
+                            <h4>Email</h4>
+                            <p className="email"> {d.email}</p>
+                          </div>
+                          <button
+                            className="deleting"
+                            onClick={() => deletingMenu(d._id)}
+                          >
+                            Delete
+                          </button>
                         </div>
-                        <button
-                          className="deleting"
-                          onClick={() => deletingMenu(d._id)}
-                        >
-                          Delete
-                        </button>
                       </div>
                     </div>
-                  </div>
-                ))}
-              {/* <Modal
+                  ))}
+                {/* <Modal
                 title="Vertically centered modal dialog"
                 centered
                 open={modal2Open}
@@ -140,10 +143,13 @@ const Message = () => {
                   placeholder="Enter category"
                 />
               </Modal> */}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        navigate("/login-admin")
+      )}
     </>
   );
 };

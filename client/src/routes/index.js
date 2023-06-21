@@ -4,6 +4,10 @@ import AddMenu from "../Pages/admin/Menu/Add";
 import Show from "../Pages/admin/Menu/Show";
 import Message from "../Pages/admin/Message";
 import MessageDetails from "../Pages/admin/Message/Details";
+import AddClasses from "../Pages/admin/Classes/Add";
+import ShowClass from "../Pages/admin/Classes/Show";
+import Login from "../Pages/admin/Login";
+
 import Blog from "../Pages/site/Blog";
 import Classes from "../Pages/site/Classes";
 import Contact from "../Pages/site/Contact";
@@ -15,9 +19,13 @@ import Reservation from "../Pages/site/Reservation";
 import Restaurant from "../Pages/site/Restaurant";
 import Shop from "../Pages/site/Shop";
 import MenuDetails from "../Pages/site/Menu/Details";
-import AddClasses from "../Pages/admin/Classes/Add";
-import ShowClass from "../Pages/admin/Classes/Show";
 import ClassesDetails from "../Pages/site/Classes/Details";
+import SignIn from "../Pages/site/Sign-in";
+import SignUp from "../Pages/site/Sign-up";
+import ShowUsers from "../Pages/admin/Users/Show";
+import UserProfile from "../Pages/User-Profile";
+
+// const [token] = useToken();
 
 export const ROUTES = [
   {
@@ -65,10 +73,26 @@ export const ROUTES = [
         element: <Reservation />,
       },
       {
+        path: "/sign-in",
+        element: <SignIn />,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp />,
+      },
+      {
         path: "*",
         element: <NotFound />,
       },
     ],
+  },
+  {
+    path: "user-profile",
+    element: <UserProfile />,
+  },
+  {
+    path: "/login-admin",
+    element: <Login />,
   },
   {
     path: "/admin",
@@ -101,6 +125,10 @@ export const ROUTES = [
       {
         path: "/admin/message/:id",
         element: <MessageDetails />,
+      },
+      {
+        path: "/admin/users",
+        element: <ShowUsers />,
       },
       // {
       //   path: "/reservation",

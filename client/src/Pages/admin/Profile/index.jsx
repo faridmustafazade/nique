@@ -2,19 +2,76 @@ import React from "react";
 import Aside from "../../../Layouts/admin/Aside";
 import "./style.scss";
 import Header from "../../../Layouts/admin/Header";
+import { useNavigate } from "react-router-dom";
+import useToken from "../../../Hooks/useToken";
+import { useSelector } from "react-redux";
 const Profile = () => {
+  const [token] = useToken();
+  const navigate = useNavigate();
+  // console.log("auth", token.user.image);
+  const logoutFunc = () => {
+    localStorage.clear();
+    window.location = "/login-admin";
+  };
   return (
     <>
-      <div className="dashboard-full">
-        <Aside />
-        <div className="side-right">
-          <Header />
-          <div className="side-down">
-            <h1 className="down-h1">Profile</h1>
-            <div className="white-div"></div>
+      {!token?.token ? (
+        navigate("/login-admin")
+      ) : token?.user?.isAdmin === false ? (
+        logoutFunc()
+      ) : (
+        <div className="dashboard-full">
+          <Aside />
+          <div className="side-right">
+            <Header />
+            <div className="side-down">
+              <h1 className="down-h1">Profile</h1>
+              <div className="white-div">
+                <img
+                  style={{ width: "100%", objectFit: "cover" }}
+                  src="https://assets.website-files.com/61f7c38c8268bb1cdf5a1316/61fbd739248733a9189cdf17_Uesr-Banner.png"
+                  alt=""
+                />
+                <div className="profile">
+                  <div className="profile-icon">
+                    <img src={token?.user?.image} alt="" />
+                  </div>
+                  <div className="profile-text">
+                    <h3>
+                      {token?.user?.firstName} {token?.user?.lastName}
+                    </h3>
+                    <h4>{token?.user?.email}</h4>
+                  </div>
+                </div>
+                <div className="bio">
+                  <div className="bio-text">
+                    <h4>
+                      Full Name :{" "}
+                      <span>
+                        {token?.user?.firstName} {token?.user?.lastName}
+                      </span>
+                    </h4>
+                    <h4>
+                      Mobile : <span>{token?.user?.phone}</span>
+                    </h4>
+                    <h4>
+                      E-mail : <span>{token?.user?.email}</span>
+                    </h4>
+                  </div>
+                  <div className="bio-text">
+                    <h4>
+                      Username : <span>{token?.user?.username}</span>
+                    </h4>
+                    <h4>
+                      Birthday : <span>{token?.user?.birthday}</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

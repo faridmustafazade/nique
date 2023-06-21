@@ -34,16 +34,12 @@ h3 {
   }
   .footer {
     background-color: #ffffff;
-    width: 650px;
+    width: 750px;
     padding: 10px 10px 10px 25px;
     border-radius: 55px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    @media only screen and (max-width: 767px) {
-      width: 350px;
-    }
 
     .dropbtn {
       font-size: 25px;
@@ -59,7 +55,7 @@ h3 {
     }
 
     .dropbtn:hover {
-      background-color: #ddd;
+      scale: 1.125;
     }
 
     .clock {
@@ -82,7 +78,6 @@ h3 {
           font-size: 16px;
           font-family: chillax;
           color: black;
-          padding: 12px 16px;
           text-decoration: none;
           display: block;
         }
@@ -131,7 +126,7 @@ h3 {
       display: block;
     }
     .clock:hover .clockbtn {
-      background-color: #ddd;
+      scale: 1.125;
     }
     .basket {
       font-size: 25px;
@@ -145,10 +140,10 @@ h3 {
     }
   }
   .basket:hover {
-    background-color: #ddd;
+    scale: 1.125;
   }
   .links {
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 610px) {
       display: none;
     }
   }
@@ -173,6 +168,9 @@ h3 {
       @media only screen and (max-width: 978px) {
         font-size: 0.6rem;
       }
+      @media only screen and (max-width: 478px) {
+        font-size: 0.5rem;
+      }
     }
   }
   a {
@@ -187,6 +185,126 @@ h3 {
     transition: 0.5s;
     &:hover {
       color: #face8d;
+    }
+  }
+  .image {
+    .av {
+      position: relative;
+      display: inline-block;
+      transition: 1s;
+      .av-content {
+        display: none;
+        position: absolute;
+        right: 10px;
+        bottom: 60px;
+        padding: 12px 0;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        width: 250px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        .text-h4 {
+          text-align: center;
+          text-transform: capitalize;
+          font-family: chillax-regular;
+          color: #192d43;
+          font-size: 18px;
+        }
+        .d {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .drop-profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-family: chillax-regular;
+            transition: 0.6s !important;
+            border-radius: 7px;
+            width: 95%;
+            cursor: pointer;
+            &:hover {
+              background-color: #c9d0da !important;
+            }
+            .logicon {
+              transform: rotate(270deg);
+            }
+            .day {
+              padding: 10px 0;
+              display: flex;
+              justify-content: space-between;
+              font-weight: 500;
+              font-size: 18px;
+              font-family: chillax;
+            }
+          }
+        }
+        .drop-profile {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          font-family: chillax-regular;
+          transition: 0.6s !important;
+          border-radius: 7px;
+          width: 95%;
+          cursor: pointer;
+          &:hover {
+            background-color: #c9d0da !important;
+          }
+          .logicon {
+            transform: rotate(270deg);
+          }
+          .day {
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            font-size: 18px;
+            font-family: chillax;
+          }
+        }
+        .day {
+          padding: 5px 0;
+          display: flex;
+          justify-content: space-between;
+          font-weight: 500;
+          font-size: 16px;
+          font-family: chillax;
+          cursor: pointer;
+        }
+      }
+      .av-btn {
+        font-size: 25px;
+        border: none;
+        border-radius: 50%;
+        padding: 10px 10px 5px;
+        background-color: white;
+        transition: 0.5s;
+        cursor: pointer;
+        .avatar {
+          width: 45px;
+          height: 45px;
+          @media only screen and (max-width: 478px) {
+            width: 25px;
+            height: 25px;
+          }
+        }
+        @media only screen and (max-width: 478px) {
+          padding: 10px 0 5px;
+        }
+      }
+    }
+
+    .av:hover .av-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .av:hover .avbtn {
+      scale: 1.125;
     }
   }
 }
