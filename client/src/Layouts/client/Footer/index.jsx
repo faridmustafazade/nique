@@ -1,12 +1,13 @@
 import React from "react";
 import "./style.scss";
 import { AiOutlineMenu } from "react-icons/ai";
-import { BsArrowRight } from "react-icons/bs";
+import { BsArrowRight, BsHeart } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { LuClock3 } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
-import { Avatar, Dropdown } from "antd";
+import { Avatar, Dropdown, Menu } from "antd";
 import useToken from "../../../Hooks/useToken";
+
 const Footer = () => {
   const [token] = useToken();
   const navigate = useNavigate();
@@ -18,92 +19,86 @@ const Footer = () => {
     window.location.reload();
   };
 
-  const items = [
-    {
-      label: <h3>Pages</h3>,
-    },
-    {
-      key: "1",
-      label: (
-        <Link className="drop" to="/menu">
-          Menu <BsArrowRight />
-        </Link>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <Link className="drop" to="/restaurant">
-          Restaurant <BsArrowRight />
-        </Link>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <Link className="drop" to="/classes">
-          Classes <BsArrowRight />
-        </Link>
-      ),
-    },
-    {
-      key: "4",
-      label: (
-        <Link className="drop" to="/contact">
-          Contact <BsArrowRight />
-        </Link>
-      ),
-    },
-    {
-      key: "5",
-      label: (
-        <Link className="drop" to="/shop">
-          Shop <BsArrowRight />
-        </Link>
-      ),
-    },
-    {
-      key: "6",
-      label: (
-        <Link className="drop blog" to="/blog">
-          Blog <BsArrowRight />
-        </Link>
-      ),
-    },
-  ];
   return (
     <>
       <div id="full-footer">
         <div className="footer">
           <Dropdown
-            menu={{
-              items,
-            }}
-            placement="topLeft"
+            overlay={
+              <Menu style={{ width: 250 }}>
+                <h3 style={{ marginLeft: 10 }}>Pages</h3>
+                <Menu.Item key="0">
+                  <Link className="drop" to="/menu">
+                    Menu
+                    <BsArrowRight className="menu-arrow" />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="1">
+                  <Link className="drop" to="/restaurant">
+                    Restaurant <BsArrowRight className="menu-arrow" />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link className="drop" to="/classes">
+                    Classes <BsArrowRight className="menu-arrow" />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link className="drop" to="/contact">
+                    Contact <BsArrowRight className="menu-arrow" />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <Link className="drop" to="/shop">
+                    Shop <BsArrowRight className="menu-arrow" />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                  <Link className="drop blog" to="/blog">
+                    Blog <BsArrowRight className="menu-arrow" />
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            }
+            trigger={["hover"]}
           >
             <div className="dropbtn">
               <AiOutlineMenu />
             </div>
           </Dropdown>
-          <div className="clock">
-            <div className="clock-content">
-              <h3 className="open">Opening Hours</h3>
-              <h3 className="day">
-                Mon <span>closed</span>
-              </h3>
-              <h3 className="day">
-                Tue - Fri <span>4pm - 8pm</span>
-              </h3>
-              <h3 className="day">
-                Sat - Sun <span>5pm - 11pm</span>
-              </h3>
-            </div>
+          <Dropdown
+            overlay={
+              <Menu style={{ width: 250 }}>
+                <h3 className="open">Opening Hours</h3>
+                <Menu.Item key="0">
+                  <h3 className="day">
+                    Mon <span>closed</span>
+                  </h3>
+                </Menu.Item>
+                <Menu.Item key="1">
+                  <h3 className="day">
+                    Tue - Fri <span>4pm - 8pm</span>
+                  </h3>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <h3 className="day">
+                    Sat - Sun <span>5pm - 11pm</span>
+                  </h3>
+                </Menu.Item>
+              </Menu>
+            }
+            trigger={["hover"]}
+          >
             <button className="clockbtn">
               <LuClock3 />
             </button>
-          </div>
+          </Dropdown>
+
           <div className="basket">
             <FiShoppingCart />
+          </div>
+          <div className="basket" onClick={() => navigate("/wishlist")}>
+            <BsHeart />
           </div>
           <Link className="links" to="/menu">
             Menu
@@ -114,6 +109,7 @@ const Footer = () => {
           <Link className="links" to="/classes">
             Classes
           </Link>
+
           <button className="footer-btn">
             <Link className="a" to="/reservation">
               Book A Table
@@ -134,10 +130,11 @@ const Footer = () => {
                       onClick={() => navigate("/user-profile")}
                     >
                       <img
+                        style={{ width: "25px" }}
                         src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
                         alt=""
                       />
-                      <h3 className="day">Profile</h3>
+                      <h3 className="day" style={{marginRight:'10px'}}>Profile</h3>
                     </div>
                     <div className="drop-profile" onClick={logoutFunc}>
                       <img
@@ -162,7 +159,11 @@ const Footer = () => {
                 <Avatar
                   className="avatar"
                   alt="Remy Sharp"
-                  src={token?.user?.image}
+                  src={
+                    token?.user?.image !== ""
+                      ? token?.user?.image
+                      : "https://avatars.githubusercontent.com/u/126600662?v=4"
+                  }
                 />
               </button>
             </div>

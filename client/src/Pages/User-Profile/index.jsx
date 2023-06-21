@@ -8,8 +8,8 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const deletingMenu = async (id) => {
     await axios.delete(`http://localhost:2003/api/${id}`);
-    localStorage.clear()
-    navigate('/')
+    localStorage.clear();
+    navigate("/");
   };
   return (
     <>
@@ -28,10 +28,17 @@ const UserProfile = () => {
                 />
                 <div className="profile">
                   <div className="profile-icon">
-                    <img src={token?.user?.image} alt="" />
+                    <img
+                      src={
+                        token?.user?.image !== ""
+                          ? token?.user?.image
+                          : "https://avatars.githubusercontent.com/u/126600662?v=4"
+                      }
+                      alt=""
+                    />
                   </div>
                   <div className="profile-text">
-                    <h3 style={{textTransform:'capitalize'}}>
+                    <h3 style={{ textTransform: "capitalize" }}>
                       {token?.user?.firstName} {token?.user?.lastName}
                     </h3>
                     <h4>{token?.user?.email}</h4>
@@ -41,7 +48,7 @@ const UserProfile = () => {
                   <div className="bio-text">
                     <h4>
                       Full Name :{" "}
-                      <span style={{textTransform:'capitalize'}}>
+                      <span style={{ textTransform: "capitalize" }}>
                         {token?.user?.firstName} {token?.user?.lastName}
                       </span>
                     </h4>
@@ -61,15 +68,17 @@ const UserProfile = () => {
                     </h4>
                   </div>
                 </div>
-                <button
-                  className="editing"
-                  onClick={() => deletingMenu(token?.user?._id)}
-                >
-                  Delete
-                </button>
-                <button className="editing" onClick={() => navigate("/")}>
-                  Go Home
-                </button>
+                <div className="buttons">
+                  <button
+                    className="deleting"
+                    onClick={() => deletingMenu(token?.user?._id)}
+                  >
+                    Delete
+                  </button>
+                  <button className="goback" onClick={() => navigate("/")}>
+                    Go Home
+                  </button>
+                </div>
               </div>
             </div>
           </div>

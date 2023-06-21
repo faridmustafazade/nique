@@ -56,7 +56,7 @@ const Header = () => {
                   <Avatar
                     className="avatar"
                     alt="Remy Sharp"
-                    src={token?.user?.image}
+                    src={token?.user?.image !==""?token?.user?.image:"https://avatars.githubusercontent.com/u/126600662?v=4"}
                   />
                 </div>
                 <div className="text">

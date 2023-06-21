@@ -43,7 +43,7 @@ const register = async (req, res) => {
       password: passwordHash,
     });
 
-    const token = jwt.sign({ id: newUser._id }, "SECRET_KEY", {
+    const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY, {
       expiresIn: "1h",
     });
 

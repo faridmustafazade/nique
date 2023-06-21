@@ -67,11 +67,25 @@ const ShowUsers = () => {
                               borderRadius: "50%",
                             }}
                             alt="example"
-                            src={d.image}
+                            src={
+                              d.image !== ""
+                                ? d.image
+                                : "https://avatars.githubusercontent.com/u/126600662?v=4"
+                            }
                           />
-                          <div >
-                            <h4 style={{textTransform:'capitalize'}} className="h4">Firstname: {d.firstName}</h4>
-                            <h4 style={{textTransform:'capitalize'}} className="h4">Lastname: {d.lastName}</h4>
+                          <div>
+                            <h4
+                              style={{ textTransform: "capitalize" }}
+                              className="h4"
+                            >
+                              Firstname: {d.firstName}
+                            </h4>
+                            <h4
+                              style={{ textTransform: "capitalize" }}
+                              className="h4"
+                            >
+                              Lastname: {d.lastName}
+                            </h4>
                           </div>
                           <img
                             onClick={() => deletingUser(d._id)}

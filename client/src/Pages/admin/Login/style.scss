@@ -22,6 +22,15 @@
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
     padding: 0.75rem;
+    @media screen and (max-width: 978px) {
+      width: 50% !important;
+    }
+    @media screen and (max-width: 768px) {
+      width: 75% !important;
+    }
+    @media screen and (max-width: 478px) {
+      width: 90% !important;
+    }
     .h1 {
       text-align: center;
       font-family: bitter-rose;
@@ -29,6 +38,9 @@
       color: #face8d;
       font-size: 3.75rem;
       line-height: 1;
+      @media screen and (max-width: 478px) {
+        font-size: 3rem !important;
+      }
     }
     .inputs {
       display: flex;

@@ -4,7 +4,6 @@ import "./style.scss";
 import Header from "../../../Layouts/admin/Header";
 import { useNavigate } from "react-router-dom";
 import useToken from "../../../Hooks/useToken";
-import { useSelector } from "react-redux";
 const Profile = () => {
   const [token] = useToken();
   const navigate = useNavigate();
@@ -34,7 +33,14 @@ const Profile = () => {
                 />
                 <div className="profile">
                   <div className="profile-icon">
-                    <img src={token?.user?.image} alt="" />
+                    <img
+                      src={
+                        token?.user?.image !== ""
+                          ? token?.user?.image
+                          : "https://avatars.githubusercontent.com/u/126600662?v=4"
+                      }
+                      alt=""
+                    />
                   </div>
                   <div className="profile-text">
                     <h3>

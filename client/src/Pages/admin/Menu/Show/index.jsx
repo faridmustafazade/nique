@@ -277,13 +277,6 @@ const Show = () => {
                       </option>
                     ))}
                   </select>
-
-                  {/* <Input
-                  name="category"
-                  value={state.category}
-                  onChange={handleChange}
-                  placeholder="Enter category"
-                /> */}
                 </Modal>
               </div>
             </div>

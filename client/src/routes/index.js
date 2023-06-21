@@ -7,6 +7,7 @@ import MessageDetails from "../Pages/admin/Message/Details";
 import AddClasses from "../Pages/admin/Classes/Add";
 import ShowClass from "../Pages/admin/Classes/Show";
 import Login from "../Pages/admin/Login";
+import ShowUsers from "../Pages/admin/Users/Show";
 
 import Blog from "../Pages/site/Blog";
 import Classes from "../Pages/site/Classes";
@@ -22,8 +23,8 @@ import MenuDetails from "../Pages/site/Menu/Details";
 import ClassesDetails from "../Pages/site/Classes/Details";
 import SignIn from "../Pages/site/Sign-in";
 import SignUp from "../Pages/site/Sign-up";
-import ShowUsers from "../Pages/admin/Users/Show";
 import UserProfile from "../Pages/User-Profile";
+import WishListPage from "../Pages/site/Wishlist";
 
 // const [token] = useToken();
 
@@ -79,6 +80,10 @@ export const ROUTES = [
       {
         path: "/sign-up",
         element: <SignUp />,
+      },
+      {
+        path: "/wishlist",
+        element: <WishListPage />,
       },
       {
         path: "*",
