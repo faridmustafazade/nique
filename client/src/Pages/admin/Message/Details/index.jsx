@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Aside from "../../../../Layouts/admin/Aside";
 import Header from "../../../../Layouts/admin/Header";
 import "./style.scss";
+import favicon from "../../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const MessageDetails = () => {
   const [data, setData] = useState("");
@@ -20,13 +22,19 @@ const MessageDetails = () => {
     );
     setData(res.data);
   };
-  
+
   useEffect(() => {
     getData();
-  }, []);
+  });
 
   return (
     <>
+      <Helmet>
+        <title>Message</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div className="msgd-full">
         <Aside />
         <div className="side-right">

@@ -6,6 +6,8 @@ import "./style.scss";
 import { Button, Input, Modal } from "antd";
 import useToken from "../../../../Hooks/useToken";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import favicon from "../../../../Assets/Images/favicon.jpg";
 
 const ShowClass = () => {
   const [token] = useToken();
@@ -87,6 +89,12 @@ const ShowClass = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Classes</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       {!token?.token ? (
         navigate("/login-admin")
       ) : token?.user?.isAdmin === true ? (

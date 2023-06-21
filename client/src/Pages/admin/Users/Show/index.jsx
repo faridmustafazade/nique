@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import useToken from "../../../../Hooks/useToken";
 import Aside from "../../../../Layouts/admin/Aside";
 import Header from "../../../../Layouts/admin/Header";
+import favicon from "../../../../Assets/Images/favicon.jpg";
 import "./style.scss";
 import { Card } from "antd";
+import { Helmet } from "react-helmet";
 const ShowUsers = () => {
   const [token] = useToken();
   const navigate = useNavigate();
@@ -27,6 +29,12 @@ const ShowUsers = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Users</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       {!token?.token ? (
         navigate("/login-admin")
       ) : token?.user?.isAdmin === true ? (

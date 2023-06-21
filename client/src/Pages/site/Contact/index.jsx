@@ -9,6 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { ContactForm } from "./schema/ContactForm";
 import useToken from "../../../Hooks/useToken";
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
   const [token] = useToken();
@@ -24,15 +26,14 @@ const Contact = () => {
 
   const postData = () => {
     const values = getValues();
-    {
-      !token?.token
-        ? navigate("/sign-in")
-        : axios.post("http://localhost:2003/api/contact", {
-            name: values.name,
-            email: values.email,
-            message: values.message,
-          });
-    }
+
+    !token?.token
+      ? navigate("/sign-in")
+      : axios.post("http://localhost:2003/api/contact", {
+          name: values.name,
+          email: values.email,
+          message: values.message,
+        });
   };
 
   useEffect(() => {
@@ -42,6 +43,12 @@ const Contact = () => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>Contact</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div id="full-contact">
         <div className="contact">
           <div className="side-left">

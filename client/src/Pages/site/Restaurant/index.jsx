@@ -4,7 +4,8 @@ import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 const Restaurant = () => {
   useEffect(() => {
     AOS.init({
@@ -14,6 +15,12 @@ const Restaurant = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Restaurant</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div class="outer-wrapper">
         <div class="wrapper">
           <div class="slide one"></div>

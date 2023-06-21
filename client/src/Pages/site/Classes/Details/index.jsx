@@ -5,7 +5,8 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import Footer from "../../../../Layouts/client/Footer";
-// import { Input } from "antd";
+import favicon from "../../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const ClassesDetails = () => {
   const [data, setData] = useState({});
@@ -29,9 +30,16 @@ const ClassesDetails = () => {
     Aos.init({
       duration: 1000,
     });
-  }, []);
+  });
   return (
     <>
+    
+    <Helmet>
+        <title>Class</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div id="full-classd">
         <div className="classd">
           <div className="side-left">

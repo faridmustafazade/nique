@@ -6,6 +6,8 @@ import useToken from "../../../Hooks/useToken";
 import Aside from "../../../Layouts/admin/Aside";
 import Header from "../../../Layouts/admin/Header";
 import "./style.scss";
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const Message = () => {
   const [token] = useToken();
@@ -46,6 +48,12 @@ const Message = () => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>Messages</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       {!token?.token ? (
         navigate("/login-admin")
       ) : token?.user?.isAdmin === true ? (

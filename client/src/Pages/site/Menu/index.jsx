@@ -9,6 +9,8 @@ import axios from "axios";
 import { addToWishlist, removeToWishlist } from "../../../Redux/Slice/Wishlist";
 import { AiOutlineHeart } from "react-icons/ai";
 import useToken from "../../../Hooks/useToken";
+import { Helmet } from "react-helmet";
+import favicon from "../../../Assets/Images/favicon.jpg";
 
 const Menu = () => {
   const [token] = useToken();
@@ -36,6 +38,12 @@ const Menu = () => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>Menu</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div id="full-menu">
         <div className="menu">
           <div className="side-left">

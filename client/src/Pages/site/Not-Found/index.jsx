@@ -5,17 +5,19 @@ import Footer from "../../../Layouts/client/Footer";
 import { Helmet } from "react-helmet";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import favicon from "../../../Assets/Images/favicon.jpg";
 
 const NotFound = () => {
   useEffect(() => {
-    Aos.init({
-    });
+    Aos.init({});
   }, []);
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" />
         <title>404 - Not Found</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
       </Helmet>
       <div id="full-not">
         <div className="container">
@@ -29,8 +31,20 @@ const NotFound = () => {
               </Link>
             </div>
             <div className="name">
-              <h1 className="pure"  data-aos="fade-down"  data-aos-duration="2000">Page not found</h1>
-              <h1 className="country" data-aos="fade-up"  data-aos-duration="2000">404</h1>
+              <h1
+                className="pure"
+                data-aos="fade-down"
+                data-aos-duration="2000"
+              >
+                Page not found
+              </h1>
+              <h1
+                className="country"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
+                404
+              </h1>
             </div>
           </div>
         </div>

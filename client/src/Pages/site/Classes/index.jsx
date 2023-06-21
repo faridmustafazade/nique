@@ -5,6 +5,8 @@ import Footer from "../../../Layouts/client/Footer";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const Classes = () => {
   const [data, setData] = useState([]);
@@ -20,6 +22,12 @@ const Classes = () => {
   }, []);
   return (
     <>
+    <Helmet>
+        <title>Classes</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div class="outer-classes">
         <div class="classes">
           {data.map((d) => (

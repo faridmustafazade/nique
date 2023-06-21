@@ -4,16 +4,24 @@ import "./style.scss";
 import Header from "../../../Layouts/admin/Header";
 import { useNavigate } from "react-router-dom";
 import useToken from "../../../Hooks/useToken";
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
+
 const Profile = () => {
   const [token] = useToken();
   const navigate = useNavigate();
-  // console.log("auth", token.user.image);
   const logoutFunc = () => {
     localStorage.clear();
     window.location = "/login-admin";
   };
   return (
     <>
+      <Helmet>
+        <title>Profile</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       {!token?.token ? (
         navigate("/login-admin")
       ) : token?.user?.isAdmin === false ? (

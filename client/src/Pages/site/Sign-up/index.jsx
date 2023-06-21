@@ -3,6 +3,8 @@ import { registerActions } from "../../../Redux/Actions/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./style.scss";
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 const SignUp = () => {
   const navigate = useNavigate();
   const [authData, setAuthData] = useState({
@@ -26,10 +28,17 @@ const SignUp = () => {
   };
   console.log(authData);
   return (
-    <div className="full-divs">
-      <div className="div">
-        <h1 className="h1">Nique.</h1>
-        <div className="inputs">
+    <>
+      <Helmet>
+        <title>Sign-Up</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
+      <div className="full-divs">
+        <div className="div">
+          <h1 className="h1">Nique.</h1>
+          <div className="inputs">
             <label htmlFor="firstName" className="label">
               First Name
             </label>
@@ -124,15 +133,16 @@ const SignUp = () => {
               onChange={onChange}
               value={authData.image}
             />
-        </div>
-        <div className="link" onClick={() => navigate("/sign-in")}>
-          Have an account? Log in
-        </div>
-        <div onClick={authFunc} className="button">
-          Sign Up
+          </div>
+          <div className="link" onClick={() => navigate("/sign-in")}>
+            Have an account? Log in
+          </div>
+          <div onClick={authFunc} className="button">
+            Sign Up
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

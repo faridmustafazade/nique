@@ -6,8 +6,21 @@ import "aos/dist/aos.css";
 import axios from "axios";
 import Footer from "../../../../Layouts/client/Footer";
 import { Input } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToWishlist,
+  removeToWishlist,
+} from "../../../../Redux/Slice/Wishlist";
+import useToken from "../../../../Hooks/useToken";
+import { AiOutlineHeart } from "react-icons/ai";
+import favicon from "../../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const MenuDetails = () => {
+  const [token] = useToken();
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.wishlist);
+
   const params = useParams();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
@@ -47,6 +60,12 @@ const MenuDetails = () => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>Menu</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div id="full-menud">
         <div className="menud">
           <div className="side-left">
@@ -118,6 +137,33 @@ const MenuDetails = () => {
                             </div>
                             <p className="food-about">{d.about}</p>
                           </div>
+                          {wishlist.data.find((elem) => elem._id === d._id) ? (
+                            <div
+                              className="heart"
+                              onClick={() => dispatch(removeToWishlist(d._id))}
+                            >
+                              <img
+                                className="heart-img"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/800px-Heart_coraz%C3%B3n.svg.png"
+                                alt=""
+                              />
+                            </div>
+                          ) : (
+                            <div
+                              className="heart"
+                              style={{
+                                paddingLeft: "10px",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                !token?.token
+                                  ? navigate("/sign-in")
+                                  : dispatch(addToWishlist(d));
+                              }}
+                            >
+                              <AiOutlineHeart className="heart-img" />
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}

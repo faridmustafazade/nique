@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
 import "aos/dist/aos.css";
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const Reservation = () => {
   useEffect(() => {
@@ -13,6 +15,12 @@ const Reservation = () => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>Reservation</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div id="full-reservation">
         <div className="reservation">
           <div className="side-left">

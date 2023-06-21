@@ -4,11 +4,19 @@ import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/client/Footer";
 import { removeAll, removeToWishlist } from "../../../Redux/Slice/Wishlist";
 import "./style.scss";
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 const WishListPage = () => {
   const wishlist = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
   return (
     <>
+    <Helmet>
+        <title>Favorites</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div id="full-wish">
         <div className="wish">
           <div className="side-left">

@@ -4,14 +4,21 @@ import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
 import "aos/dist/aos.css";
+import favicon from "../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const Shop = () => {
   useEffect(() => {
-    Aos.init({
-    });
+    Aos.init({});
   }, []);
   return (
     <>
+      <Helmet>
+        <title>Shop</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       <div id="full-shop">
         <div className="shop">
           <div className="side-left">
@@ -26,15 +33,27 @@ const Shop = () => {
                   </Link>
                 </div>
                 <div className="name">
-                  <h1 className="shop"  data-aos="fade-down"  data-aos-duration="2000">shop</h1>
-                  <h1 className="give"  data-aos="fade-up"  data-aos-duration="2000">Give a gift</h1>
+                  <h1
+                    className="shop"
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                  >
+                    shop
+                  </h1>
+                  <h1
+                    className="give"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                  >
+                    Give a gift
+                  </h1>
                 </div>
               </div>
               <Footer />
             </div>
           </div>
           <div className="side-right">
-            <div className="card"  data-aos="fade-up" data-aos-duration="2000">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img
@@ -52,7 +71,7 @@ const Shop = () => {
                 </p>
               </div>
             </div>
-            <div className="card"  data-aos="fade-up" data-aos-duration="2000">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img
@@ -72,7 +91,7 @@ const Shop = () => {
                 </p>
               </div>
             </div>
-            <div className="card"  data-aos="fade-up" data-aos-duration="2000">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img
@@ -90,7 +109,7 @@ const Shop = () => {
                 </p>
               </div>
             </div>
-            <div className="card"  data-aos="fade-up" data-aos-duration="2000">
+            <div className="card" data-aos="fade-up" data-aos-duration="2000">
               <div className="card-image">
                 <div className="img">
                   <img

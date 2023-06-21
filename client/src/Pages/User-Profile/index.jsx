@@ -3,6 +3,8 @@ import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import useToken from "../../Hooks/useToken";
 import axios from "axios";
+import favicon from "../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 const UserProfile = () => {
   const [token] = useToken();
   const navigate = useNavigate();
@@ -13,6 +15,12 @@ const UserProfile = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>User-Profile</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       {!token?.token ? (
         navigate("/sign-in")
       ) : (

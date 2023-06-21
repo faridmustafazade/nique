@@ -8,6 +8,8 @@ import "./style.scss";
 import axios from "axios";
 import useToken from "../../../../Hooks/useToken";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import favicon from "../../../../Assets/Images/favicon.jpg";
 
 const AddMenu = () => {
   const [token] = useToken();
@@ -54,6 +56,12 @@ const AddMenu = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Add-Menu</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       {!token?.token ? (
         navigate("/login-admin")
       ) : token?.user?.isAdmin === true ? (

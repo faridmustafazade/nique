@@ -6,6 +6,8 @@ import Aside from "../../../../Layouts/admin/Aside";
 import Header from "../../../../Layouts/admin/Header";
 import "./style.scss";
 import { Button, Input, Modal, Select } from "antd";
+import favicon from "../../../../Assets/Images/favicon.jpg";
+import { Helmet } from "react-helmet";
 
 const { Option } = Select;
 const Show = () => {
@@ -99,6 +101,12 @@ const Show = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Menus</title>
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <meta name="description" content="test on react-helmet" />
+        <meta name="theme-color" content="#ccc" />
+      </Helmet>
       {!token?.token ? (
         navigate("/login-admin")
       ) : token?.user?.isAdmin === true ? (
