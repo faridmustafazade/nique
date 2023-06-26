@@ -64,4 +64,3 @@ export const loginActions = (authData) => async (dispatch) => {
     });
   }
 };
-

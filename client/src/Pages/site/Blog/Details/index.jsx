@@ -1,17 +1,17 @@
 import Aos from "aos";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Footer from "../../../Layouts/client/Footer";
+import { Link, useParams } from "react-router-dom";
+import Footer from "../../../../Layouts/client/Footer";
 import "./style.scss";
 import "aos/dist/aos.css";
-import favicon from "../../../Assets/Images/favicon.jpg";
+import favicon from "../../../../Assets/Images/favicon.jpg";
 import { Helmet } from "react-helmet";
 import axios from "axios";
-const Blog = () => {
+const BlogDetails = () => {
   const [data, setData] = useState([]);
-  const navigate = useNavigate();
+  const params = useParams();
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api/blog");
+    const res = await axios.get(`http://localhost:2003/api/blog/${params.id}`);
     setData(res.data);
   };
   useEffect(() => {
@@ -26,11 +26,11 @@ const Blog = () => {
         <meta name="description" content="test on react-helmet" />
         <meta name="theme-color" content="#ccc" />
       </Helmet>
-      <div id="full-blog">
-        <div className="blog">
+      <div id="full-blogd">
+        <div className="blogd">
           <div className="side-left">
             <div className="container">
-              <div className="side-left-blog">
+              <div className="side-left-blogd">
                 <div className="logo">
                   <Link to="/">
                     <img
@@ -45,14 +45,14 @@ const Blog = () => {
                     data-aos="fade-down"
                     data-aos-duration="2000"
                   >
-                    blog
+                    {data.date}
                   </h1>
                   <h1
                     className="news"
                     data-aos="fade-up"
                     data-aos-duration="2000"
                   >
-                    latest news
+                    {data.description}
                   </h1>
                 </div>
               </div>
@@ -60,26 +60,20 @@ const Blog = () => {
             </div>
           </div>
           <div className="side-right">
-            {data.map((d) => (
-              <div
-                onClick={() => navigate(d._id)}
-                key={d._id}
-                className="card"
-                data-aos="fade-up"
-                data-aos-duration="2000"
-              >
-                <div className="card-image">
-                  <div className="img">
-                    <img src={d.image} alt="" />
-                  </div>
-                </div>
-                <div className="card-text">
-                  <p className="card-date">{d.date}</p>
-                  <h2 className="card-name">{d.description}</h2>
-                  <p className="card-about">{d.about}</p>
-                </div>
-              </div>
-            ))}
+            <div
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              className="description"
+            >
+              <p>{data.history}</p>
+              <img
+                className="desc-img"
+                src="https://assets.website-files.com/6321d0d284b5b793a257fad7/6325cf2c01e34e59c3213552_blog-post-image.webp"
+                alt=""
+              />
+              <h1 className="desc-name">{data.description}</h1>
+              <p>{data.history2}</p>
+            </div>
             <div className="shop-footer">
               <div className="nique">
                 <img
@@ -149,4 +143,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default BlogDetails;

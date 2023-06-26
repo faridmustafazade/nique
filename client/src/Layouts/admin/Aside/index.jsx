@@ -6,6 +6,7 @@ import { AiFillCaretRight } from "react-icons/ai";
 const Aside = () => {
   const [menu, setMenu] = useState(false);
   const [classes, setClasses] = useState(false);
+  const [blog, setBlog] = useState(false);
   const [users, setUsers] = useState(false);
   const navigate = useNavigate();
 
@@ -87,28 +88,39 @@ const Aside = () => {
                 </ul>
               )}
             </div>
+            <div className="asides class" onClick={() => setBlog(!blog)}>
+              <div className="show">
+                <img
+                  src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36a7fb5d5e2d9075dc7_Icons-3.svg"
+                  alt=""
+                />
+                <Link className="asides-text">blog</Link>
+              </div>
+              {blog && (
+                <ul>
+                  <li>
+                    <Link className="asides-text textss" to={"/admin/blog"}>
+                      <AiFillCaretRight /> show blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="asides-text textss" to={"/admin/add-blog"}>
+                      <AiFillCaretRight /> add blog
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
             <div className="asides class" onClick={() => setUsers(!users)}>
               <div className="show">
                 <img
                   src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
                   alt=""
                 />
-                <Link className="asides-text">users</Link>
+                <Link className="asides-text" to={"/admin/users"}>
+                  users
+                </Link>
               </div>
-              {users && (
-                <ul>
-                  <li>
-                    <Link className="asides-text textss" to={"/admin/users"}>
-                      <AiFillCaretRight /> show users
-                    </Link>
-                  </li>
-                  <li>
-                    {/* <NavLink to={"/admin/add-doctor"}> */}
-                    <AiFillCaretRight /> update users
-                    {/* </NavLink> */}
-                  </li>
-                </ul>
-              )}
             </div>
             <div className="asides" onClick={() => navigate("/admin")}>
               <img

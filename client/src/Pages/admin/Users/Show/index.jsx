@@ -18,10 +18,6 @@ const ShowUsers = () => {
     const res = await axios.get("http://localhost:2003/api");
     setData(res.data);
   };
-  const deletingUser = async (id) => {
-    await axios.delete(`http://localhost:2003/api/${id}`);
-    await getData();
-  };
 
   useEffect(() => {
     getData();
@@ -95,12 +91,6 @@ const ShowUsers = () => {
                               Lastname: {d.lastName}
                             </h4>
                           </div>
-                          <img
-                            onClick={() => deletingUser(d._id)}
-                            className="trash"
-                            src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/62187c12d7885312df119f47_Trash%20.svg"
-                            alt=""
-                          />
                         </div>
                       }
                     >

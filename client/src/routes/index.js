@@ -8,6 +8,7 @@ import AddClasses from "../Pages/admin/Classes/Add";
 import ShowClass from "../Pages/admin/Classes/Show";
 import Login from "../Pages/admin/Login";
 import ShowUsers from "../Pages/admin/Users/Show";
+import ShowBlog from "../Pages/admin/Blog/Show";
 
 import Blog from "../Pages/site/Blog";
 import Classes from "../Pages/site/Classes";
@@ -26,7 +27,8 @@ import SignUp from "../Pages/site/Sign-up";
 import UserProfile from "../Pages/User-Profile";
 import WishListPage from "../Pages/site/Wishlist";
 import ChangePassword from "../Pages/site/Change-Password";
-
+import AddBlog from "../Pages/admin/Blog/Add";
+import BlogDetails from "../Pages/site/Blog/Details";
 
 export const ROUTES = [
   {
@@ -68,6 +70,10 @@ export const ROUTES = [
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogDetails />,
       },
       {
         path: "/reservation",
@@ -139,13 +145,17 @@ export const ROUTES = [
         path: "/admin/users",
         element: <ShowUsers />,
       },
+      {
+        path: "/admin/blog",
+        element: <ShowBlog />,
+      },
+      {
+        path: "/admin/add-blog",
+        element: <AddBlog />,
+      },
       // {
       //   path: "/reservation",
       //   element: <Reservation />,
-      // },
-      // {
-      //   path: "*",
-      //   element: <NotFound />,
       // },
     ],
   },

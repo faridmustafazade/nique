@@ -98,8 +98,8 @@ html {
           font-size: 2rem;
         }
         @media only screen and (max-width: 478px) {
-            padding-right: 65px;
-          }
+          padding-right: 65px;
+        }
       }
       .right-about {
         font-family: chillax-regular;
@@ -131,75 +131,80 @@ html {
           padding-left: 35px;
           padding-right: 35px;
         }
-        .form {
+        .forms {
           display: flex;
           flex-direction: column;
-          gap: 5px;
-          .label {
-            font-family: chillax-regular;
-            font-size: 1rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
-          }
-          .input {
-            color: #333333;
-            font-size: 16px;
-            font-family: chillax-regular;
-            background: transparent;
-            border: 1px solid hsla(0, 0%, 100%, 0.1);
-            padding: 20px 20px 20px 30px;
-            margin-top: 10px;
-            border-radius: 10px;
-            &::placeholder {
-              color: rgba(255, 255, 255, 0.6);
+          gap: 30px;
+          .form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            .label {
               font-family: chillax-regular;
-              font-size: 17px;
+              font-size: 1rem;
+              font-weight: 400;
+              color: rgba(255, 255, 255, 0.8);
+            }
+            .input {
+              color: #333333;
+              font-size: 16px;
+              font-family: chillax-regular;
+              background: transparent;
+              border: 1px solid hsla(0, 0%, 100%, 0.1);
+              padding: 20px 20px 20px 30px;
+              margin-top: 10px;
+              border-radius: 10px;
+              &::placeholder {
+                color: rgba(255, 255, 255, 0.6);
+                font-family: chillax-regular;
+                font-size: 17px;
+              }
             }
           }
-        }
-        textarea:focus,
-        input:focus,
-        input[type]:focus,
-        .uneditable-input:focus {
-          border-color: #face8d;
-          outline: 0 none;
-        }
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-        .date-form {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          @media only screen and (max-width: 478px) {
-            display: block;
+          textarea:focus,
+          input:focus,
+          input[type]:focus,
+          .uneditable-input:focus {
+            border-color: #face8d;
+            outline: 0 none;
           }
-          .dates {
-            width: 45%;
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+          .date-form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             @media only screen and (max-width: 478px) {
-              width: 100%;
+              display: block;
+            }
+            .dates {
+              width: 45%;
+              @media only screen and (max-width: 478px) {
+                width: 100%;
+              }
+            }
+            .times {
+              width: 45%;
+              @media only screen and (max-width: 478px) {
+                padding-top: 45px;
+                width: 100%;
+              }
             }
           }
-          .times {
-            width: 45%;
-            @media only screen and (max-width: 478px) {
-              padding-top: 45px;
-              width: 100%;
-            }
+          .send {
+            border: none;
+            background-color: #f8d49e;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: chillax;
+            text-transform: uppercase;
+            padding: 20px 0;
+            border-radius: 30px;
+            cursor: pointer;
           }
-        }
-        .send {
-          border: none;
-          background-color: #f8d49e;
-          font-size: 1rem;
-          font-weight: 500;
-          font-family: chillax;
-          text-transform: uppercase;
-          padding: 20px 0;
-          border-radius: 30px;
-          cursor: pointer;
         }
         .reservation-footer {
           display: flex;

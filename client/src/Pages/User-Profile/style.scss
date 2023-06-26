@@ -1,121 +1,3 @@
-// .profile-full {
-//   display: flex;
-//   .side-right {
-//     width: 100%;
-//     height: 100vh;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: #eff3f6;
-//     .side-down {
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: center;
-//       padding-left: 100px;
-//       .down-h1 {
-//         font-family: chillax-regular;
-//         font-size: 24px;
-//       }
-//       .white-div {
-//         position: relative;
-//         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-//         margin-top: 25px;
-//         width: 90%;
-//         gap: 20px;
-//         display: flex;
-//         flex-direction: column;
-//         align-items: center;
-//         padding-bottom: 30px;
-//         background-color: white;
-//         border-radius: 10px;
-//         .profile {
-//           position: absolute;
-//           top: 150px;
-//           left: 50px;
-//           display: flex;
-//           align-items: flex-end;
-//           gap: 10px;
-//           .profile-icon {
-//             width: 155px;
-//             height: 155px;
-//             border-radius: 50%;
-//             overflow: hidden;
-//             z-index: 999;
-//             img {
-//               width: 100%;
-//               object-fit: cover;
-//             }
-//           }
-//           .profile-text {
-//             h3 {
-//               font-family: chillax;
-//             }
-//             h4 {
-//               font-family: chillax-regular;
-//             }
-//             margin-bottom: 20px;
-//           }
-//         }
-//         .buttons {
-//           display: flex;
-//           padding-left: 30px;
-//           gap: 55px;
-//           .deleting {
-//             cursor: pointer;
-//             border: none;
-//             background-color: #192d43;
-//             padding: 10px 35px;
-//             color: #face8d;
-//             font-family: chillax-regular;
-//             border-radius: 5px;
-//             transition: 0.5s;
-//             &:hover {
-//               scale: 1.1;
-//             }
-//           }
-//           .goback {
-//             cursor: pointer;
-//             border: none;
-//             background-color: #192d43;
-//             padding: 10px 30px;
-//             color: #face8d;
-//             font-family: chillax-regular;
-//             border-radius: 5px;
-//             transition: 0.5s;
-//             &:hover {
-//               scale: 1.1;
-//             }
-//           }
-//         }
-//         .bio {
-//           margin-top: 110px;
-//           display: flex;
-//           gap: 200px;
-//           .bio-text {
-//             display: flex;
-//             flex-direction: column;
-//             gap: 10px;
-//             .text {
-//               display: flex;
-//               h4 {
-//                 width: 90px;
-//                 font-family: chillax;
-//               }
-//               span {
-//                 width: 190px;
-//                 padding-left: 20px;
-//                 font-family: chillax-regular;
-//                 color: #627183;
-//                 font-size: 14px;
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
 html {
   scroll-behavior: smooth;
 }
@@ -211,15 +93,15 @@ html {
         padding-top: 65px;
         padding-bottom: 115px;
         padding-left: 65px;
-        padding-right: 15px;
+        padding-right: 65px;
         display: flex;
         flex-direction: column;
-        gap: 140px;
         @media only screen and (max-width: 767px) {
           padding-left: 45px;
         }
         @media only screen and (max-width: 478px) {
           padding-left: 15px;
+          padding-right: 15px;
         }
         #starters {
           .chef {
@@ -239,6 +121,7 @@ html {
 
             @media only screen and (max-width: 478px) {
               align-items: flex-start;
+              flex-direction: column;
             }
             img {
               width: 150px;
@@ -271,64 +154,175 @@ html {
           .bio {
             margin-top: 110px;
             display: flex;
-            gap: 200px;
+            justify-content: space-between;
+            @media only screen and (max-width: 767px) {
+              flex-direction: column;
+              align-items: center;
+              gap: 10px;
+            }
             .bio-text {
               display: flex;
               flex-direction: column;
               gap: 10px;
               .text {
                 display: flex;
+                @media only screen and (max-width: 478px) {
+                  flex-direction: column;
+                }
                 h4 {
                   font-weight: 500;
                   width: 90px;
                   font-family: chillax-regular;
                 }
-                span {
-                  width: 190px;
+                p {
+                  width: 120px;
                   padding-left: 20px;
                   font-family: chillax-regular;
                   color: #627183;
                   font-size: 14px;
+                  @media only screen and (max-width: 478px) {
+                    padding-left: 0;
+                  }
                 }
               }
             }
           }
-          .button {
+        }
+        .reserv-menu {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding-top: 40px;
+
+          .reservation {
+            padding-top: 1rem;
+            font-family: bitter-rose;
+            color: #face8d;
+            font-size: 4rem;
+            font-weight: 400;
+            text-transform: capitalize;
+            @media only screen and (max-width: 478px) {
+              font-size: 2.5rem;
+            }
+          }
+          .eat {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            .back {
-              margin-top: 4rem;
-              width: 20%;
-              border: none;
+            color: white;
+            align-items: center;
+            padding: 10px 10px;
+            transition: 0.5s;
+            border-radius: 8px;
+            @media only screen and (max-width: 478px) {
+              align-items: flex-start;
+            }
+            &:hover {
               background-color: #192d43;
-              padding: 15px 0;
-              font-size: 16px;
-              color: #face8d;
-              font-family: chillax-regular;
-              border-radius: 5px;
-              transition: 0.5s;
-              @media only screen and (max-width: 478px) {
-                width: 100%;
+              .texts {
+                .backs {
+                  background-color: white;
+                  color: #192d43;
+                  cursor: pointer;
+                }
               }
-              a {
+            }
+
+            .texts {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              justify-content: space-between;
+              .cost {
+                .food-name {
+                  text-transform: capitalize;
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1.5rem;
+                  padding: 0;
+                  color: white;
+                  @media only screen and (max-width: 478px) {
+                    font-size: 1rem;
+                  }
+                }
+              }
+              .coast {
+                .amount {
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1.25rem;
+                  @media only screen and (max-width: 478px) {
+                    font-size: 0.8rem;
+                  }
+                }
+                .food-about {
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1rem;
+                  color: rgba(255, 255, 255, 0.6);
+                }
+              }
+              .backs {
+                border: none;
+                background-color: #192d43;
+                padding: 10px 30px;
+                font-size: 16px;
                 color: #face8d;
-                text-decoration: none;
-              }
-              &:hover {
-                background-color: white;
-                color: #192d43;
-                cursor: pointer;
+                font-family: chillax-regular;
+                border-radius: 5px;
+                transition: 0.5s;
+                @media only screen and (max-width: 478px) {
+                  font-size: 13px;
+                }
+                a {
+                  color: #face8d;
+                  text-decoration: none;
+                }
+                &:hover {
+                  scale: 1.05;
+                }
               }
             }
           }
         }
-
+        .button {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          @media only screen and (max-width: 478px) {
+            display: block;
+          }
+          .back {
+            margin-top: 4rem;
+            width: 20%;
+            border: none;
+            background-color: #192d43;
+            padding: 15px 0;
+            font-size: 16px;
+            color: #face8d;
+            font-family: chillax-regular;
+            border-radius: 5px;
+            transition: 0.5s;
+            @media only screen and (max-width: 478px) {
+              width: 100%;
+              font-size: 13px;
+            }
+            a {
+              color: #face8d;
+              text-decoration: none;
+            }
+            &:hover {
+              background-color: white;
+              color: #192d43;
+              cursor: pointer;
+            }
+          }
+        }
         .menu-footer {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
           flex-wrap: wrap;
+          padding-top: 100px;
           @media only screen and (max-width: 767px) {
             justify-content: center;
           }

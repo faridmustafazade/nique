@@ -14,7 +14,6 @@ import { Helmet } from "react-helmet";
 
 const Contact = () => {
   const [token] = useToken();
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -27,15 +26,12 @@ const Contact = () => {
   const postData = () => {
     const values = getValues();
 
-    !token?.token
-      ? navigate("/sign-in")
-      : axios.post("http://localhost:2003/api/contact", {
-          name: values.name,
-          email: values.email,
-          message: values.message,
-        });
+    axios.post("http://localhost:2003/api/contact", {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    });
   };
-
   useEffect(() => {
     Aos.init({
       duration: 2000,
@@ -84,24 +80,43 @@ const Contact = () => {
               <form onSubmit={handleSubmit(postData)} className="side-down">
                 <div className="form">
                   <label className="label">Name</label>
-                  <input
-                    {...register("name")}
-                    className="input"
-                    placeholder="Enter your name"
-                  />
-                  {errors.name?.message && (
-                    <p style={{ color: "#face8d" }}>{errors.name?.message}</p>
+                  {token?.token ? (
+                    <input
+                      className="input"
+                      placeholder="Enter your name"
+                      {...register("name")}
+                      value={token?.user?.firstName}
+                      // disabled="true"
+                    />
+                  ) : (
+                    <input
+                      {...register("name")}
+                      className="input"
+                      placeholder="Enter your name"
+                    />
+                  )}
+                  {errors.name && (
+                    <p style={{ color: "#face8d" }}>{errors.name.message}</p>
                   )}
                 </div>
                 <div className="form">
                   <label className="label">Email</label>
-                  <input
-                    {...register("email")}
-                    className="input"
-                    placeholder="Your email address"
-                  />
-                  {errors.email?.message && (
-                    <p style={{ color: "#face8d" }}>{errors.email?.message}</p>
+                  {token?.token ? (
+                    <input
+                      {...register("email")}
+                      className="input"
+                      placeholder="Your email address"
+                      value={token?.user?.email}
+                    />
+                  ) : (
+                    <input
+                      {...register("email")}
+                      className="input"
+                      placeholder="Your email address"
+                    />
+                  )}
+                  {errors.email && (
+                    <p style={{ color: "#face8d" }}>{errors.email.message}</p>
                   )}
                 </div>
                 <div className="form">
@@ -111,7 +126,7 @@ const Contact = () => {
                     className="input message"
                     placeholder="Your message"
                   />
-                  {errors.message?.message && (
+                  {errors.message && (
                     <p style={{ color: "#face8d" }}>
                       {errors.message?.message}
                     </p>
@@ -122,56 +137,6 @@ const Contact = () => {
                   send message
                 </button>
 
-                {/* <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: "40px",
-                  }}
-                >
-                  <div>
-                    <iframe
-                      title="1"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.410253093737!2d48.8498886756875!3d38.7542934551357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4022ff641ec22c1b%3A0x25f93462f1dcc9eb!2sDosa%20Mall!5e0!3m2!1sen!2saz!4v1686816034956!5m2!1sen!2saz"
-                      width="600"
-                      height="400"
-                      allowfullscreen=""
-                      loading="lazy"
-                      referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                    <p
-                      style={{ color: "white", fontFamily: "chillax-regular" }}
-                    >
-                      Phone:{" "}
-                      <a
-                        style={{
-                          color: "white",
-                          fontFamily: "chillax",
-                          textDecoration: "none",
-                        }}
-                        href="tel:+994-050-523-58-01"
-                      >
-                        (+994)-50-523-58-01
-                      </a>
-                    </p>
-                    <p
-                      style={{ color: "white", fontFamily: "chillax-regular" }}
-                    >
-                      Mail:{" "}
-                      <a
-                        style={{
-                          color: "white",
-                          fontFamily: "chillax",
-                          textDecoration: "none",
-                        }}
-                        href="mailto:mustafazadefaridm@gmail.com?body=My custom mail body"
-                      >
-                        mustafazadefaridm@gmail.com
-                      </a>
-                    </p>
-                  </div>
-                </div> */}
                 <div className="contact-footer">
                   <div className="nique">
                     <img

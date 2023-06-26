@@ -97,7 +97,8 @@ const Menu = () => {
               <div className="side-down">
                 {category.map((c) => (
                   <div
-                    id="starters"
+                  className="starters"
+                    id={c.category}
                     data-aos="fade-up"
                     data-aos-duration="2000"
                   >

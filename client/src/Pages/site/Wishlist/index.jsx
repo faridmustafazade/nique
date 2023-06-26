@@ -11,7 +11,7 @@ const WishListPage = () => {
   const dispatch = useDispatch();
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Favorites</title>
         <link rel="icon" type="image/svg+xml" href={favicon} />
         <meta name="description" content="test on react-helmet" />

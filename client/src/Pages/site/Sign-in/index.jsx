@@ -18,7 +18,8 @@ const SignIn = () => {
     setAuthData({ ...authData, [e.target.name]: e.target.value });
   };
 
-  const authFunc = () => {
+  const authFunc = (e) => {
+    e.preventDefault();
     dispatch(loginActions(authData));
   };
   console.log(authData);
@@ -33,7 +34,7 @@ const SignIn = () => {
       <div className="full-sign">
         <div className="div">
           <h1 className="h1">Nique.</h1>
-          <div className="inputs">
+          <form onSubmit={authFunc} className="inputs">
             <label htmlFor="email" className="label">
               Email address
             </label>
@@ -59,16 +60,16 @@ const SignIn = () => {
               placeholder="Password"
               className="input"
             />
-          </div>
+            <button type="submit" className="button">
+              Log in
+            </button>
+          </form>
           <div className="changes" onClick={() => navigate("/change-password")}>
             Change Password?
           </div>
           <div className="link">
             Don't have an account?
             <span onClick={() => navigate("/sign-up")}> Sign up</span>
-          </div>
-          <div onClick={authFunc} className="button">
-            Log in
           </div>
         </div>
       </div>

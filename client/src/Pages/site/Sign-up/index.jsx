@@ -36,6 +36,7 @@ const SignUp = () => {
         <meta name="theme-color" content="#ccc" />
       </Helmet>
       <div className="full-divs">
+        
         <div className="div">
           <h1 className="h1">Nique.</h1>
           <div className="inputs">

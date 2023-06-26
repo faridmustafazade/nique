@@ -11,13 +11,19 @@ const deleteById = async (req, res) => {
   const deleteOne = await AuthSchema.findByIdAndDelete(getID);
   res.send("Deleting successfully");
 };
+const put = async (req, res) => {
+  const getID = req.params.id;
+  const getBody = req.body;
+  const putOne = await AuthSchema.findByIdAndUpdate(getID, getBody);
+  res.send(putOne);
+};
 const register = async (req, res) => {
   try {
     const { username, password, email } = req.body;
 
     const user = await AuthSchema.findOne({ email });
     if (user) {
-      return res.status(500).json({ msg: "User already created!" });
+      return res.status(500).json({ msg: "This email already created!" });
     }
     if (password.length < 6) {
       return res
@@ -64,8 +70,11 @@ const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await AuthSchema.findOne({ email });
 
+    if (!isEmail(email)) {
+      return res.status(500).json({ msg: "Please enter correct email format" });
+    }
     if (!user) {
-      return res.status(500).json({ msg: "Invalid email or password" });
+      return res.status(500).json({ msg: "Email is wrong!" });
     }
 
     const passwordCompare = await bcrypt.compare(password, user.password);
@@ -125,4 +134,4 @@ function isEmail(emailAddress) {
   }
 }
 
-module.exports = { register, login, changePassword, getAll,deleteById };
+module.exports = { register, login, changePassword, getAll, put, deleteById };

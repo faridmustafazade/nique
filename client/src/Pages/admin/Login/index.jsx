@@ -15,7 +15,8 @@ const Login = () => {
   const onChange = (e) => {
     setAuthData({ ...authData, [e.target.name]: e.target.value });
   };
-  const authFunc = () => {
+  const authFunc = (e) => {
+    e.preventDefault();
     dispatch(loginAction(authData));
   };
   return (
@@ -29,7 +30,7 @@ const Login = () => {
       <div className="full-div">
         <div className="div">
           <h1 className="h1">Admin Dashboard</h1>
-          <div className="inputs">
+          <form onSubmit={authFunc} className="inputs">
             <label htmlFor="email" className="label">
               Email address
             </label>
@@ -55,10 +56,10 @@ const Login = () => {
               placeholder="••••••••"
               className="input"
             />
-          </div>
-          <div onClick={authFunc} className="button">
-            Log in
-          </div>
+            <button type="submit" className="button">
+              Log in
+            </button>
+          </form>
         </div>
       </div>
     </>
