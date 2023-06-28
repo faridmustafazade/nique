@@ -10,6 +10,7 @@ const classesRouter = require("./routes/classes.routes");
 const authRouter = require("./routes/auth.routes");
 const blogRouter = require("./routes/blog.routes");
 const reservationRouter = require("./routes/reservation.routes");
+const stripe = require("./routes/stripe.routes");
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use("/api/classes", classesRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/reservation", reservationRouter);
 app.use("/api", authRouter);
+app.use("/api/stripe", stripe);
 
 const Port = process.env.PORT || 5000;
 const DB_URL = process.env.DB_URL;

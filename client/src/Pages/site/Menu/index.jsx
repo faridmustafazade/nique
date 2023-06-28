@@ -11,6 +11,8 @@ import { AiOutlineHeart } from "react-icons/ai";
 import useToken from "../../../Hooks/useToken";
 import { Helmet } from "react-helmet";
 import favicon from "../../../Assets/Images/favicon.jpg";
+import { FiShoppingCart } from "react-icons/fi";
+import { addToCart } from "../../../Redux/Slice/cartSlice";
 
 const Menu = () => {
   const [token] = useToken();
@@ -19,7 +21,9 @@ const Menu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist);
-
+  const [wishlistData, setWishlistData] = useState(
+    JSON.parse(localStorage.getItem("wishlist")) || []
+  );
   const getData = async () => {
     const res = await axios.get("http://localhost:2003/api/menu");
     setData(res.data);
@@ -28,9 +32,17 @@ const Menu = () => {
     const res = await axios.get("http://localhost:2003/api/menu_category");
     setCategory(res.data);
   };
+
+  const handleAddToCart = (d) => {
+    dispatch(addToCart(d));
+    // navigate("/cart");
+  };
+
   useEffect(() => {
     getData();
     getCategory();
+    setWishlistData(JSON.parse(localStorage.getItem("wishlist")));
+
     Aos.init({
       duration: 1000,
     });
@@ -97,7 +109,7 @@ const Menu = () => {
               <div className="side-down">
                 {category.map((c) => (
                   <div
-                  className="starters"
+                    className="starters"
                     id={c.category}
                     data-aos="fade-up"
                     data-aos-duration="2000"
@@ -113,6 +125,37 @@ const Menu = () => {
                           <div className="eat">
                             <div className="eat-image">
                               <div className="image">
+                                {wishlist.data.find(
+                                  (elem) => elem._id === d._id
+                                ) ? (
+                                  <div
+                                    className="heart"
+                                    onClick={() =>
+                                      dispatch(removeToWishlist(d._id))
+                                    }
+                                  >
+                                    <img
+                                      className="heart-img"
+                                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/800px-Heart_coraz%C3%B3n.svg.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                ) : (
+                                  <div
+                                    className="heart"
+                                    style={{
+                                      paddingLeft: "10px",
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={() => {
+                                      !token?.token
+                                        ? navigate("/sign-in")
+                                        : dispatch(addToWishlist(d));
+                                    }}
+                                  >
+                                    <AiOutlineHeart className="heart-img" />
+                                  </div>
+                                )}
                                 <img src={d.image} alt="" />
                               </div>
                             </div>
@@ -120,40 +163,19 @@ const Menu = () => {
                               <div className="cost">
                                 <h3 className="food-name">{d.name}</h3>
                                 <p className="amount">$ {d.price}</p>
+                                <button
+                                  className="addto"
+                                  onClick={() => handleAddToCart(d)}
+                                >
+                                  Add to Cart
+                                </button>
+                                <FiShoppingCart
+                                  className="shop"
+                                  onClick={() => handleAddToCart(d)}
+                                />
                               </div>
                               <p className="food-about">{d.about}</p>
                             </div>
-                            {wishlist.data.find(
-                              (elem) => elem._id === d._id
-                            ) ? (
-                              <div
-                                className="heart"
-                                onClick={() =>
-                                  dispatch(removeToWishlist(d._id))
-                                }
-                              >
-                                <img
-                                  className="heart-img"
-                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/800px-Heart_coraz%C3%B3n.svg.png"
-                                  alt=""
-                                />
-                              </div>
-                            ) : (
-                              <div
-                                className="heart"
-                                style={{
-                                  paddingLeft: "10px",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  !token?.token
-                                    ? navigate("/sign-in")
-                                    : dispatch(addToWishlist(d));
-                                }}
-                              >
-                                <AiOutlineHeart className="heart-img" />
-                              </div>
-                            )}
                           </div>
                         </div>
                       ))}

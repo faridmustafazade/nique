@@ -50,7 +50,7 @@ const ShowUsers = () => {
                       style={{
                         position: "relative",
                         cursor: "auto",
-                        width: 330,
+                        width: 370,
                         height: "auto",
                         marginTop: "30px",
                       }}

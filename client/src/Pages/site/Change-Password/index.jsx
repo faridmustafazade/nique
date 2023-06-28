@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import "./style.scss";
 import { changePasswordSchema } from "./schema";
+import { toast } from "react-toastify";
 const ChangePassword = () => {
   const navigate = useNavigate();
   const {
@@ -20,13 +21,26 @@ const ChangePassword = () => {
   const postData = () => {
     const values = getValues();
     console.log(values);
-    axios.post("http://localhost:2003/api/password", {
-      email: values.email,
-      currentPassword: values.currentPassword,
-      newPassword: values.newPassword,
-      confirmPassword: values.confirmPassword,
-    });
-    navigate("/sign-in");
+    axios
+      .post("http://localhost:2003/api/password", {
+        email: values.email,
+        currentPassword: values.currentPassword,
+        newPassword: values.newPassword,
+        confirmPassword: values.confirmPassword,
+      })
+      .then((res) => {
+        toast.success(res.data.msg, {
+          position: "top-right",
+          autoClose: 5000,
+        });
+        navigate("/sign-in");
+      })
+      .catch((err) => {
+        toast.error(err.response.data.msg, {
+          position: "top-right",
+          autoClose: 5000,
+        });
+      });
   };
   return (
     <>
@@ -51,7 +65,7 @@ const ChangePassword = () => {
               placeholder="Email"
               className="input"
             />
-            
+
             {errors.email?.message && (
               <p style={{ color: "#face8d" }}>{errors.email?.message}</p>
             )}

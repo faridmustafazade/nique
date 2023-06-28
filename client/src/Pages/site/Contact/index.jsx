@@ -11,6 +11,7 @@ import { ContactForm } from "./schema/ContactForm";
 import useToken from "../../../Hooks/useToken";
 import favicon from "../../../Assets/Images/favicon.jpg";
 import { Helmet } from "react-helmet";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [token] = useToken();
@@ -26,11 +27,24 @@ const Contact = () => {
   const postData = () => {
     const values = getValues();
 
-    axios.post("http://localhost:2003/api/contact", {
-      name: values.name,
-      email: values.email,
-      message: values.message,
-    });
+    axios
+      .post("http://localhost:2003/api/contact", {
+        name: values.name,
+        email: values.email,
+        message: values.message,
+      })
+      .then((res) => {
+        toast.success(res.data.msg, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.msg, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      });
   };
   useEffect(() => {
     Aos.init({

@@ -41,13 +41,13 @@ const Reservation = () => {
         },
       })
       .then((res) => {
-        toast(res.data.msg, {
+        toast.success(res.data.msg, {
           position: "top-right",
           autoClose: 5000,
         });
       })
       .catch((err) => {
-        toast(err.response.data.msg, {
+        toast.error(err.response.data.msg, {
           position: "top-right",
           autoClose: 5000,
         });

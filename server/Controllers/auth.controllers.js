@@ -104,24 +104,29 @@ const changePassword = async (req, res) => {
   const user = await AuthSchema.findOne({ email });
 
   if (!user) {
-    return res.status(404).send("Patient not found");
+    return res.status(404).json({ msg: "User not found" });
   }
   const isCurrentPasswordValid = await bcrypt.compare(
     currentPassword,
     user.password
   );
   if (!isCurrentPasswordValid) {
-    return res.status(400).send("Invalid current password");
+    return res.status(400).json({ msg: "Invalid current password" });
+  }
+  if (newPassword == currentPassword) {
+    return res
+      .status(400)
+      .send({ msg: "Current password and new password can't same" });
   }
   if (newPassword !== confirmPassword) {
-    return res.status(400).send("New password do not match");
+    return res.status(400).send({ msg: "New password do not match" });
   }
   const passwordHash = await bcrypt.hash(newPassword, 12);
 
   user.password = passwordHash;
   await user.save();
 
-  res.send("Password updated");
+  res.json({ msg: "Password updated" });
 };
 
 function isEmail(emailAddress) {

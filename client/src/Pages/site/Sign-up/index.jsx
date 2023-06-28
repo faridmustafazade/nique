@@ -19,6 +19,7 @@ const SignUp = () => {
   });
   const dispatch = useDispatch();
 
+  
   const onChange = (e) => {
     setAuthData({ ...authData, [e.target.name]: e.target.value });
   };

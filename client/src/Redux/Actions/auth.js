@@ -56,7 +56,11 @@ export const loginActions = (authData) => async (dispatch) => {
       authData
     );
     dispatch({ type: "LOGIN", payload: data });
-    window.location = "/";
+    if (data.user.isAdmin === true) {
+      window.location = "/admin";
+    } else {
+      window.location = "/";
+    }
   } catch (error) {
     toast(error.response.data.msg, {
       position: "top-right",

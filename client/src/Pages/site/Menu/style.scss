@@ -176,27 +176,32 @@ html {
               @media only screen and (max-width: 478px) {
                 align-items: flex-start;
               }
-              .heart {
-                padding-left: 10px;
-                cursor: pointer;
-                .heart-img {
-                  width: 30px;
-                  height: 30px;
-                  @media only screen and (max-width: 478px) {
-                    width: 15px;
-                    height: 15px;
-                  }
-                }
-              }
+
               .eat-image {
                 width: 18%;
                 margin-right: 30px;
                 .image {
+                  position: relative;
                   width: 100px;
                   border-radius: 10px;
-                  overflow: hidden;
                   @media only screen and (max-width: 478px) {
                     width: 70px;
+                  }
+                  .heart {
+                    right: -12px;
+                    top: -12px;
+                    z-index: 899;
+                    position: absolute;
+                    padding-left: 10px;
+                    cursor: pointer;
+                    .heart-img {
+                      width: 30px;
+                      height: 30px;
+                      @media only screen and (max-width: 478px) {
+                        width: 15px;
+                        height: 15px;
+                      }
+                    }
                   }
                   img {
                     width: 100%;
@@ -234,6 +239,38 @@ html {
                     font-size: 1.25rem;
                     @media only screen and (max-width: 478px) {
                       font-size: 0.8rem;
+                    }
+                  }
+                  .shop {
+                    display: none;
+                    font-size: 20px;
+                    @media only screen and (max-width: 478px) {
+                      display: block;
+                    }
+                  }
+                  .addto {
+                    font-size: 1rem;
+                    border: none;
+                    background-color: #192d43;
+                    padding: 10px 30px;
+                    border: 1px solid #192d43;
+                    color: #face8d;
+                    font-family: chillax-regular;
+                    border-radius: 5px;
+                    transition: 0.5s;
+                    @media only screen and (max-width: 478px) {
+                      display: none;
+                    }
+                    a {
+                      color: #face8d;
+                      text-decoration: none;
+                    }
+                    &:hover {
+                      background-color: white;
+                      border: 1px solid #192d43;
+                      color: #192d43;
+                      scale: 1.1;
+                      cursor: pointer;
                     }
                   }
                 }

@@ -14,7 +14,7 @@ const ContactController = {
     const getBody = req.body;
     const post = await new Contact(getBody);
     post.save();
-    res.send(post);
+    res.json({ msg: "Message send successfully" });
   },
   delete: async (req, res) => {
     const getID = req.params.id;

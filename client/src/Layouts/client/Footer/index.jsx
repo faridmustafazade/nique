@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsArrowRight, BsHeart } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { LuClock3 } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
-import { Avatar, Dropdown, Menu } from "antd";
+import { Avatar, Dropdown, Menu, Modal } from "antd";
 import useToken from "../../../Hooks/useToken";
 
 const Footer = () => {
@@ -18,7 +18,6 @@ const Footer = () => {
     localStorage.clear();
     window.location.reload();
   };
-
   return (
     <>
       <div id="full-footer">
@@ -94,7 +93,7 @@ const Footer = () => {
             </button>
           </Dropdown>
 
-          <div className="basket">
+          <div className="basket" onClick={()=>navigate('/cart')}>
             <FiShoppingCart />
           </div>
           <div className="basket" onClick={() => navigate("/wishlist")}>
@@ -134,7 +133,9 @@ const Footer = () => {
                         src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
                         alt=""
                       />
-                      <h3 className="day" style={{marginRight:'10px'}}>Profile</h3>
+                      <h3 className="day" style={{ marginRight: "10px" }}>
+                        Profile
+                      </h3>
                     </div>
                     <div className="drop-profile" onClick={logoutFunc}>
                       <img
