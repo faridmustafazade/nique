@@ -71,7 +71,10 @@ export const ROUTES = [
         path: "/shop",
         element: <Shop />,
       },
-      { path: "/cart", element: <Cart /> },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
       {
         path: "/blog",
         element: <Blog />,

@@ -198,7 +198,7 @@ const Show = () => {
                   ))}
 
                 <Modal
-                  title="Vertically centered modal dialog"
+                  title="Menu Updating"
                   centered
                   open={modal2Open}
                   onOk={() => {

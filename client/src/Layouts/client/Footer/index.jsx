@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.scss";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsArrowRight, BsHeart } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { LuClock3 } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
-import { Avatar, Dropdown, Menu, Modal } from "antd";
+import { Avatar, Dropdown, Menu } from "antd";
 import useToken from "../../../Hooks/useToken";
 
 const Footer = () => {
@@ -93,7 +93,7 @@ const Footer = () => {
             </button>
           </Dropdown>
 
-          <div className="basket" onClick={()=>navigate('/cart')}>
+          <div className="basket" onClick={() => navigate("/cart")}>
             <FiShoppingCart />
           </div>
           <div className="basket" onClick={() => navigate("/wishlist")}>

@@ -38,7 +38,7 @@ const Cart = () => {
     dispatch(clearCart());
   };
   return (
-    <div className="full">
+    <div className="full-cart">
       <div className="cart-container">
         <h2 style={{ fontFamily: "chillax" }}>Shopping Cart</h2>
         {cart.cartItems.length === 0 ? (
@@ -128,6 +128,7 @@ const Cart = () => {
                   <PayButton cartItems={cart.cartItems} />
                 ) : (
                   <button
+                  style={{fontFamily:'chillax'}}
                     className="cart-login"
                     onClick={() => navigate("/sign-in")}
                   >
