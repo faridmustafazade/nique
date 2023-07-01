@@ -5,11 +5,14 @@ import useToken from "../../Hooks/useToken";
 import axios from "axios";
 import favicon from "../../Assets/Images/favicon.jpg";
 import { Helmet } from "react-helmet";
-import { Input, Modal } from "antd";
+import {  Input, Modal } from "antd";
+import Swal from "sweetalert2";
+
 const UserProfile = () => {
   const [token] = useToken();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [order, setOrder] = useState([]);
   const [state, setState] = useState({
     image: "",
     firstName: "",
@@ -19,11 +22,17 @@ const UserProfile = () => {
   });
   const [userId, setUserId] = useState("");
   const [modal2Open, setModal2Open] = useState(false);
-  const [value, setValue] = useState("");
 
   const getData = async () => {
     const res = await axios.get("http://localhost:2003/api/reservation");
     setData(res.data);
+  };
+  const getOrder = async () => {
+    const res = await axios.get(
+      `http://localhost:2003/api/orders/find/${token?.user?.id}`
+    );
+    setOrder(res.data);
+    console.log(res.data);
   };
   const deletingProfile = async (id) => {
     await axios.delete(`http://localhost:2003/api/${id}`);
@@ -57,7 +66,41 @@ const UserProfile = () => {
 
   useEffect(() => {
     getData();
+    getOrder();
   }, []);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deletingProfile(id);
+        Swal.fire("Deleted!", "Your profile has been deleted.", "success");
+      }
+    });
+  };
+  const handleDeleteReserv = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deletingReserv(id);
+        Swal.fire("Deleted!", "Your reservation has been deleted.", "success");
+      }
+    });
+  };
 
   return (
     <>
@@ -154,7 +197,7 @@ const UserProfile = () => {
                             </div>
                             <button
                               className="backs"
-                              onClick={() => deletingReserv(d._id)}
+                              onClick={() => handleDeleteReserv(d._id)}
                             >
                               Delete
                             </button>
@@ -162,10 +205,61 @@ const UserProfile = () => {
                         </div>
                       ))}
                   </div>
+
+                  <div className="reserv-menu">
+                    <h2 className="reservation">My Orders</h2>
+                    {order
+                      .filter((item) => item.userId.includes(token.user._id))
+                      .map((d) => (
+                        <div className="reserv-menu">
+                          <div className="eat">
+                            <div className="eat-image">
+                              <div className="image">
+                                {d.products.slice(0, 1).map((product) => (
+                                  <img src={product.image} alt="" />
+                                ))}
+                              </div>
+                            </div>
+                            <div>
+                              <p style={{ fontFamily: "chillax-regular" }}>
+                                Payment time: {d.createdAt.substring(0, 10)}
+                              </p>
+                              <p
+                                style={{
+                                  fontFamily: "chillax-regular",
+                                }}
+                              >
+                                Delivery status:{" "}
+                                <span style={{ fontFamily: "chillax" }}>
+                                  {d.delivery_status}
+                                </span>
+                              </p>
+                            </div>
+                            <div className="texts" style={{ width: 200 }}>
+                              <div>
+                                <p style={{ fontFamily: "chillax-regular" }}>
+                                  City: {d.shipping.address.city}
+                                </p>
+                                <p style={{ fontFamily: "chillax-regular" }}>
+                                  Subtotal price: {d.subtotal}
+                                </p>
+                                <p style={{ fontFamily: "chillax-regular" }}>
+                                  Total price: {d.total}
+                                </p>
+                                <p style={{ fontFamily: "chillax-regular" }}>
+                                  Payment status: {d.payment_status}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+
                   <div className="button">
                     <button
                       className="back"
-                      onClick={() => deletingProfile(token?.user?._id)}
+                      onClick={() => handleDelete(token?.user?._id)}
                     >
                       Delete Profile
                     </button>

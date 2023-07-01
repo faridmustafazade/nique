@@ -10,6 +10,7 @@ const classesRouter = require("./routes/classes.routes");
 const authRouter = require("./routes/auth.routes");
 const blogRouter = require("./routes/blog.routes");
 const reservationRouter = require("./routes/reservation.routes");
+const ordersRouter = require("./routes/orders.routes");
 const stripe = require("./routes/stripe.routes");
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use("/api/contact", contactRouter);
 app.use("/api/classes", classesRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/reservation", reservationRouter);
+app.use("/api/orders", ordersRouter);
 app.use("/api", authRouter);
 app.use("/api/stripe", stripe);
 
@@ -33,10 +35,10 @@ const DB_URL = process.env.DB_URL;
 mongoose
   .connect(DB_URL)
   .then(() => {
-    console.log("Mongo DB connect");
+    console.log("MongoDB connection successful...");
   })
   .then(
     app.listen(Port, () => {
-      console.log("Server is run");
+      console.log(`Server running on port ${Port}`);
     })
   );

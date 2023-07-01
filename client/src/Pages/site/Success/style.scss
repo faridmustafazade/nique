@@ -1,0 +1,63 @@
+.full-success {
+  background-color: black;
+  height: 100vh;
+  .success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 150px;
+  }
+  .text {
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 580px;
+    text-align: center;
+    gap: 10px;
+    .shopp {
+      font-family: bitter-rose;
+      color: #face8d;
+      font-weight: 400;
+      font-size: 4rem;
+    }
+    .thanks {
+      font-family: chillax;
+      font-weight: 500;
+      font-size: 5rem;
+      color: white;
+    }
+    .mattis {
+      font-family: chillax-regular;
+      font-weight: 400;
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .goMenu {
+      margin-top: 30px;
+      font-size: 1rem;
+      border: none;
+      background-color: #192d43;
+      padding: 15px 60px;
+      border: 1px solid #192d43;
+      color: #face8d;
+      font-family: chillax-regular;
+      border-radius: 5px;
+      transition: 0.5s;
+      @media only screen and (max-width: 478px) {
+        display: none;
+      }
+      a {
+        color: #face8d;
+        text-decoration: none;
+      }
+      &:hover {
+        background-color: white;
+        border: 1px solid #192d43;
+        color: #192d43;
+        scale: 1.1;
+        cursor: pointer;
+      }
+    }
+  }
+}

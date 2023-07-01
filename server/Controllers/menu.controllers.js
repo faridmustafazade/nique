@@ -14,7 +14,7 @@ const MenuController = {
     const getBody = req.body;
     const post = await new Menu(getBody);
     post.save();
-    res.send(post);
+    res.json({ msg: "Menu add successfully" });
   },
   delete: async (req, res) => {
     const getID = req.params.id;

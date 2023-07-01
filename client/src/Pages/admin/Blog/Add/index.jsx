@@ -10,6 +10,7 @@ import useToken from "../../../../Hooks/useToken";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import favicon from "../../../../Assets/Images/favicon.jpg";
+import { toast } from "react-toastify";
 
 const AddBlog = () => {
   const [token] = useToken();
@@ -27,14 +28,27 @@ const AddBlog = () => {
   const postData = () => {
     const values = getValues();
     console.log(values);
-    axios.post("http://localhost:2003/api/blog", {
-      image: values.image,
-      description: values.description,
-      about: values.about,
-      history: values.history,
-      history2: values.history2,
-      date: values.date,
-    });
+    axios
+      .post("http://localhost:2003/api/blog", {
+        image: values.image,
+        description: values.description,
+        about: values.about,
+        history: values.history,
+        history2: values.history2,
+        date: values.date,
+      })
+      .then((res) => {
+        toast.success(res.data.msg, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.msg, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      });
   };
 
   return (
@@ -103,17 +117,15 @@ const AddBlog = () => {
                   )}
                 </div>
                 <div>
-                  <label>Enter history2</label>
+                  <label>Enter Date</label>
                   <input
                     name="date"
                     type="date"
                     {...register("date")}
                     placeholder="Enter date"
                   />
-                  {errors.history2?.message && (
-                    <p style={{ color: "#face8d" }}>
-                      {errors.history2?.message}
-                    </p>
+                  {errors.date?.message && (
+                    <p style={{ color: "#face8d" }}>{errors.date?.message}</p>
                   )}
                 </div>
 

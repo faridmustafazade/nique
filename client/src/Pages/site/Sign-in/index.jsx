@@ -64,9 +64,6 @@ const SignIn = () => {
               Log in
             </button>
           </form>
-          <div className="changes" onClick={() => navigate("/change-password")}>
-            Change Password?
-          </div>
           <div className="link">
             Don't have an account?
             <span onClick={() => navigate("/sign-up")}> Sign up</span>

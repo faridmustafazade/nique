@@ -14,7 +14,8 @@ const ClassesController = {
     const getBody = req.body;
     const post = await new Classes(getBody);
     post.save();
-    res.send(post);
+    res.json({ msg: "Class add successfully" });
+    
   },
   delete: async (req, res) => {
     const getID = req.params.id;

@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
 import { clearCart, getTotals } from "../../../Redux/Slice/cartSlice";
-
+import "./style.scss";
 const CheckoutSuccess = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(clearCart());
   }, [dispatch]);
@@ -17,13 +17,31 @@ const CheckoutSuccess = () => {
 
   return (
     <>
-      <h2>Checkout Successful</h2>
-      <p>Your order might take some time to process.</p>
-      <p>Check your order status at your profile after about 10mins.</p>
-      <p>
-        Incase of any inqueries contact the support at{" "}
-        <strong>support@onlineshop.com</strong>
-      </p>
+      <div className="full-success">
+        <div className="container">
+          <div className="success">
+            <div className="logo">
+              <Link to="/">
+                <img
+                  src="https://uploads-ssl.webflow.com/6321d0d284b5b7ca3857fad3/6321d4f35eab748617c65799_logo.svg"
+                  alt=""
+                />
+              </Link>
+            </div>
+            <div className="text">
+              <p className="shopp">Shop</p>
+              <h1 className="thanks">Thank you</h1>
+              <p className="mattis">
+                Mattis enim ut tellus elementum sagittis. Lectus quam id leo in
+                vitae turpis. Lobortis scelerisque fermentum dui faucibus.
+              </p>
+              <button className="goMenu" onClick={() => navigate("/menu")}>
+                Go Menu
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

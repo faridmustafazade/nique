@@ -32,13 +32,6 @@ const Aside = () => {
             Admin Dashboard
           </p>
           <div className="aside-down">
-            <div className="asides" onClick={() => navigate("/admin")}>
-              <img
-                src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36aff1c8c85281c3125_Icons-1.svg"
-                alt=""
-              />
-              <p className="asides-text">profile</p>
-            </div>
             <div className="asides class" onClick={() => setMenu(!menu)}>
               <div className="show">
                 <img
@@ -121,13 +114,6 @@ const Aside = () => {
                   users
                 </Link>
               </div>
-            </div>
-            <div className="asides" onClick={() => navigate("/admin")}>
-              <img
-                src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36bd99012ee364da3aa_Icons-5.svg"
-                alt=""
-              />
-              <p className="asides-text">transaction</p>
             </div>
             <div className="asides" onClick={() => navigate("/admin/message")}>
               <img

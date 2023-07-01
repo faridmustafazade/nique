@@ -29,7 +29,6 @@ import UserProfile from "../Pages/User-Profile";
 import WishListPage from "../Pages/site/Wishlist";
 import ChangePassword from "../Pages/site/Change-Password";
 import BlogDetails from "../Pages/site/Blog/Details";
-import Success from "../Pages/site/Success";
 import Cancel from "../Pages/site/Cancel";
 import Cart from "../Pages/site/Cart";
 import CheckoutSuccess from "../Pages/site/Success";
@@ -169,10 +168,6 @@ export const ROUTES = [
         path: "/admin/add-blog",
         element: <AddBlog />,
       },
-      // {
-      //   path: "/reservation",
-      //   element: <Reservation />,
-      // },
     ],
   },
 ];

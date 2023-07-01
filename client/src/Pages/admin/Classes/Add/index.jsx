@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import useToken from "../../../../Hooks/useToken";
 import { Helmet } from "react-helmet";
 import favicon from "../../../../Assets/Images/favicon.jpg";
+import { toast } from "react-toastify";
 
 const AddClasses = () => {
   const [token] = useToken();
@@ -25,16 +26,29 @@ const AddClasses = () => {
   const postData = () => {
     const values = getValues();
     console.log(values);
-    axios.post("http://localhost:2003/api/classes", {
-      chefImage: values.chefImage,
-      chefName: values.chefName,
-      chefAbout: values.chefAbout,
-      class: values.class,
-      type: values.type,
-      price: values.price,
-      about: values.about,
-      image: values.image,
-    });
+    axios
+      .post("http://localhost:2003/api/classes", {
+        chefImage: values.chefImage,
+        chefName: values.chefName,
+        chefAbout: values.chefAbout,
+        class: values.class,
+        type: values.type,
+        price: values.price,
+        about: values.about,
+        image: values.image,
+      })
+      .then((res) => {
+        toast.success(res.data.msg, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.msg, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      });
   };
 
   return (

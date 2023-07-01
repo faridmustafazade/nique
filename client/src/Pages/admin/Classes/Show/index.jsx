@@ -8,6 +8,7 @@ import useToken from "../../../../Hooks/useToken";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import favicon from "../../../../Assets/Images/favicon.jpg";
+import Swal from "sweetalert2";
 
 const ShowClass = () => {
   const [token] = useToken();
@@ -33,7 +34,7 @@ const ShowClass = () => {
     setData(res.data);
   };
 
-  const deletingMenu = async (id) => {
+  const deletingClass = async (id) => {
     await axios.delete(`http://localhost:2003/api/classes/${id}`);
     await getData();
   };
@@ -87,6 +88,22 @@ const ShowClass = () => {
     getData();
   }, []);
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deletingClass(id);
+        Swal.fire("Deleted!", "Message has been deleted.", "success");
+      }
+    });
+  };
   return (
     <>
       <Helmet>
@@ -150,7 +167,7 @@ const ShowClass = () => {
                         <div className="buttons">
                           <button
                             className="deleting"
-                            onClick={() => deletingMenu(d._id)}
+                            onClick={() => handleDelete(d._id)}
                           >
                             Delete
                           </button>

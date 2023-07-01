@@ -14,7 +14,7 @@ const BlogController = {
     const getBody = req.body;
     const post = await new Blog(getBody);
     post.save();
-    res.send(post);
+    res.json({ msg: "Blog add successfully" });
   },
   delete: async (req, res) => {
     const getID = req.params.id;

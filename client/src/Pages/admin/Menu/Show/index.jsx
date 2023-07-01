@@ -8,7 +8,7 @@ import "./style.scss";
 import { Button, Input, Modal, Select } from "antd";
 import favicon from "../../../../Assets/Images/favicon.jpg";
 import { Helmet } from "react-helmet";
-
+import Swal from "sweetalert2";
 const { Option } = Select;
 const Show = () => {
   const [token] = useToken();
@@ -99,6 +99,23 @@ const Show = () => {
     getClasses();
   }, []);
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deletingMenu(id);
+        Swal.fire("Deleted!", "Menu has been deleted.", "success");
+      }
+    });
+  };
+
   return (
     <>
       <Helmet>
@@ -178,7 +195,7 @@ const Show = () => {
                         <div className="buttons">
                           <button
                             className="deleting"
-                            onClick={() => deletingMenu(d._id)}
+                            onClick={() => handleDelete(d._id)}
                           >
                             Delete
                           </button>

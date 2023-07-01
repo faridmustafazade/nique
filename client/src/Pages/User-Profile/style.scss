@@ -284,6 +284,128 @@ html {
             }
           }
         }
+        .reserv-menu {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding-top: 40px;
+
+          .reservation {
+            padding-top: 1rem;
+            font-family: bitter-rose;
+            color: #face8d;
+            font-size: 4rem;
+            font-weight: 400;
+            text-transform: capitalize;
+            @media only screen and (max-width: 478px) {
+              font-size: 2.5rem;
+            }
+          }
+          .reserv-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding-top: 40px;
+            .eat {
+              display: flex;
+              color: white;
+              align-items: center;
+              justify-content: space-between;
+              @media only screen and (max-width: 478px) {
+                align-items: flex-start;
+              }
+
+              .eat-image {
+                width: 18%;
+                margin-right: 30px;
+                .image {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 15px;
+                  position: relative;
+                  width: 150px;
+                  border-radius: 10px;
+                  @media only screen and (max-width: 478px) {
+                    width: 70px;
+                  }
+
+                  img {
+                    width: 70%;
+                    border-radius: 10px;
+                  }
+                }
+              }
+              .texts {
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .cost {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  .food-name {
+                    text-transform: capitalize;
+                    font-family: chillax-regular;
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    padding: 0;
+                    color: white;
+                    @media only screen and (max-width: 478px) {
+                      font-size: 1rem;
+                    }
+                  }
+                  .amount {
+                    font-family: chillax-regular;
+                    font-weight: 400;
+                    font-size: 1.25rem;
+                    @media only screen and (max-width: 478px) {
+                      font-size: 0.8rem;
+                    }
+                  }
+                  .shop {
+                    display: none;
+                    font-size: 20px;
+                    @media only screen and (max-width: 478px) {
+                      display: block;
+                    }
+                  }
+                  .addto {
+                    font-size: 1rem;
+                    border: none;
+                    background-color: #192d43;
+                    padding: 10px 30px;
+                    border: 1px solid #192d43;
+                    color: #face8d;
+                    font-family: chillax-regular;
+                    border-radius: 5px;
+                    transition: 0.5s;
+                    @media only screen and (max-width: 478px) {
+                      display: none;
+                    }
+                    a {
+                      color: #face8d;
+                      text-decoration: none;
+                    }
+                    &:hover {
+                      background-color: white;
+                      border: 1px solid #192d43;
+                      color: #192d43;
+                      scale: 1.1;
+                      cursor: pointer;
+                    }
+                  }
+                }
+                .food-about {
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1rem;
+                  color: rgba(255, 255, 255, 0.6);
+                }
+              }
+            }
+          }
+        }
         .button {
           display: flex;
           justify-content: center;

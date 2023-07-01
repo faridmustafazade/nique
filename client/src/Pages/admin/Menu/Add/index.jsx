@@ -10,6 +10,7 @@ import useToken from "../../../../Hooks/useToken";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import favicon from "../../../../Assets/Images/favicon.jpg";
+import { toast } from "react-toastify";
 
 const AddMenu = () => {
   const [token] = useToken();
@@ -30,14 +31,27 @@ const AddMenu = () => {
   const postData = () => {
     const values = getValues();
     console.log(values);
-    axios.post("http://localhost:2003/api/menu", {
-      image: values.image,
-      name: values.name,
-      price: values.price,
-      category: values.category,
-      about: values.about,
-      class: values.class,
-    });
+    axios
+      .post("http://localhost:2003/api/menu", {
+        image: values.image,
+        name: values.name,
+        price: values.price,
+        category: values.category,
+        about: values.about,
+        class: values.class,
+      })
+      .then((res) => {
+        toast.success(res.data.msg, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.msg, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      });
   };
 
   const getCategory = async () => {
@@ -102,7 +116,11 @@ const AddMenu = () => {
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <label>Enter category</label>
-                  <select name="category" {...register("category")}>
+                  <select
+                    className="cate"
+                    name="category"
+                    {...register("category")}
+                  >
                     {categories.map((c) => (
                       <option key={c._id} value={c.category}>
                         {c.category}
@@ -112,7 +130,7 @@ const AddMenu = () => {
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <label>Enter class</label>
-                  <select name="class" {...register("class")}>
+                  <select className="cate" name="class" {...register("class")}>
                     {data.map((d) => (
                       <option key={d._id} value={d.class}>
                         {d.class}

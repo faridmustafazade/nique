@@ -124,22 +124,55 @@ const Footer = () => {
                 {token?.token && <hr />}
                 {token?.token ? (
                   <div className="d">
+                    {token?.user.isAdmin === true ? (
+                      <div
+                        className="drop-profile"
+                        onClick={() => navigate("/admin")}
+                      >
+                        <img
+                          style={{ width: "25px" }}
+                          src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36bd99012ee364da3aa_Icons-5.svg"
+                          alt=""
+                        />
+                        <h3 className="day" style={{ marginRight: "10px" }}>
+                          Admin Dashboard
+                        </h3>
+                      </div>
+                    ) : (
+                      <div
+                        className="drop-profile"
+                        onClick={() => navigate("/user-profile")}
+                      >
+                        <img
+                          style={{ width: "25px" }}
+                          src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
+                          alt=""
+                        />
+                        <h3 className="day" style={{ marginRight: "10px" }}>
+                          Profile
+                        </h3>
+                      </div>
+                    )}
                     <div
                       className="drop-profile"
-                      onClick={() => navigate("/user-profile")}
+                      onClick={() => navigate("/change-password")}
                     >
                       <img
                         style={{ width: "25px" }}
-                        src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
+                        src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36885c67cebb8224848_Icons-29.svg"
                         alt=""
                       />
                       <h3 className="day" style={{ marginRight: "10px" }}>
-                        Profile
+                        Change Password
                       </h3>
                     </div>
-                    <div className="drop-profile" onClick={logoutFunc}>
+                    <div
+                      className="drop-profile"
+                      style={{ paddingLeft: "25px" }}
+                      onClick={logoutFunc}
+                    >
                       <img
-                        src="https://www.svgrepo.com/show/135250/logout.svg"
+                        src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/61f7cef537961e9814594b19_Profile-Log-out.svg"
                         alt=""
                       />
                       <h3 className="day">Logout</h3>

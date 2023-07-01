@@ -6,12 +6,13 @@ import Header from "../../../../Layouts/admin/Header";
 import "./style.scss";
 import favicon from "../../../../Assets/Images/favicon.jpg";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const MessageDetails = () => {
   const [data, setData] = useState("");
   const params = useParams();
   const navigate = useNavigate();
-  const deletingMenu = async (id) => {
+  const deletingMessage = async (id) => {
     await axios.delete(`http://localhost:2003/api/contact/${params.id}`);
     await getData();
     navigate("/admin/message");
@@ -27,6 +28,22 @@ const MessageDetails = () => {
     getData();
   });
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deletingMessage(id);
+        Swal.fire("Deleted!", "Message has been deleted.", "success");
+      }
+    });
+  };
   return (
     <>
       <Helmet>
@@ -57,7 +74,7 @@ const MessageDetails = () => {
               </div>
               <button
                 className="deleting"
-                onClick={() => deletingMenu(data._id)}
+                onClick={() => handleDelete(data._id)}
               >
                 Delete
               </button>

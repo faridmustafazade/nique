@@ -8,6 +8,7 @@ import Header from "../../../Layouts/admin/Header";
 import "./style.scss";
 import favicon from "../../../Assets/Images/favicon.jpg";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const Message = () => {
   const [token] = useToken();
@@ -20,7 +21,7 @@ const Message = () => {
     const res = await axios.get("http://localhost:2003/api/contact");
     setData(res.data);
   };
-  const deletingMenu = async (id) => {
+  const deletingMessage = async (id) => {
     await axios.delete(`http://localhost:2003/api/contact/${id}`);
     await getData();
   };
@@ -46,6 +47,23 @@ const Message = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deletingMessage(id);
+        Swal.fire("Deleted!", "Message has been deleted.", "success");
+      }
+    });
+  };
   return (
     <>
       <Helmet>
@@ -93,7 +111,7 @@ const Message = () => {
                           </div>
                           <button
                             className="deleting"
-                            onClick={() => deletingMenu(d._id)}
+                            onClick={() => handleDelete(d._id)}
                           >
                             Delete
                           </button>

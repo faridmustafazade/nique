@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../../Layouts/client/Footer";
 import { removeAll, removeToWishlist } from "../../../Redux/Slice/Wishlist";
 import "./style.scss";
@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 const WishListPage = () => {
   const wishlist = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <>
       <Helmet>
@@ -40,40 +41,57 @@ const WishListPage = () => {
           <div className="side-right">
             <div className="container">
               <div className="side-down">
-                {wishlist.data?.map((element) => (
-                  <div key={element._id} className="starters-menu">
-                    <div className="eat">
-                      <div className="eat-image">
-                        <div className="image">
-                          <img src={element.image} alt="" />
-                        </div>
-                      </div>
-                      <div className="texts">
-                        <div className="cost">
-                          <h3 className="food-name">{element.name}</h3>
-                          <p className="amount">$ {element.price}</p>
-                          <div className="buttons">
-                            <button
-                              className="deleting"
-                              onClick={() =>
-                                dispatch(removeToWishlist(element._id))
-                              }
-                            >
-                              Delete
-                            </button>
+                {wishlist?.data.find((elem) => elem._id) ? (
+                  wishlist.data?.map((element) => (
+                    <div key={element._id} className="starters-menu">
+                      <div className="eat">
+                        <div className="eat-image">
+                          <div className="image">
+                            <img src={element.image} alt="" />
                           </div>
                         </div>
-                        <p className="food-about">{element.about}</p>
+                        <div className="texts">
+                          <div className="cost">
+                            <h3 className="food-name">{element.name}</h3>
+                            <p className="amount">$ {element.price}</p>
+                            <div className="buttons">
+                              <button
+                                className="deleting"
+                                onClick={() =>
+                                  dispatch(removeToWishlist(element._id))
+                                }
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+                          <p className="food-about">{element.about}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-                <button
-                  className="deleting-all"
-                  onClick={() => dispatch(removeAll([]))}
-                >
-                  Delete All
-                </button>
+                  ))
+                ) : (
+                  <h3
+                    style={{
+                      color: "white",
+                      textAlign: "center",
+                      fontFamily: "chillax",
+                      fontSize: "2rem",
+                      paddingTop: "200px",
+                      paddingBottom: "200px",
+                    }}
+                  >
+                    Empty 
+                  </h3>
+                )}
+                {wishlist?.data.find((elem) => elem._id) && (
+                  <button
+                    className="deleting-all"
+                    onClick={() => dispatch(removeAll([]))}
+                  >
+                    Delete All
+                  </button>
+                )}
 
                 <div className="menu-footer">
                   <div className="nique">

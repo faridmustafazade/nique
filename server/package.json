@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.4",
     "nodemon": "^2.0.22",
+    "sequelize": "^6.32.1",
     "stripe": "^12.10.0"
   }
 }
