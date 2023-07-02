@@ -15,18 +15,42 @@ const SignUp = () => {
     password: "",
     phone: "",
     birthday: "",
-    image: "",
+    image: null,
   });
   const dispatch = useDispatch();
 
-  
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setAuthData({ ...authData, image: base64 });
+  };
+
   const onChange = (e) => {
     setAuthData({ ...authData, [e.target.name]: e.target.value });
   };
 
   const authFunc = () => {
-    dispatch(registerActions(authData));
+    // Convert the image value to a string
+    const data = {
+      ...authData,
+      image: authData.image ? authData.image.toString() : "",
+    };
+    dispatch(registerActions(data));
   };
+
   console.log(authData);
   return (
     <>
@@ -37,7 +61,6 @@ const SignUp = () => {
         <meta name="theme-color" content="#ccc" />
       </Helmet>
       <div className="full-divs">
-        
         <div className="div">
           <h1 className="h1">Nique.</h1>
           <div className="inputs">
@@ -129,11 +152,9 @@ const SignUp = () => {
             <input
               id="image"
               name="image"
-              type="text"
+              type="file" // Set input type to 'file'
               className="input"
-              placeholder="Image"
-              onChange={onChange}
-              value={authData.image}
+              onChange={(e) => handleFileUpload(e)}
             />
           </div>
           <div className="link">

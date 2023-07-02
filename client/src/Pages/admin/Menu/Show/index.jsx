@@ -32,6 +32,25 @@ const Show = () => {
   const [classe, setClasse] = useState([]);
   const [sorting, setSorting] = useState(true);
 
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setState({ ...state, image: base64 });
+  };
+
   const getData = async () => {
     const res = await axios.get("http://localhost:2003/api/menu");
     setData(res.data);
@@ -215,7 +234,7 @@ const Show = () => {
                   ))}
 
                 <Modal
-                  title="Menu Updating"
+                  title="Menu Update"
                   centered
                   open={modal2Open}
                   onOk={() => {
@@ -226,10 +245,11 @@ const Show = () => {
                 >
                   <label>Enter image</label>
                   <Input
+                    id="image"
                     name="image"
-                    onChange={handleChange}
-                    value={state.image}
-                    placeholder="Enter image"
+                    type="file" // Set input type to 'file'
+                    className="input"
+                    onChange={(e) => handleFileUpload(e)}
                   />
 
                   <label>Enter name</label>

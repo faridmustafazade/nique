@@ -187,7 +187,7 @@ const ShowClass = () => {
                   ))}
 
                 <Modal
-                  title="Vertically centered modal dialog"
+                  title="Class Update"
                   centered
                   open={modal2Open}
                   onOk={() => {

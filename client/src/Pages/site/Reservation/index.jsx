@@ -144,7 +144,11 @@ const Reservation = () => {
                         className="input"
                         placeholder="2"
                       />
-                      {errors.count && <p>{errors.count.message}</p>}
+                      {errors.count && (
+                        <p style={{ color: "#face8d" }}>
+                          {errors.count.message}
+                        </p>
+                      )}
                     </div>
                     <div className="form">
                       <label className="label">Table</label>
@@ -153,7 +157,11 @@ const Reservation = () => {
                         className="input"
                         placeholder="Table 1"
                       />
-                      {errors.tables && <p>{errors.tables.message}</p>}
+                      {errors.tables && (
+                        <p style={{ color: "#face8d" }}>
+                          {errors.tables.message}
+                        </p>
+                      )}
                     </div>
                     <div className="form">
                       <label className="label">Date</label>
@@ -163,7 +171,11 @@ const Reservation = () => {
                         placeholder="01.05.2003"
                         {...register("dates.day")}
                       />
-                      {errors.dates?.day && <p>{errors.dates.day.message}</p>}
+                      {errors.dates?.day && (
+                        <p style={{ color: "#face8d" }}>
+                          {errors.dates.day.message}
+                        </p>
+                      )}
                     </div>
                     <div className="form">
                       <label className="label">Time</label>
@@ -172,7 +184,11 @@ const Reservation = () => {
                         placeholder="6:00 PM"
                         {...register("dates.hour")}
                       />
-                      {errors.dates?.hour && <p>{errors.dates.hour.message}</p>}
+                      {errors.dates?.hour && (
+                        <p style={{ color: "#face8d" }}>
+                          {errors.dates.hour.message}
+                        </p>
+                      )}
                     </div>
                     <button className="send">book a table</button>
                   </form>

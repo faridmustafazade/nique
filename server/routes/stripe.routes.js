@@ -7,10 +7,13 @@ const stripe = Stripe(process.env.STRIPE_KEY);
 const router = express.Router();
 
 router.post("/create-checkout-session", async (req, res) => {
+  const cartString = JSON.stringify(req.body.cartItems);
+  const truncatedCartString = cartString.substring(0, 500);
+
   const customer = await stripe.customers.create({
     metadata: {
       userId: req.body.userId,
-      cart: JSON.stringify(req.body.cartItems),
+      cart: truncatedCartString,
     },
   });
 
@@ -25,7 +28,7 @@ router.post("/create-checkout-session", async (req, res) => {
             id: item.id,
           },
         },
-        unit_amount: item.price*100,
+        unit_amount: item.price * 100,
       },
       quantity: item.cartQuantity,
     };
@@ -93,7 +96,22 @@ router.post("/create-checkout-session", async (req, res) => {
 
 //Create Order
 const createOrder = async (customer, data) => {
-  const Items = JSON.parse(customer.metadata.cart);
+  const cartString = customer.metadata.cart;
+  console.log("Cart String:", cartString); // Add this line to check the cartString value
+
+  let Items;
+
+  try {
+    Items = JSON.parse(cartString);
+    console.log(JSON.parse(cartString));
+  } catch (err) {
+    console.log("Error parsing cart JSON:", err);
+    console.log("Cart String length:", cartString.length);
+    console.log("Trimmed Cart String:", cartString.trim());
+    return;
+  }
+
+  // Rest of your code for creating the order...
 
   const newOrder = new Order({
     userId: customer.metadata.userId,
@@ -108,12 +126,13 @@ const createOrder = async (customer, data) => {
 
   try {
     const savedOrder = await newOrder.save();
-
     console.log("Processed Order:", savedOrder);
   } catch (err) {
-    console.log(err);
+    console.log("Error saving order to MongoDB:", err);
   }
+  
 };
+
 
 //Stripe Webbooks
 

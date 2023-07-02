@@ -154,7 +154,7 @@ const ShowBlog = () => {
                   ))}
 
                 <Modal
-                  title="Vertically centered modal dialog"
+                  title="Blog Update"
                   centered
                   open={modal2Open}
                   onOk={() => {

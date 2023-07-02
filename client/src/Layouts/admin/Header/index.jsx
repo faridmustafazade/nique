@@ -7,7 +7,7 @@ import useToken from "../../../Hooks/useToken";
 const Header = () => {
   const logoutFunc = () => {
     localStorage.clear();
-    window.location = "/login-admin";
+    window.location = "/";
   };
   const [token] = useToken();
 
