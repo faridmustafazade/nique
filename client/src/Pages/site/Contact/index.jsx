@@ -1,6 +1,6 @@
 import Aos from "aos";
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/client/Footer";
 import "./style.scss";
 import "aos/dist/aos.css";
