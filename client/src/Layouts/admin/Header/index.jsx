@@ -14,7 +14,7 @@ const Header = () => {
   const items = [
     {
       label: (
-        <Link className="drop-profile" to={'/admin'}>
+        <Link className="drop-profile" to={"/admin"}>
           <img
             src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
             alt=""
@@ -56,7 +56,11 @@ const Header = () => {
                   <Avatar
                     className="avatar"
                     alt="Remy Sharp"
-                    src={token?.user?.image !==""?token?.user?.image:"https://avatars.githubusercontent.com/u/126600662?v=4"}
+                    src={
+                      token?.user?.image !== ""
+                        ? token?.user?.image
+                        : "https://avatars.githubusercontent.com/u/126600662?v=4"
+                    }
                   />
                 </div>
                 <div className="text">
