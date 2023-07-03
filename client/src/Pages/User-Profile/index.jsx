@@ -239,9 +239,36 @@ const UserProfile = () => {
                                 ))}
                               </div>
                             </div>
+
+                            <div className="texts" style={{ width: 200 }}>
+                              <div>
+                                {d.products?.map((pro) => (
+                                  <p style={{ fontFamily: "chillax-regular" }}>
+                                    Price: {pro.price}$
+                                  </p>
+                                ))}
+                                {d.products?.map((pro) => (
+                                  <p style={{ fontFamily: "chillax-regular" }}>
+                                    Quantity: {pro.cartQuantity}
+                                  </p>
+                                ))}
+                                <p style={{ fontFamily: "chillax-regular" }}>
+                                  Subtotal price: {d.subtotal / 100}$
+                                </p>
+                                <p style={{ fontFamily: "chillax-regular" }}>
+                                  Total price: {d.total / 100}$
+                                </p>
+                              </div>
+                            </div>
                             <div>
                               <p style={{ fontFamily: "chillax-regular" }}>
-                                Payment time: {d.createdAt.substring(0, 10)}
+                                Payment status: {d.payment_status}
+                              </p>
+                              <p style={{ fontFamily: "chillax-regular" }}>
+                                Payment day: {d.createdAt.substring(0, 10)}
+                              </p>
+                              <p style={{ fontFamily: "chillax-regular" }}>
+                                Payment time: {d.createdAt.substring(11, 16)}
                               </p>
                               <p
                                 style={{
@@ -253,22 +280,9 @@ const UserProfile = () => {
                                   {d.delivery_status}
                                 </span>
                               </p>
-                            </div>
-                            <div className="texts" style={{ width: 200 }}>
-                              <div>
-                                <p style={{ fontFamily: "chillax-regular" }}>
-                                  City: {d.shipping.address.city}
-                                </p>
-                                <p style={{ fontFamily: "chillax-regular" }}>
-                                  Subtotal price: {d.subtotal}
-                                </p>
-                                <p style={{ fontFamily: "chillax-regular" }}>
-                                  Total price: {d.total}
-                                </p>
-                                <p style={{ fontFamily: "chillax-regular" }}>
-                                  Payment status: {d.payment_status}
-                                </p>
-                              </div>
+                              <p style={{ fontFamily: "chillax-regular" }}>
+                                City: {d.shipping.address.city}
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -308,11 +322,11 @@ const UserProfile = () => {
                   >
                     <label>Enter image</label>
                     <Input
-                       id="image"
-                       name="image"
-                       type="file" // Set input type to 'file'
-                       className="input"
-                       onChange={(e) => handleFileUpload(e)}
+                      id="image"
+                      name="image"
+                      type="file" // Set input type to 'file'
+                      className="input"
+                      onChange={(e) => handleFileUpload(e)}
                     />
                     <label>Enter fisrtName</label>
                     <Input

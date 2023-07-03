@@ -7,7 +7,6 @@ const Aside = () => {
   const [menu, setMenu] = useState(false);
   const [classes, setClasses] = useState(false);
   const [blog, setBlog] = useState(false);
-  const [users, setUsers] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -104,16 +103,12 @@ const Aside = () => {
                 </ul>
               )}
             </div>
-            <div className="asides class" onClick={() => setUsers(!users)}>
-              <div className="show">
-                <img
-                  src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
-                  alt=""
-                />
-                <Link className="asides-text" to={"/admin/users"}>
-                  users
-                </Link>
-              </div>
+            <div className="asides" onClick={() => navigate("/admin/users")}>
+              <img
+                src="https://uploads-ssl.webflow.com/61f7c38c8268bb1cdf5a1316/6200c36b574bad028b19eefd_Icons-7.svg"
+                alt=""
+              />
+              <p className="asides-text">users</p>
             </div>
             <div className="asides" onClick={() => navigate("/admin/message")}>
               <img
