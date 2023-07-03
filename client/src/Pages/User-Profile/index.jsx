@@ -328,7 +328,7 @@ const UserProfile = () => {
                       className="input"
                       onChange={(e) => handleFileUpload(e)}
                     />
-                    <label>Enter fisrtName</label>
+                    <label>Enter firstName</label>
                     <Input
                       name="firstName"
                       onChange={handleChange}

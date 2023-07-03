@@ -146,7 +146,7 @@ const Profile = () => {
               </button>
               </div>
               <Modal
-                title="Update User Profile"
+                title="Update Profile"
                 centered
                 open={modal2Open}
                 onOk={() => {
@@ -163,7 +163,7 @@ const Profile = () => {
                   className="input"
                   onChange={(e) => handleFileUpload(e)}
                 />
-                <label>Enter fisrtName</label>
+                <label>Enter firstName</label>
                 <Input
                   name="firstName"
                   onChange={handleChange}
