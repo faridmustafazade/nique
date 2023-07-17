@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { registerActions } from "../../../Redux/Actions/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import "./style.scss";
 import favicon from "../../../Assets/Images/favicon.jpg";
 import { Helmet } from "react-helmet";
 const SignUp = () => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  };
   const [authData, setAuthData] = useState({
     firstName: "",
     lastName: "",
@@ -112,15 +117,30 @@ const SignUp = () => {
             <label htmlFor="password" className="label">
               Password
             </label>
-            <input
-              value={authData.password}
-              name="password"
-              onChange={onChange}
-              type="password"
-              id="password"
-              placeholder="Password"
-              className="input"
-            />
+            <div style={{ position: "relative" }}>
+              <input
+                style={{ width: "100%" }}
+                value={authData.password}
+                name="password"
+                onChange={onChange}
+                type={show ? "text" : "password"}
+                id="password"
+                placeholder="Password"
+                className="input"
+              />
+              <label
+                style={{
+                  cursor: "pointer",
+                  fontSize: 20,
+                  position: "absolute",
+                  right: "15px",
+                  top: "16px",
+                }}
+                onClick={handleShow}
+              >
+                {show ? <BsEyeFill /> : <BsEyeSlashFill />}
+              </label>
+            </div>
             <label htmlFor="phone" className="label">
               Phone
             </label>
@@ -149,11 +169,12 @@ const SignUp = () => {
             <label htmlFor="image" className="label">
               Image
             </label>
+            
             <input
               id="image"
               name="image"
               type="file" // Set input type to 'file'
-              className="input"
+              className="input input-1"
               onChange={(e) => handleFileUpload(e)}
             />
           </div>

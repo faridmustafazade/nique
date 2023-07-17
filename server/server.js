@@ -17,7 +17,8 @@ dotenv.config();
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+
+app.use(bodyParser.json({ limit: "1000mb" })); // Increase the limit to allow larger payloads
 
 app.use("/api/menu", router);
 app.use("/api/menu_category", categoryRouter);

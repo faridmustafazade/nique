@@ -72,12 +72,20 @@ const MessageDetails = () => {
               <div className="message-context">
                 <p className="message-c">{data.message}</p>
               </div>
-              <button
-                className="deleting"
-                onClick={() => handleDelete(data._id)}
-              >
-                Delete
-              </button>
+              <div style={{display:"flex", gap:20}}>
+                <button
+                  className="deleting"
+                  onClick={() => handleDelete(data._id)}
+                >
+                  Delete
+                </button>
+                <button
+                  className="deleting"
+                  onClick={() => navigate('/admin/message')}
+                >
+                  Go Back
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/client/Footer";
 import { Helmet } from "react-helmet";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -48,7 +47,6 @@ const NotFound = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

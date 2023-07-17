@@ -43,13 +43,13 @@ const AddMenu = () => {
       .then((res) => {
         toast.success(res.data.msg, {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1000,
         });
       })
       .catch((err) => {
         toast.error(err.response.data.msg, {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1000,
         });
       });
   };

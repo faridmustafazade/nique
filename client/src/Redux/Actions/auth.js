@@ -13,7 +13,7 @@ export const registerAction = (authData) => async (dispatch) => {
   } catch (error) {
     toast(error.response.data.msg, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 1000,
     });
   }
 };
@@ -26,10 +26,14 @@ export const registerActions = (authData) => async (dispatch) => {
     dispatch({ type: "REGISTER", payload: data });
 
     window.location = "/sign-in";
+    toast.success("Register successfully", {
+      position: "top-right",
+      autoClose: 1000,
+    });
   } catch (error) {
     toast(error.response.data.msg, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 1000,
     });
   }
 };
@@ -45,7 +49,7 @@ export const loginAction = (authData) => async (dispatch) => {
   } catch (error) {
     toast(error.response.data.msg, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 1000,
     });
   }
 };
@@ -57,10 +61,14 @@ export const loginActions = (authData) => async (dispatch) => {
     );
     dispatch({ type: "LOGIN", payload: data });
     window.location = "/";
+    toast.success("Login successfully", {
+      position: "top-right",
+      autoClose: 1000,
+    });
   } catch (error) {
     toast(error.response.data.msg, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 1000,
     });
   }
 };

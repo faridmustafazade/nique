@@ -182,7 +182,7 @@ const Show = () => {
                       ))}
                     </Select>
                   </div>
-                  <Button onClick={Sorting}>Sort by price</Button>
+                  <Button style={{fontFamily:'chillax'}} onClick={Sorting}>Sort by price</Button>
                 </div>
                 {data
 

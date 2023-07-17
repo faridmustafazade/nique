@@ -4,10 +4,15 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import favicon from "../../../Assets/Images/favicon.jpg";
 import "./style.scss";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+
 import { Helmet } from "react-helmet";
 const SignIn = () => {
   const navigate = useNavigate();
-
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  };
   const [authData, setAuthData] = useState({
     email: "",
     password: "",
@@ -51,15 +56,20 @@ const SignIn = () => {
             <label htmlFor="password" className="label">
               Password
             </label>
-            <input
-              value={authData.password}
-              name="password"
-              onChange={onChange}
-              type="password"
-              id="password"
-              placeholder="Password"
-              className="input"
-            />
+            <div style={{ position: "relative" }}>
+              <input style={{width:"100%"}}
+                value={authData.password}
+                name="password"
+                onChange={onChange}
+                type={show ? "text" : "password"}
+                id="password"
+                placeholder="Password"
+                className="input"
+              />
+              <label style={{cursor:"pointer",fontSize:20,position:'absolute',right:'15px',top:'16px'}} onClick={handleShow}>
+                {show ? <BsEyeFill /> : <BsEyeSlashFill />}
+              </label>
+            </div>
             <button type="submit" className="button">
               Log in
             </button>

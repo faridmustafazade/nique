@@ -42,13 +42,13 @@ const Reservation = () => {
       .then((res) => {
         toast.success(res.data.msg, {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 1000,
         });
       })
       .catch((err) => {
         toast.error(err.response.data.msg, {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 1000,
         });
       });
   };

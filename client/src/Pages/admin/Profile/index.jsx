@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Aside from "../../../Layouts/admin/Aside";
 import "./style.scss";
 import Header from "../../../Layouts/admin/Header";
@@ -12,8 +12,9 @@ import axios from "axios";
 const Profile = () => {
   const [token] = useToken();
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
   const [modal2Open, setModal2Open] = useState(false);
- const [state, setState] = useState({
+  const [state, setState] = useState({
     image: "",
     firstName: "",
     lastName: "",
@@ -22,12 +23,14 @@ const Profile = () => {
   });
   const [userId, setUserId] = useState("");
 
-
+  const getData = async () => {
+    const res = await axios.get("http://localhost:2003/api");
+    setData(res.data);
+  };
   const logoutFunc = () => {
     localStorage.clear();
     window.location = "/login-admin";
   };
-
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -64,9 +67,12 @@ const Profile = () => {
   };
   const updateData = async () => {
     await axios.put(`http://localhost:2003/api/${userId}`, state);
-    localStorage.clear();
     window.location.reload();
   };
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -86,65 +92,69 @@ const Profile = () => {
             <Header />
             <div className="side-down">
               <h1 className="down-h1">Profile</h1>
-              <div className="white-div">
-                <img
-                  style={{ width: "100%", objectFit: "cover" }}
-                  src="https://assets.website-files.com/61f7c38c8268bb1cdf5a1316/61fbd739248733a9189cdf17_Uesr-Banner.png"
-                  alt=""
-                />
-                <div className="profile">
-                  <div className="profile-icon">
+              {data
+                .filter((item) => item._id === token?.user?._id )
+                .map((d) => (
+                  <div className="white-div">
                     <img
-                      src={
-                        token?.user?.image !== ""
-                          ? token?.user?.image
-                          : "https://avatars.githubusercontent.com/u/126600662?v=4"
-                      }
+                      style={{ width: "100%", objectFit: "cover" }}
+                      src="https://assets.website-files.com/61f7c38c8268bb1cdf5a1316/61fbd739248733a9189cdf17_Uesr-Banner.png"
                       alt=""
                     />
+                    <div className="profile">
+                      <div className="profile-icon">
+                        <img
+                          src={
+                            d.image !== ""
+                              ? d.image
+                              : "https://avatars.githubusercontent.com/u/126600662?v=4"
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <div className="profile-text">
+                        <h3>
+                          {d.firstName} {d.lastName}
+                        </h3>
+                        <h4>{d.email}</h4>
+                      </div>
+                    </div>
+                    <div className="bio">
+                      <div className="bio-text">
+                        <h4>
+                          Full Name :{" "}
+                          <span>
+                            {d.firstName} {d.lastName}
+                          </span>
+                        </h4>
+                        <h4>
+                          Mobile : <span>{d.phone}</span>
+                        </h4>
+                        <h4>
+                          E-mail : <span>{d.email}</span>
+                        </h4>
+                      </div>
+                      <div className="bio-text">
+                        <h4>
+                          Username : <span>{d.username}</span>
+                        </h4>
+                        <h4>
+                          Birthday : <span>{d.birthday}</span>
+                        </h4>
+                      </div>
+                    </div>
+                    <button
+                      type="primary"
+                      onClick={() => {
+                        setModal2Open(true);
+                        editClick(token.user);
+                      }}
+                      className="back"
+                    >
+                      Edit Profile
+                    </button>
                   </div>
-                  <div className="profile-text">
-                    <h3>
-                      {token?.user?.firstName} {token?.user?.lastName}
-                    </h3>
-                    <h4>{token?.user?.email}</h4>
-                  </div>
-                </div>
-                <div className="bio">
-                  <div className="bio-text">
-                    <h4>
-                      Full Name :{" "}
-                      <span>
-                        {token?.user?.firstName} {token?.user?.lastName}
-                      </span>
-                    </h4>
-                    <h4>
-                      Mobile : <span>{token?.user?.phone}</span>
-                    </h4>
-                    <h4>
-                      E-mail : <span>{token?.user?.email}</span>
-                    </h4>
-                  </div>
-                  <div className="bio-text">
-                    <h4>
-                      Username : <span>{token?.user?.username}</span>
-                    </h4>
-                    <h4>
-                      Birthday : <span>{token?.user?.birthday}</span>
-                    </h4>
-                  </div>
-                </div>
-              <button
-                type="primary"
-                onClick={() => {
-                  setModal2Open(true);
-                  editClick(token.user);
-                }}
-                className="back"
-              >
-                Edit Profile
-              </button>
-              </div>
+                ))}
               <Modal
                 title="Update Profile"
                 centered

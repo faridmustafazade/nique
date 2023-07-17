@@ -12,6 +12,7 @@ const UserProfile = () => {
   const [token] = useToken();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [data2, setData2] = useState([]);
   const [order, setOrder] = useState([]);
   const [state, setState] = useState({
     image: "",
@@ -46,6 +47,10 @@ const UserProfile = () => {
     const res = await axios.get("http://localhost:2003/api/reservation");
     setData(res.data);
   };
+  const getData2 = async () => {
+    const res = await axios.get("http://localhost:2003/api");
+    setData2(res.data);
+  };
   const getOrder = async () => {
     const res = await axios.get(
       `http://localhost:2003/api/orders/find/${token?.user?.id}`
@@ -79,12 +84,12 @@ const UserProfile = () => {
   };
   const updateData = async () => {
     await axios.put(`http://localhost:2003/api/${userId}`, state);
-    localStorage.clear();
     window.location.reload();
   };
 
   useEffect(() => {
     getData();
+    getData2();
     getOrder();
   }, []);
 
@@ -145,59 +150,67 @@ const UserProfile = () => {
                       />
                     </Link>
                   </div>
-                  <div className="name">
-                    {token?.user && (
-                      <h1 className="our-menud">
-                        {token?.user?.firstName} {token?.user?.lastName}
-                      </h1>
-                    )}
-                  </div>
+                  {data2
+                    .filter((item) => item._id === token?.user?._id)
+                    .map((d2) => (
+                      <div key={d2._id} className="name">
+                        {token?.user && (
+                          <h1 className="our-menud">
+                            {d2.firstName} {d2.lastName}
+                          </h1>
+                        )}
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>
             <div className="side-right">
               <div className="container">
                 <div className="side-down">
-                  <div id="starters">
-                    <h2 className="chef">Profile</h2>
-                    <div className="chef-about">
-                      <img src={token?.user?.image} alt="" />
-                      <div className="texts">
-                        <h3 className="chef-name">
-                          {token?.user?.firstName} {token?.user?.lastName}
-                        </h3>
-                        <p className="chef-about">{token?.user?.email}</p>
+                  {data2
+                    .filter((item) => item._id === token?.user?._id)
+                    .map((da2) => (
+                      <div key={da2._id} id="starters">
+                        <h2 className="chef">Profile</h2>
+                        <div className="chef-about">
+                          <img src={da2.image} alt="" />
+                          <div className="texts">
+                            <h3 className="chef-name">
+                              {da2.firstName} {da2.lastName}
+                            </h3>
+                            <p className="chef-about">{da2.email}</p>
+                          </div>
+                        </div>
+                        <div className="bio">
+                          <div className="bio-text">
+                            <div className="text">
+                              <h4>Full Name : </h4>
+                              <p style={{ textTransform: "capitalize" }}>
+                                {da2.firstName} {da2.lastName}
+                              </p>
+                            </div>
+                            <div className="text">
+                              <h4>Mobile :</h4>
+                              <p>{da2.phone}</p>
+                            </div>
+                            <div className="text">
+                              <h4>E-mail :</h4>
+                              <p>{da2.email}</p>
+                            </div>
+                          </div>
+                          <div className="bio-text text-b">
+                            <div className="text">
+                              <h4>Username :</h4>
+                              <p>{da2.username}</p>
+                            </div>
+                            <div className="text">
+                              <h4>Birthday :</h4>
+                              <p>{da2.birthday}</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    <div className="bio">
-                      <div className="bio-text">
-                        <div className="text">
-                          <h4>Full Name : </h4>
-                          <p style={{ textTransform: "capitalize" }}>
-                            {token?.user?.firstName} {token?.user?.lastName}
-                          </p>
-                        </div>
-                        <div className="text">
-                          <h4>Mobile :</h4>
-                          <p>{token?.user?.phone}</p>
-                        </div>
-                        <div className="text">
-                          <h4>E-mail :</h4>
-                          <p>{token?.user?.email}</p>
-                        </div>
-                      </div>
-                      <div className="bio-text text-b">
-                        <div className="text">
-                          <h4>Username :</h4>
-                          <p>{token?.user?.username}</p>
-                        </div>
-                        <div className="text">
-                          <h4>Birthday :</h4>
-                          <p>{token?.user?.birthday}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    ))}
 
                   <div className="reserv-menu">
                     <h2 className="reservation">My Reservations</h2>
@@ -230,7 +243,7 @@ const UserProfile = () => {
                     {order
                       .filter((item) => item.userId.includes(token.user._id))
                       .map((d) => (
-                        <div className="reserv-menu">
+                        <div key={d._id} className="reserv-menu">
                           <div className="eat">
                             <div className="eat-image">
                               <div className="image">
@@ -267,9 +280,9 @@ const UserProfile = () => {
                               <p style={{ fontFamily: "chillax-regular" }}>
                                 Payment day: {d.createdAt.substring(0, 10)}
                               </p>
-                              <p style={{ fontFamily: "chillax-regular" }}>
+                              {/* <p style={{ fontFamily: "chillax-regular" }}>
                                 Payment time: {d.createdAt.substring(11, 16)}
-                              </p>
+                              </p> */}
                               <p
                                 style={{
                                   fontFamily: "chillax-regular",
