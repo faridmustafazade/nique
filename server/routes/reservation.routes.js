@@ -5,7 +5,7 @@ const {
   getOne,
   postData,
   deleteById,
-} = require("../controllers/reservation.controller");
+} = require("../Controllers/reservation.controller");
 
 const router = express.Router();
 
