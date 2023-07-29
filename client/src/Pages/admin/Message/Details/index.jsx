@@ -13,13 +13,13 @@ const MessageDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const deletingMessage = async (id) => {
-    await axios.delete(`http://localhost:2003/api/contact/${params.id}`);
+    await axios.delete(`https://nique.onrender.com/api/contact/${params.id}`);
     await getData();
     navigate("/admin/message");
   };
   const getData = async () => {
     const res = await axios.get(
-      `http://localhost:2003/api/contact/${params.id}`
+      `https://nique.onrender.com/api/contact/${params.id}`
     );
     setData(res.data);
   };

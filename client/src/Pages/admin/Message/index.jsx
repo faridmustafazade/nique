@@ -18,11 +18,11 @@ const Message = () => {
   const [value, setValue] = useState("");
   const [sorting, setSorting] = useState(true);
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api/contact");
+    const res = await axios.get("https://nique.onrender.com/api/contact");
     setData(res.data);
   };
   const deletingMessage = async (id) => {
-    await axios.delete(`http://localhost:2003/api/contact/${id}`);
+    await axios.delete(`https://nique.onrender.com/api/contact/${id}`);
     await getData();
   };
   const Sorting = () => {

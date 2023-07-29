@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export const registerAction = (authData) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      "http://localhost:2003/api/register",
+      "https://nique.onrender.com/api/register",
       authData
     );
     dispatch({ type: "REGISTER", payload: data });
@@ -20,7 +20,7 @@ export const registerAction = (authData) => async (dispatch) => {
 export const registerActions = (authData) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      "http://localhost:2003/api/register",
+      "https://nique.onrender.com/api/register",
       authData
     );
     dispatch({ type: "REGISTER", payload: data });
@@ -41,7 +41,7 @@ export const registerActions = (authData) => async (dispatch) => {
 export const loginAction = (authData) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      "http://localhost:2003/api/login",
+      "https://nique.onrender.com/api/login",
       authData
     );
     dispatch({ type: "LOGIN", payload: data });
@@ -56,7 +56,7 @@ export const loginAction = (authData) => async (dispatch) => {
 export const loginActions = (authData) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      "http://localhost:2003/api/login",
+      "https://nique.onrender.com/api/login",
       authData
     );
     dispatch({ type: "LOGIN", payload: data });

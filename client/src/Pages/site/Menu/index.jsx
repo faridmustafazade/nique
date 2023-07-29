@@ -25,11 +25,11 @@ const Menu = () => {
     JSON.parse(localStorage.getItem("wishlist")) || []
   );
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api/menu");
+    const res = await axios.get("https://nique.onrender.com/api/menu");
     setData(res.data);
   };
   const getCategory = async () => {
-    const res = await axios.get("http://localhost:2003/api/menu_category");
+    const res = await axios.get("https://nique.onrender.com/api/menu_category");
     setCategory(res.data);
   };
 

@@ -52,20 +52,20 @@ const Show = () => {
   };
 
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api/menu");
+    const res = await axios.get("https://nique.onrender.com/api/menu");
     setData(res.data);
   };
   const getCategory = async () => {
-    const res = await axios.get("http://localhost:2003/api/menu_category");
+    const res = await axios.get("https://nique.onrender.com/api/menu_category");
     setCat(res.data);
   };
   const getClasses = async () => {
-    const res = await axios.get("http://localhost:2003/api/classes");
+    const res = await axios.get("https://nique.onrender.com/api/classes");
     setClasse(res.data);
   };
 
   const deletingMenu = async (id) => {
-    await axios.delete(`http://localhost:2003/api/menu/${id}`);
+    await axios.delete(`https://nique.onrender.com/api/menu/${id}`);
     await getData();
   };
   const handleChange = (e) => {
@@ -85,7 +85,7 @@ const Show = () => {
 
   const updateData = async () => {
     console.log(state);
-    await axios.put(`http://localhost:2003/api/menu/${userId}`, state);
+    await axios.put(`https://nique.onrender.com/api/menu/${userId}`, state);
     await getData();
   };
 

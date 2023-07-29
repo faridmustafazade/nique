@@ -12,7 +12,7 @@ const Classes = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api/classes");
+    const res = await axios.get("https://nique.onrender.com/api/classes");
     setData(res.data);
   };
 

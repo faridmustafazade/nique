@@ -24,7 +24,7 @@ const Profile = () => {
   const [userId, setUserId] = useState("");
 
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api");
+    const res = await axios.get("https://nique.onrender.com/api");
     setData(res.data);
   };
   const logoutFunc = () => {
@@ -66,7 +66,7 @@ const Profile = () => {
     setUserId(userData._id);
   };
   const updateData = async () => {
-    await axios.put(`http://localhost:2003/api/${userId}`, state);
+    await axios.put(`https://nique.onrender.com/api/${userId}`, state);
     window.location.reload();
   };
   useEffect(() => {

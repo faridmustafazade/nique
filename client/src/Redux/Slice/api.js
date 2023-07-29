@@ -1,4 +1,4 @@
-export const url = "http://localhost:2003/api";
+export const url = "https://nique.onrender.com/api";
 
 export const setHeaders = () => {
   const headers = {

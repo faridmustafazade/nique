@@ -36,7 +36,7 @@ const ChangePassword = () => {
     const values = getValues();
     console.log(values);
     axios
-      .post("http://localhost:2003/api/password", {
+      .post("https://nique.onrender.com/api/password", {
         email: values.email,
         currentPassword: values.currentPassword,
         newPassword: values.newPassword,

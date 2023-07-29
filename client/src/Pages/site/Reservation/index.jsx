@@ -29,7 +29,7 @@ const Reservation = () => {
   const onSubmit = () => {
     const values = getValues();
     axios
-      .post("http://localhost:2003/api/reservation", {
+      .post("https://nique.onrender.com/api/reservation", {
         name: values.name,
         email: values.email,
         count: values.count,

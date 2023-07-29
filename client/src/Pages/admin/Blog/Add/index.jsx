@@ -29,7 +29,7 @@ const AddBlog = () => {
     const values = getValues();
     console.log(values);
     axios
-      .post("http://localhost:2003/api/blog", {
+      .post("https://nique.onrender.com/api/blog", {
         image: values.image,
         description: values.description,
         about: values.about,

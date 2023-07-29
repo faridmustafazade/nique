@@ -11,7 +11,7 @@ const Blog = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const getData = async () => {
-    const res = await axios.get("http://localhost:2003/api/blog");
+    const res = await axios.get("https://nique.onrender.com/api/blog");
     setData(res.data);
   };
   useEffect(() => {

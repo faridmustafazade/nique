@@ -28,7 +28,7 @@ const Contact = () => {
     const values = getValues();
 
     axios
-      .post("http://localhost:2003/api/contact", {
+      .post("https://nique.onrender.com/api/contact", {
         name: values.name,
         email: values.email,
         message: values.message,

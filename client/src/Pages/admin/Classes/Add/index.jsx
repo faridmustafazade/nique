@@ -27,7 +27,7 @@ const AddClasses = () => {
     const values = getValues();
     console.log(values);
     axios
-      .post("http://localhost:2003/api/classes", {
+      .post("https://nique.onrender.com/api/classes", {
         chefImage: values.chefImage,
         chefName: values.chefName,
         chefAbout: values.chefAbout,
