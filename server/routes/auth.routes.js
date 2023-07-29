@@ -7,7 +7,7 @@ const {
   getAll,
   deleteById,
   put,
-} = require("../controllers/auth.controllers");
+} = require("../Controllers/auth.controllers");
 
 const router = express.Router();
 
