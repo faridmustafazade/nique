@@ -189,15 +189,14 @@ const Footer = () => {
                   </div>
                 )}
               </div>
-              <button className="av-btn">
+              <button
+                className="av-btn"
+                style={{ padding: "0", display: "flex" }}
+              >
                 <Avatar
                   className="avatar"
                   alt="Remy Sharp"
-                  src={
-                    token?.user?.image !== ""
-                      ? token?.user?.image
-                      : "https://avatars.githubusercontent.com/u/126600662?v=4"
-                  }
+                  src={token?.user?.image !== "" ? token?.user?.image : "none"}
                 />
               </button>
             </div>
