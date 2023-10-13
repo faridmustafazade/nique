@@ -36,7 +36,7 @@ const ChangePassword = () => {
     const values = getValues();
     console.log(values);
     axios
-      .post("https://nique.onrender.com/api/password", {
+      .post("https://nique-mot9.vercel.app/api/password", {
         email: values.email,
         currentPassword: values.currentPassword,
         newPassword: values.newPassword,

@@ -27,7 +27,7 @@ const AddClasses = () => {
     const values = getValues();
     console.log(values);
     axios
-      .post("https://nique.onrender.com/api/classes", {
+      .post("https://nique-mot9.vercel.app/api/classes", {
         chefImage: values.chefImage,
         chefName: values.chefName,
         chefAbout: values.chefAbout,

@@ -11,7 +11,7 @@ const BlogDetails = () => {
   const [data, setData] = useState([]);
   const params = useParams();
   const getData = async () => {
-    const res = await axios.get(`https://nique.onrender.com/api/blog/${params.id}`);
+    const res = await axios.get(`https://nique-mot9.vercel.app/api/blog/${params.id}`);
     setData(res.data);
   };
   useEffect(() => {

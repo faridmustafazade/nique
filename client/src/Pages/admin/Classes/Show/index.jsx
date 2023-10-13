@@ -30,12 +30,12 @@ const ShowClass = () => {
   const [sorting, setSorting] = useState(true);
 
   const getData = async () => {
-    const res = await axios.get("https://nique.onrender.com/api/classes");
+    const res = await axios.get("https://nique-mot9.vercel.app/api/classes");
     setData(res.data);
   };
 
   const deletingClass = async (id) => {
-    await axios.delete(`https://nique.onrender.com/api/classes/${id}`);
+    await axios.delete(`https://nique-mot9.vercel.app/api/classes/${id}`);
     await getData();
   };
   const handleChange = (e) => {
@@ -57,7 +57,7 @@ const ShowClass = () => {
 
   const updateData = async () => {
     console.log(state);
-    await axios.put(`https://nique.onrender.com/api/classes/${userId}`, state);
+    await axios.put(`https://nique-mot9.vercel.app/api/classes/${userId}`, state);
     await getData();
   };
 

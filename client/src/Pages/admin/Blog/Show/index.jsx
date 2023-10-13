@@ -28,12 +28,12 @@ const ShowBlog = () => {
   const [modal2Open, setModal2Open] = useState(false);
 
   const getData = async () => {
-    const res = await axios.get("https://nique.onrender.com/api/blog");
+    const res = await axios.get("https://nique-mot9.vercel.app/api/blog");
     setData(res.data);
   };
 
   const deletingBlog = async (id) => {
-    await axios.delete(`https://nique.onrender.com/api/blog/${id}`);
+    await axios.delete(`https://nique-mot9.vercel.app/api/blog/${id}`);
     await getData();
   };
   const handleChange = (e) => {
@@ -53,7 +53,7 @@ const ShowBlog = () => {
 
   const updateData = async () => {
     console.log(state);
-    await axios.put(`https://nique.onrender.com/api/blog/${userId}`, state);
+    await axios.put(`https://nique-mot9.vercel.app/api/blog/${userId}`, state);
     await getData();
   };
 

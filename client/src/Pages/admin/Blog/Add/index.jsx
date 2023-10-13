@@ -29,7 +29,7 @@ const AddBlog = () => {
     const values = getValues();
     console.log(values);
     axios
-      .post("https://nique.onrender.com/api/blog", {
+      .post("https://nique-mot9.vercel.app/api/blog", {
         image: values.image,
         description: values.description,
         about: values.about,

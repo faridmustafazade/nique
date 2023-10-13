@@ -28,7 +28,7 @@ const Contact = () => {
     const values = getValues();
 
     axios
-      .post("https://nique.onrender.com/api/contact", {
+      .post("https://nique-mot9.vercel.app/api/contact", {
         name: values.name,
         email: values.email,
         message: values.message,

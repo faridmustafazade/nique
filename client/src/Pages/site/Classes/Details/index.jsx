@@ -16,12 +16,12 @@ const ClassesDetails = () => {
 
   const getData = async () => {
     const res = await axios.get(
-      `https://nique.onrender.com/api/classes/${params.id}`
+      `https://nique-mot9.vercel.app/api/classes/${params.id}`
     );
     setData(res.data);
   };
   const getMenu = async () => {
-    const res = await axios.get("https://nique.onrender.com/api/menu");
+    const res = await axios.get("https://nique-mot9.vercel.app/api/menu");
     setMenu(res.data);
   };
   useEffect(() => {

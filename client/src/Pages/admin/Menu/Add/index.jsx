@@ -32,7 +32,7 @@ const AddMenu = () => {
     const values = getValues();
     console.log(values);
     axios
-      .post("https://nique.onrender.com/api/menu", {
+      .post("https://nique-mot9.vercel.app/api/menu", {
         image: values.image,
         name: values.name,
         price: values.price,
@@ -55,11 +55,11 @@ const AddMenu = () => {
   };
 
   const getCategory = async () => {
-    const response = await axios.get("https://nique.onrender.com/api/menu_category");
+    const response = await axios.get("https://nique-mot9.vercel.app/api/menu_category");
     setCategories(response.data);
   };
   const getClasses = async () => {
-    const res = await axios.get("https://nique.onrender.com/api/classes");
+    const res = await axios.get("https://nique-mot9.vercel.app/api/classes");
     setData(res.data);
   };
 

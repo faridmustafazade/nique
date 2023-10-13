@@ -1,4 +1,4 @@
-export const url = "https://nique.onrender.com/api";
+export const url = "https://nique-mot9.vercel.app/api";
 
 export const setHeaders = () => {
   const headers = {

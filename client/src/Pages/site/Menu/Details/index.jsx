@@ -30,7 +30,7 @@ const MenuDetails = () => {
   const [value, setValue] = useState("");
 
   const getData = async () => {
-    const res = await axios.get("https://nique.onrender.com/api/menu");
+    const res = await axios.get("https://nique-mot9.vercel.app/api/menu");
     setData(res.data);
   };
 

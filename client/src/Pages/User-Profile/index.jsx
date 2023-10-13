@@ -44,27 +44,27 @@ const UserProfile = () => {
   };
 
   const getData = async () => {
-    const res = await axios.get("https://nique.onrender.com/api/reservation");
+    const res = await axios.get("https://nique-mot9.vercel.app/api/reservation");
     setData(res.data);
   };
   const getData2 = async () => {
-    const res = await axios.get("https://nique.onrender.com/api");
+    const res = await axios.get("https://nique-mot9.vercel.app/api");
     setData2(res.data);
   };
   const getOrder = async () => {
     const res = await axios.get(
-      `https://nique.onrender.com/api/orders/find/${token?.user?.id}`
+      `https://nique-mot9.vercel.app/api/orders/find/${token?.user?.id}`
     );
     setOrder(res.data);
     console.log(res.data);
   };
   const deletingProfile = async (id) => {
-    await axios.delete(`https://nique.onrender.com/api/${id}`);
+    await axios.delete(`https://nique-mot9.vercel.app/api/${id}`);
     localStorage.clear();
     navigate("/");
   };
   const deletingReserv = async (id) => {
-    await axios.delete(`https://nique.onrender.com/api/reservation/${id}`);
+    await axios.delete(`https://nique-mot9.vercel.app/api/reservation/${id}`);
     getData();
   };
 
@@ -83,7 +83,7 @@ const UserProfile = () => {
     setUserId(userData._id);
   };
   const updateData = async () => {
-    await axios.put(`https://nique.onrender.com/api/${userId}`, state);
+    await axios.put(`https://nique-mot9.vercel.app/api/${userId}`, state);
     window.location.reload();
   };
 
