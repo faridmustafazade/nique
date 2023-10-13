@@ -191,7 +191,7 @@ const Footer = () => {
               </div>
               <button
                 className="av-btn"
-                style={{ padding: "0", display: "flex" }}
+                style={{ paddingTop: "6", display: "flex" }}
               >
                 <Avatar
                   className="avatar"
