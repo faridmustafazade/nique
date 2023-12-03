@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { url } from "../../../../Redux/Slice/api";
-import { useSelector } from "react-redux";
 import useToken from "../../../../Hooks/useToken";
 
 const PayButton = ({ cartItems }) => {

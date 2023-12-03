@@ -135,7 +135,7 @@ const Contact = () => {
                 </div>
                 <div className="form">
                   <label className="label">Message</label>
-                  <input
+                  <textarea
                     {...register("message")}
                     className="input message"
                     placeholder="Your message"

@@ -134,7 +134,7 @@ html {
             font-family: chillax-regular;
             background: transparent;
             border: 1px solid hsla(0, 0%, 100%, 0.1);
-            padding: 20px 0 20px 30px;
+            padding: 20px 30px 20px 30px;
             margin-top: 10px;
             border-radius: 10px;
             &::placeholder {
@@ -150,9 +150,7 @@ html {
             border-color: #face8d;
             outline: 0 none;
           }
-          .message {
-            padding: 70px 0 70px 30px;
-          }
+       
         }
         .send {
           border: none;
