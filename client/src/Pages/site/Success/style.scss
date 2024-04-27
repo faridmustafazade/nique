@@ -32,6 +32,9 @@
       font-weight: 400;
       font-size: 1.125rem;
       color: rgba(255, 255, 255, 0.6);
+      @media only screen and (max-width: 640px) {
+      font-size:1rem;
+      }
     }
     .goMenu {
       margin-top: 30px;
