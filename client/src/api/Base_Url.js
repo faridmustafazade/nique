@@ -1,1 +1,1 @@
-export const Base_Url = "http://localhost:2003";
+export const Base_Url = "https://nique-server.vercel.app";
