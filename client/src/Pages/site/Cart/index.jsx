@@ -172,7 +172,7 @@ const Cart = () => {
         )}
       </div>
     </div>
-    <Footer/>
+    <Footer />
   );
 };
 
