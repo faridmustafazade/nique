@@ -38,6 +38,7 @@ const Cart = () => {
     dispatch(clearCart());
   };
   return (
+    <>
     <div className="full-cart">
       <div className="cart-container">
         <h2 style={{ fontFamily: "chillax" }}>Shopping Cart</h2>
@@ -173,6 +174,7 @@ const Cart = () => {
       </div>
     </div>
     <Footer />
+    </>
   );
 };
 
