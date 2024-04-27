@@ -26,6 +26,9 @@
       font-weight: 500;
       font-size: 5rem;
       color: white;
+      @media only screen and (max-width: 640px) {
+      font-size:3rem;
+      }
     }
     .mattis {
       font-family: chillax-regular;
