@@ -16,7 +16,6 @@ import useToken from "../../../Hooks/useToken";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
   const [token] = useToken();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -93,7 +92,6 @@ const Cart = () => {
                       <img src={cartItem.image} alt={cartItem.name} />
                       <div>
                         <h3 className="name">{cartItem.name}</h3>
-                        <p className="about ">{cartItem.about}</p>
                         <button onClick={() => handleRemoveFromCart(cartItem)}>
                           Remove
                         </button>
