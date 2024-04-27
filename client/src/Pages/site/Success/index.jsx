@@ -5,6 +5,7 @@ import { clearCart, getTotals } from "../../../Redux/Slice/cartSlice";
 import "./style.scss";
 import favicon from "../../../Assets/Images/favicon.jpg";
 import { Helmet } from "react-helmet";
+import Footer from "../../../Layouts/client/Footer";
 
 const CheckoutSuccess = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const CheckoutSuccess = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
