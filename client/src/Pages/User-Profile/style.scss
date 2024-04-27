@@ -161,13 +161,16 @@ html {
               gap: 10px;
             }
             .bio-text {
+              @media only screen and (max-width: 478px) {
+                width: 100%;
+              }
               display: flex;
               flex-direction: column;
               gap: 10px;
               .text {
                 display: flex;
                 @media only screen and (max-width: 478px) {
-                  flex-direction: column;
+                 gap: 20px;
                 }
                 h4 {
                   font-weight: 500;
@@ -178,7 +181,7 @@ html {
                   width: 150px;
                   padding-left: 20px;
                   font-family: chillax-regular;
-                  color: white;
+                  color: #627183;
                   font-size: 14px;
                   @media only screen and (max-width: 478px) {
                     padding-left: 0;
