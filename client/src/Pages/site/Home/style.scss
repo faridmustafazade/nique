@@ -1,0 +1,75 @@
+#full-home {
+  height: 100vh;
+  background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/63238eaac968d0ae4b3f612a_home-hero.webp");
+  background-position: center;
+  background-size: cover;
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 73px;
+    .logo {
+      padding: 3rem 0;
+    }
+    .name {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      .pure {
+        color: #face8d;
+        font-family: bitter-rose;
+        font-size: 5rem;
+        font-weight: 400;
+        line-height: 72px;
+        @media only screen and (max-width: 991px) {
+          font-size: 4rem;
+          line-height: 52px;
+        }
+        @media only screen and (max-width: 767px) {
+          font-size: 4rem;
+          line-height: 36px;
+        }
+        @media only screen and (max-width: 478px) {
+          font-size: 2.5rem;
+        }
+      }
+      .country {
+        color: #ffffff;
+        font-family: chillax;
+        font-size: 10rem;
+        font-weight: 500;
+        line-height: 160px;
+        @media only screen and (max-width: 991px) {
+          font-size: 7rem;
+          line-height: 120px;
+        }
+        @media only screen and (max-width: 767px) {
+          font-size: 5rem;
+          line-height: 80px;
+        }
+        @media only screen and (max-width: 478px) {
+          font-size: 3.0rem;
+        }
+      }
+      .name-about {
+        color: #ffffff;
+        font-family: chillax;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 38.4px;
+        margin-top: 30px;
+        text-align: center;
+        @media only screen and (max-width: 991px) {
+          font-size: 1.25rem;
+          line-height: 23px;
+        }
+        @media only screen and (max-width: 767px) {
+          font-size: 1.125rem;
+          line-height: 19px;
+        }
+      }
+    }
+  }
+}

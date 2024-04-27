@@ -1,0 +1,549 @@
+html {
+  scroll-behavior: smooth;
+}
+#full-user {
+  height: 100vh;
+  background-color: black;
+
+  .user {
+    display: flex;
+    justify-content: space-between;
+    @media only screen and (max-width: 991px) {
+      display: block;
+    }
+    .side-left {
+      position: fixed;
+      height: 100vh;
+      width: 50%;
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf4149201e1abd71e6cf_restaurant-gallery-03-p-800.webp");
+      background-position: center;
+      background-size: cover;
+
+      @media only screen and (max-width: 991px) {
+        position: static;
+        width: 100%;
+      }
+      .side-left-user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 200px;
+        @media only screen and (max-width: 991px) {
+          gap: 140px;
+        }
+        .logo {
+          padding: 3rem 0;
+        }
+        .name {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-items: center;
+          .check {
+            text-transform: capitalize;
+            color: #face8d;
+            font-family: bitter-rose;
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 12px;
+            @media only screen and (max-width: 991px) {
+              font-size: 4rem;
+              line-height: 52px;
+            }
+            @media only screen and (max-width: 767px) {
+              font-size: 4rem;
+              line-height: 36px;
+            }
+            @media only screen and (max-width: 478px) {
+              font-size: 3rem;
+            }
+          }
+          .our-menud {
+            color: #ffffff;
+            font-family: chillax;
+            font-size: 5rem;
+            font-weight: 500;
+            line-height: 120px;
+            text-align: center;
+            @media only screen and (max-width: 991px) {
+              font-size: 4rem;
+            }
+            @media only screen and (max-width: 767px) {
+              font-size: 3.125rem;
+            }
+            @media only screen and (max-width: 478px) {
+              font-size: 2.5rem;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+    .side-right {
+      position: absolute;
+      right: 0;
+      width: 50%;
+      background-color: black;
+      color: #ffff;
+      @media only screen and (max-width: 991px) {
+        position: static;
+        width: 100%;
+      }
+      .side-down {
+        padding-top: 65px;
+        padding-bottom: 115px;
+        padding-left: 65px;
+        padding-right: 65px;
+        display: flex;
+        flex-direction: column;
+        @media only screen and (max-width: 767px) {
+          padding-left: 45px;
+        }
+        @media only screen and (max-width: 478px) {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+        #starters {
+          .chef {
+            padding-top: 1rem;
+            font-family: bitter-rose;
+            color: #face8d;
+            font-size: 4rem;
+            font-weight: 400;
+            text-transform: capitalize;
+          }
+          .chef-about {
+            display: flex;
+            color: white;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+
+            @media only screen and (max-width: 478px) {
+              align-items: flex-start;
+              flex-direction: column;
+            }
+            img {
+              width: 150px;
+              border-radius: 50%;
+            }
+            .texts {
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
+              .chef-name {
+                text-transform: capitalize;
+                font-family: chillax-regular;
+                font-weight: 400;
+                font-size: 1.5rem;
+                padding: 0;
+                color: white;
+                @media only screen and (max-width: 478px) {
+                  font-size: 1rem;
+                }
+              }
+              .chef-about {
+                font-family: chillax-regular;
+                font-weight: 400;
+                font-size: 1rem;
+                margin: 0;
+                color: rgba(255, 255, 255, 0.6);
+              }
+            }
+          }
+          .bio {
+            margin-top: 110px;
+            display: flex;
+            justify-content: space-between;
+            @media only screen and (max-width: 767px) {
+              flex-direction: column;
+              align-items: center;
+              gap: 10px;
+            }
+            .bio-text {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              .text {
+                display: flex;
+                @media only screen and (max-width: 478px) {
+                  flex-direction: column;
+                }
+                h4 {
+                  font-weight: 500;
+                  width: 90px;
+                  font-family: chillax-regular;
+                }
+                p {
+                  width: 150px;
+                  padding-left: 20px;
+                  font-family: chillax-regular;
+                  color: white;
+                  font-size: 14px;
+                  @media only screen and (max-width: 478px) {
+                    padding-left: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .reserv-menu {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding-top: 40px;
+
+          .reservation {
+            padding-top: 1rem;
+            font-family: bitter-rose;
+            color: #face8d;
+            font-size: 4rem;
+            font-weight: 400;
+            text-transform: capitalize;
+            @media only screen and (max-width: 478px) {
+              font-size: 2.5rem;
+            }
+          }
+          .eat {
+            display: flex;
+            color: white;
+            align-items: center;
+            padding: 10px 10px;
+            transition: 0.5s;
+            border-radius: 8px;
+            @media only screen and (max-width: 478px) {
+              align-items: flex-start;
+            }
+            &:hover {
+              background-color: #192d43;
+              .texts {
+                .backs {
+                  background-color: white;
+                  color: #192d43;
+                  cursor: pointer;
+                }
+              }
+            }
+
+            .texts {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              justify-content: space-between;
+              .cost {
+                .food-name {
+                  text-transform: capitalize;
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1.5rem;
+                  padding: 0;
+                  color: white;
+                  @media only screen and (max-width: 478px) {
+                    font-size: 1rem;
+                  }
+                }
+              }
+              .coast {
+                .amount {
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1.25rem;
+                  @media only screen and (max-width: 478px) {
+                    font-size: 0.8rem;
+                  }
+                }
+                .food-about {
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1rem;
+                  color: rgba(255, 255, 255, 0.6);
+                }
+              }
+              .backs {
+                border: none;
+                background-color: #192d43;
+                padding: 10px 30px;
+                font-size: 16px;
+                color: #face8d;
+                font-family: chillax-regular;
+                border-radius: 5px;
+                transition: 0.5s;
+                @media only screen and (max-width: 478px) {
+                  font-size: 13px;
+                }
+                a {
+                  color: #face8d;
+                  text-decoration: none;
+                }
+                &:hover {
+                  scale: 1.05;
+                }
+              }
+            }
+          }
+        }
+        .reserv-menu {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding-top: 40px;
+
+          .reservation {
+            padding-top: 1rem;
+            font-family: bitter-rose;
+            color: #face8d;
+            font-size: 4rem;
+            font-weight: 400;
+            text-transform: capitalize;
+            @media only screen and (max-width: 478px) {
+              font-size: 2.5rem;
+            }
+          }
+          .reserv-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding-top: 40px;
+            .eat {
+              display: flex;
+              color: white;
+              align-items: center;
+              justify-content: space-between;
+              @media only screen and (max-width: 478px) {
+                align-items: flex-start;
+              }
+
+              .eat-image {
+                width: 18%;
+                margin-right: 30px;
+                .image {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 15px;
+                  position: relative;
+                  width: 150px;
+                  border-radius: 10px;
+                  @media only screen and (max-width: 478px) {
+                    width: 70px;
+                  }
+
+                  img {
+                    width: 70%;
+                    border-radius: 10px;
+                  }
+                }
+              }
+              .texts {
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .cost {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  .food-name {
+                    text-transform: capitalize;
+                    font-family: chillax-regular;
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    padding: 0;
+                    color: white;
+                    @media only screen and (max-width: 478px) {
+                      font-size: 1rem;
+                    }
+                  }
+                  .amount {
+                    font-family: chillax-regular;
+                    font-weight: 400;
+                    font-size: 1.25rem;
+                    @media only screen and (max-width: 478px) {
+                      font-size: 0.8rem;
+                    }
+                  }
+                  .shop {
+                    display: none;
+                    font-size: 20px;
+                    @media only screen and (max-width: 478px) {
+                      display: block;
+                    }
+                  }
+                  .addto {
+                    font-size: 1rem;
+                    border: none;
+                    background-color: #192d43;
+                    padding: 10px 30px;
+                    border: 1px solid #192d43;
+                    color: #face8d;
+                    font-family: chillax-regular;
+                    border-radius: 5px;
+                    transition: 0.5s;
+                    @media only screen and (max-width: 478px) {
+                      display: none;
+                    }
+                    a {
+                      color: #face8d;
+                      text-decoration: none;
+                    }
+                    &:hover {
+                      background-color: white;
+                      border: 1px solid #192d43;
+                      color: #192d43;
+                      scale: 1.1;
+                      cursor: pointer;
+                    }
+                  }
+                }
+                .food-about {
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1rem;
+                  color: rgba(255, 255, 255, 0.6);
+                }
+              }
+            }
+          }
+        }
+        .button {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          @media only screen and (max-width: 478px) {
+            display: block;
+          }
+          .back {
+            margin-top: 4rem;
+            width: 20%;
+            border: none;
+            background-color: #192d43;
+            padding: 15px 0;
+            font-size: 16px;
+            color: #face8d;
+            font-family: chillax-regular;
+            border-radius: 5px;
+            transition: 0.5s;
+            @media only screen and (max-width: 478px) {
+              width: 100%;
+              font-size: 13px;
+            }
+            a {
+              color: #face8d;
+              text-decoration: none;
+            }
+            &:hover {
+              background-color: white;
+              color: #192d43;
+              cursor: pointer;
+            }
+          }
+        }
+        .menu-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          padding-top: 100px;
+          @media only screen and (max-width: 767px) {
+            justify-content: center;
+          }
+          .nique {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            align-items: flex-start;
+            @media only screen and (max-width: 767px) {
+              width: 100%;
+              align-items: center;
+              text-align: center;
+              padding-bottom: 100px;
+            }
+            .founder {
+              font-family: chillax-regular;
+              font-size: 0.875rem;
+              font-weight: 400;
+              color: rgba(255, 255, 255, 0.6);
+              span {
+                color: #face8d;
+              }
+            }
+          }
+          .menu-pages {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            @media only screen and (max-width: 767px) {
+              text-align: center;
+              width: 45%;
+            }
+            .page-h3 {
+              padding: 0;
+              color: white;
+              font-family: chillax-regular;
+              font-size: 1.125rem;
+              font-weight: 400;
+            }
+            ul {
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              li {
+                font-weight: 400;
+                font-family: chillax-regular;
+                font-size: 1rem;
+                a {
+                  text-decoration: none;
+                  color: rgba(255, 255, 255, 0.6);
+                  transition: 0.3s;
+                  &:hover {
+                    color: #face8d;
+                  }
+                }
+              }
+            }
+          }
+          .menu-utility {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            @media only screen and (max-width: 767px) {
+              text-align: center;
+              width: 45%;
+            }
+            .uti-h3 {
+              padding: 0;
+              color: white;
+              font-family: chillax-regular;
+              font-size: 1.125rem;
+              font-weight: 400;
+            }
+            ul {
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              li {
+                font-weight: 400;
+                font-family: chillax-regular;
+                font-size: 1rem;
+                a {
+                  text-decoration: none;
+                  color: rgba(255, 255, 255, 0.6);
+                  transition: 0.3s;
+                  &:hover {
+                    color: #face8d;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,235 @@
+html {
+  scroll-behavior: smooth;
+}
+#full-blogd {
+  height: 100vh;
+  background-color: black;
+  .blogd {
+    display: flex;
+    justify-content: space-between;
+    @media only screen and (max-width: 991px) {
+      display: block;
+    }
+    .side-left {
+      position: fixed;
+      height: 100vh;
+      width: 50%;
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/63288058c1f1c7f88c320013_page-blog-p-800.webp");
+      background-position: center;
+      background-size: cover;
+
+      @media only screen and (max-width: 991px) {
+        position: static;
+        width: 100%;
+      }
+      .side-left-blogd {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 200px;
+        @media only screen and (max-width: 991px) {
+          gap: 140px;
+        }
+        .logo {
+          padding: 3rem 0;
+        }
+        .name {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-items: center;
+          .blog {
+            text-transform: capitalize;
+            color: #face8d;
+            font-family: bitter-rose;
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 12px;
+            @media only screen and (max-width: 991px) {
+              font-size: 4rem;
+              line-height: 52px;
+            }
+            @media only screen and (max-width: 767px) {
+              font-size: 4rem;
+              line-height: 36px;
+            }
+            @media only screen and (max-width: 478px) {
+              font-size: 3rem;
+            }
+          }
+          .news {
+            text-transform: capitalize;
+            color: #ffffff;
+            font-family: chillax;
+            font-size: 4rem;
+            font-weight: 500;
+            line-height: 120px;
+            text-align: center;
+            @media only screen and (max-width: 991px) {
+              font-size: 4rem;
+            }
+            @media only screen and (max-width: 767px) {
+              font-size: 3.125rem;
+            }
+            @media only screen and (max-width: 478px) {
+              font-size: 2.5rem;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+    .side-right {
+      position: absolute;
+      right: 0;
+      width: 50%;
+      background-color: black;
+      color: #ffff;
+      padding-top: 60px;
+      @media only screen and (max-width: 991px) {
+        position: static;
+        width: 100%;
+      }
+      .description {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding-left: 70px;
+        padding-right: 70px;
+        width: 100%;
+        font-family: chillax-regular;
+        font-weight: 400;
+        size: 1rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.7;
+        @media only screen and (max-width: 767px) {
+          padding-left: 40px;
+          padding-right: 40px;
+        }
+        @media only screen and (max-width: 478px) {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .desc-img {
+          width: 100%;
+          border-radius: 10px;
+        }
+        .desc-name {
+          margin-top: 20px;
+          color: white;
+          @media only screen and (max-width: 478px) {
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .shop-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        padding-left: 60px;
+        padding-right: 60px;
+        @media only screen and (max-width: 478px) {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        .nique {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          gap: 35px;
+          align-items: flex-start;
+          @media only screen and (max-width: 767px) {
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 100px;
+          }
+          .founder {
+            font-family: chillax-regular;
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            span {
+              color: #face8d;
+            }
+          }
+        }
+        .menu-pages {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          @media only screen and (max-width: 767px) {
+            text-align: center;
+            width: 45%;
+          }
+          .page-h3 {
+            padding: 0;
+            color: white;
+            font-family: chillax-regular;
+            font-size: 1.125rem;
+            font-weight: 400;
+          }
+          ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            li {
+              font-weight: 400;
+              font-family: chillax-regular;
+              font-size: 1rem;
+              a {
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.6);
+                transition: 0.3s;
+                &:hover {
+                  color: #face8d;
+                }
+              }
+            }
+          }
+        }
+        .menu-utility {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          @media only screen and (max-width: 767px) {
+            text-align: center;
+            width: 45%;
+          }
+          .uti-h3 {
+            padding: 0;
+            color: white;
+            font-family: chillax-regular;
+            font-size: 1.125rem;
+            font-weight: 400;
+          }
+          ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            li {
+              font-weight: 400;
+              font-family: chillax-regular;
+              font-size: 1rem;
+              a {
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.6);
+                transition: 0.3s;
+                &:hover {
+                  color: #face8d;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

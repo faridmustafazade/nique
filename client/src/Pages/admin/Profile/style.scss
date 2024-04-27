@@ -1,0 +1,116 @@
+.dashboard-full {
+  display: flex;
+  .side-right {
+    width: 100%;
+    .side-down {
+      background-color: #eff3f6;
+      display: flex;
+      flex-direction: column;
+      padding-top: 130px;
+      padding-left: 350px;
+      padding-bottom: 36px;
+      .down-h1 {
+        font-family: chillax-regular;
+        font-size: 24px;
+      }
+      .white-div {
+        position: relative;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        margin-top: 25px;
+        width: 90%;
+        height: 75vh;
+        padding-bottom: 10px;
+        background-color: white;
+        border-radius: 10px;
+        .back {
+          position: absolute;
+          right: 43%;
+          margin-top: 2rem;
+          width: 15%;
+          border: none;
+          background-color: #192d43;
+          padding: 15px 0;
+          font-size: 16px;
+          color: #face8d;
+          font-family: chillax-regular;
+          border-radius: 5px;
+          transition: 0.5s;
+          @media only screen and (max-width: 478px) {
+            width: 100%;
+            font-size: 13px;
+          }
+          a {
+            color: #face8d;
+            text-decoration: none;
+          }
+          &:hover {
+            background-color: white;
+            border: 1px solid #192d43;
+            color: #192d43;
+            cursor: pointer;
+          }
+        }
+        .profile {
+          position: absolute;
+          top: 180px;
+          left: 50px;
+          display: flex;
+          align-items: flex-end;
+          gap: 10px;
+          .profile-icon {
+            width: 155px;
+            height: 155px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 999;
+            img {
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+          .profile-text {
+            h3 {
+              font-family: chillax;
+            }
+            h4 {
+              font-family: chillax-regular;
+            }
+            margin-bottom: 20px;
+          }
+        }
+        .editing {
+          cursor: pointer;
+          border: none;
+          background-color: #192d43;
+          padding: 10px 30px;
+          color: #face8d;
+          font-family: chillax-regular;
+          border-radius: 5px;
+          transition: 0.5s;
+          &:hover {
+            scale: 1.1;
+          }
+        }
+        .bio {
+          margin-top: 100px;
+          display: flex;
+          justify-content: space-around;
+          .bio-text {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            h4 {
+              font-family: chillax;
+              span {
+                padding-left: 20px;
+                font-family: chillax-regular;
+                color: #627183;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

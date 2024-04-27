@@ -1,0 +1,419 @@
+html {
+  scroll-behavior: smooth;
+}
+#full-menud {
+  height: 100vh;
+  background-color: black;
+
+  .menud {
+    display: flex;
+    justify-content: space-between;
+    @media only screen and (max-width: 991px) {
+      display: block;
+    }
+    .side-left {
+      position: fixed;
+      height: 100vh;
+      width: 50%;
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/63238e1c057c3c6c3d4d0b11_page-menu.webp");
+      background-position: center;
+      background-size: cover;
+
+      @media only screen and (max-width: 991px) {
+        position: static;
+        width: 100%;
+      }
+      .side-left-menud {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 200px;
+        @media only screen and (max-width: 991px) {
+          gap: 140px;
+        }
+        .logo {
+          padding: 3rem 0;
+        }
+        .name {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-items: center;
+          .check {
+            text-transform: capitalize;
+            color: #face8d;
+            font-family: bitter-rose;
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 12px;
+            @media only screen and (max-width: 991px) {
+              font-size: 4rem;
+              line-height: 52px;
+            }
+            @media only screen and (max-width: 767px) {
+              font-size: 4rem;
+              line-height: 36px;
+            }
+            @media only screen and (max-width: 478px) {
+              font-size: 3rem;
+            }
+          }
+          .our-menud {
+            color: #ffffff;
+            font-family: chillax;
+            font-size: 5rem;
+            font-weight: 500;
+            line-height: 120px;
+            text-align: center;
+            @media only screen and (max-width: 991px) {
+              font-size: 4rem;
+            }
+            @media only screen and (max-width: 767px) {
+              font-size: 3.125rem;
+            }
+            @media only screen and (max-width: 478px) {
+              font-size: 2.5rem;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+    .side-right {
+      position: absolute;
+      right: 0;
+      width: 50%;
+      background-color: black;
+      color: #ffff;
+      @media only screen and (max-width: 991px) {
+        position: static;
+        width: 100%;
+      }
+      .side-down {
+        padding-top: 115px;
+        padding-bottom: 115px;
+        padding-left: 65px;
+        padding-right: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 140px;
+        @media only screen and (max-width: 767px) {
+          padding-left: 45px;
+        }
+        @media only screen and (max-width: 478px) {
+          padding-left: 15px;
+        }
+        #starters {
+          .up {
+            text-align: center;
+            text-transform: capitalize;
+            font-family: bitter-rose;
+            font-size: 4rem;
+            font-weight: 400;
+            color: #face8d;
+          }
+          .inputs {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 40px;
+            padding-right: 40px;
+            gap: 10px;
+            @media only screen and (max-width: 478px) {
+              flex-direction: column;
+              padding-right: 0;
+            }
+            .input {
+              width: 80%;
+              color: #face8d;
+              background: transparent;
+              font-family: chillax-regular;
+              border: 1px solid hsla(0, 0%, 100%, 0.1);
+              &::placeholder {
+                font-size: 14px;
+                color: #face8d;
+                font-family: chillax-regular;
+              }
+              @media only screen and (max-width: 478px) {
+                width: 100%;
+              }
+            }
+            .more {
+              width: 20%;
+              border: none;
+              background-color: #192d43;
+              padding: 7px 0;
+              color: #face8d;
+              font-family: chillax-regular;
+              border-radius: 5px;
+              transition: 0.5s;
+              @media only screen and (max-width: 478px) {
+                width: 100%;
+              }
+              a {
+                color: #face8d;
+                text-decoration: none;
+              }
+              &:hover {
+                background-color: white;
+                color: #192d43;
+                cursor: pointer;
+              }
+            }
+          }
+          .button {
+            display: flex;
+            justify-content: center;
+            .more {
+              border: none;
+              background-color: #192d43;
+              font-size: 1rem;
+              padding: 15px 50px;
+              margin-top: 40px;
+              border: 1px solid #192d43;
+              margin-bottom: 40px;
+              color: #face8d;
+              font-family: chillax-regular;
+              border-radius: 5px;
+              transition: 0.5s;
+              a {
+                color: #face8d;
+                text-decoration: none;
+              }
+              &:hover {
+                background-color: white;
+                border: 1px solid #192d43;
+                color: #192d43;
+                scale: 1.1;
+                cursor: pointer;
+              }
+            }
+          }
+          .starters-menud {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding-top: 40px;
+            .eat {
+              display: flex;
+              color: white;
+              align-items: center;
+              @media only screen and (max-width: 478px) {
+                align-items: flex-start;
+              }
+              .eat-image {
+                width: 18%;
+                margin-right: 30px;
+                .image {
+                  position: relative;
+                  width: 100px;
+                  border-radius: 10px;
+                  @media only screen and (max-width: 478px) {
+                    width: 70px;
+                  }
+                  .heart {
+                    right: -12px;
+                    top: -12px;
+                    z-index: 899;
+                    position: absolute;
+                    padding-left: 10px;
+                    cursor: pointer;
+                    .heart-img {
+                      width: 30px;
+                      height: 30px;
+                      @media only screen and (max-width: 478px) {
+                        width: 15px;
+                        height: 15px;
+                      }
+                    }
+                  }
+                  img {
+                    width: 100%;
+                    border-radius: 10px;
+                    transition: 0.5s;
+                    &:hover {
+                      scale: 1.06;
+                    }
+                  }
+                }
+              }
+              .texts {
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .cost {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  .food-name {
+                    text-transform: capitalize;
+                    font-family: chillax-regular;
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    padding: 0;
+                    color: white;
+                    @media only screen and (max-width: 478px) {
+                      font-size: 1rem;
+                    }
+                  }
+                  .amount {
+                    font-family: chillax-regular;
+                    font-weight: 400;
+                    font-size: 1.25rem;
+                    @media only screen and (max-width: 478px) {
+                      font-size: 0.8rem;
+                    }
+                  }
+                  .shop {
+                    display: none;
+                    font-size: 20px;
+                    @media only screen and (max-width: 478px) {
+                      display: block;
+                    }
+                  }
+                  .addto {
+                    font-size: 1rem;
+                    border: none;
+                    background-color: #192d43;
+                    padding: 10px 30px;
+                    border: 1px solid #192d43;
+                    color: #face8d;
+                    font-family: chillax-regular;
+                    border-radius: 5px;
+                    transition: 0.5s;
+                    @media only screen and (max-width: 478px) {
+                      display: none;
+                    }
+                    a {
+                      color: #face8d;
+                      text-decoration: none;
+                    }
+                    &:hover {
+                      background-color: white;
+                      border: 1px solid #192d43;
+                      color: #192d43;
+                      scale: 1.1;
+                      cursor: pointer;
+                    }
+                  }
+                }
+                .food-about {
+                  font-family: chillax-regular;
+                  font-weight: 400;
+                  font-size: 1rem;
+                  color: rgba(255, 255, 255, 0.6);
+                }
+              }
+            }
+          }
+        }
+
+        .menu-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          @media only screen and (max-width: 767px) {
+            justify-content: center;
+          }
+          .nique {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            align-items: flex-start;
+            @media only screen and (max-width: 767px) {
+              width: 100%;
+              align-items: center;
+              text-align: center;
+              padding-bottom: 100px;
+            }
+            .founder {
+              font-family: chillax-regular;
+              font-size: 0.875rem;
+              font-weight: 400;
+              color: rgba(255, 255, 255, 0.6);
+              span {
+                color: #face8d;
+              }
+            }
+          }
+          .menu-pages {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            @media only screen and (max-width: 767px) {
+              text-align: center;
+              width: 45%;
+            }
+            .page-h3 {
+              padding: 0;
+              color: white;
+              font-family: chillax-regular;
+              font-size: 1.125rem;
+              font-weight: 400;
+            }
+            ul {
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              li {
+                font-weight: 400;
+                font-family: chillax-regular;
+                font-size: 1rem;
+                a {
+                  text-decoration: none;
+                  color: rgba(255, 255, 255, 0.6);
+                  transition: 0.3s;
+                  &:hover {
+                    color: #face8d;
+                  }
+                }
+              }
+            }
+          }
+          .menu-utility {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            @media only screen and (max-width: 767px) {
+              text-align: center;
+              width: 45%;
+            }
+            .uti-h3 {
+              padding: 0;
+              color: white;
+              font-family: chillax-regular;
+              font-size: 1.125rem;
+              font-weight: 400;
+            }
+            ul {
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              li {
+                font-weight: 400;
+                font-family: chillax-regular;
+                font-size: 1rem;
+                a {
+                  text-decoration: none;
+                  color: rgba(255, 255, 255, 0.6);
+                  transition: 0.3s;
+                  &:hover {
+                    color: #face8d;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,441 @@
+.drop {
+  display: flex;
+  justify-content: space-between;
+  font-family: chillax;
+  gap: 100px;
+  font-weight: 600;
+  font-size: 16px;
+  color: black !important;
+  border-bottom: 1px solid rgb(223, 219, 219);
+  letter-spacing: 1px;
+  transition: all 0.5s;
+  .menu-arrow {
+    font-size: 20px;
+    border: solid #212529;
+    border: none;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(180deg);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    margin-left: 20px;
+    position: absolute;
+    top: 8px;
+    right: 20px;
+  }
+  &.active {
+    color: #396cf0;
+    .menu-arrow {
+      border: none;
+      display: inline-block;
+      margin-left: 10px;
+      position: absolute;
+      top: 5px;
+    }
+  }
+  &:hover {
+    color: #396cf0;
+    .menu-arrow {
+      border: none;
+      -webkit-transform: rotate(225deg);
+      transform: rotate(360deg);
+      position: absolute;
+      top: 8px;
+    }
+  }
+}
+.blog {
+  border: none;
+  padding-bottom: 10px;
+}
+h3 {
+  padding-top: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  font-family: chillax-regular;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+.clockbtn {
+  font-size: 25px;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 10px 5px;
+  background-color: white;
+  transition: 0.5s;
+  cursor: pointer;
+  @media only screen and (max-width: 478px) {
+    padding: 10px 0 5px;
+  }
+  &:hover {
+    scale: 1.125;
+  }
+}
+.open {
+  font-weight: 400;
+  font-size: 20px;
+  font-family: chillax-regular;
+  padding: 10px 16px 0 16px;
+  text-decoration: none;
+  display: block;
+}
+.day {
+  padding: 0 6px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: chillax;
+  span {
+    font-family: chillax-regular;
+  }
+}
+
+#full-footer {
+  position: absolute;
+  z-index: 999;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 991px) {
+    position: fixed;
+  }
+  .footer {
+    background-color: #ffffff;
+    width: 750px;
+    padding: 10px 10px 10px 25px;
+    border-radius: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .dropbtn {
+      font-size: 25px;
+      border-radius: 50%;
+      padding: 10px 10px 5px;
+      border: none;
+      background-color: white;
+      transition: 0.5s;
+      cursor: pointer;
+      @media only screen and (max-width: 478px) {
+        padding: 10px 0 5px 10px;
+      }
+    }
+
+    .dropbtn:hover {
+      scale: 1.125;
+    }
+
+    .clock {
+      position: relative;
+      display: inline-block;
+      transition: 1s;
+      .clock-content {
+        display: none;
+        position: absolute;
+        bottom: 50px;
+        padding: 12px 0;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        width: 250px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+
+        a {
+          font-weight: 500;
+          font-size: 16px;
+          font-family: chillax;
+          color: black;
+          text-decoration: none;
+          display: block;
+        }
+        a:hover {
+          background-color: #ddd;
+        }
+        .open {
+          font-weight: 400;
+          font-size: 20px;
+          font-family: chillax-regular;
+          padding: 0 16px 6px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        .day {
+          padding: 6px 16px;
+          display: flex;
+          justify-content: space-between;
+          font-weight: 500;
+          font-size: 16px;
+          font-family: chillax;
+          span {
+            font-family: chillax-regular;
+          }
+        }
+        .drop {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    .basket {
+      font-size: 25px;
+      border-radius: 50%;
+      padding: 10px 10px 5px;
+      transition: 0.5s;
+      cursor: pointer;
+      @media only screen and (max-width: 478px) {
+        padding: 10px 0 5px;
+      }
+    }
+  }
+  .basket:hover {
+    scale: 1.125;
+  }
+  .links {
+    @media only screen and (max-width: 610px) {
+      display: none;
+    }
+  }
+  .footer-btn {
+    font-family: chillax;
+    border-radius: 25px;
+    border: none;
+    background-color: #090a0a;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    a {
+      padding: 15px 25px;
+      letter-spacing: 1px;
+      font-size: 0.875rem;
+      color: white;
+      transition: 1s;
+      &:hover {
+        color: #090a0a;
+        background-color: rgba(173, 167, 167, 0.6);
+      }
+      @media only screen and (max-width: 978px) {
+        font-size: 0.6rem;
+      }
+      @media only screen and (max-width: 478px) {
+        padding: 10px 20px;
+        font-size: 0.5rem;
+      }
+    }
+  }
+  a {
+    font-weight: 500;
+    font-size: 16px;
+    font-family: chillax;
+    color: black;
+    padding: 12px 2px;
+    text-decoration: none;
+    border-radius: 30px;
+    display: block;
+    transition: 0.5s;
+    &:hover {
+      color: #face8d;
+    }
+  }
+  .image {
+    .av {
+      position: relative;
+      display: inline-block;
+      transition: 1s;
+      .av-content {
+        display: none;
+        position: absolute;
+        right: 10px;
+        bottom: 60px;
+        padding: 12px 0;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        width: 250px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        .text-h4 {
+          text-align: center;
+          text-transform: capitalize;
+          font-family: chillax-regular;
+          color: black;
+          font-size: 18px;
+        }
+        .d {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .drop-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 20px;
+            font-family: chillax-regular;
+            transition: 0.6s !important;
+            border-radius: 7px;
+            width: 95%;
+            cursor: pointer;
+            &:hover {
+              background-color: #c9d0da !important;
+            }
+            .logicon {
+              transform: rotate(270deg);
+            }
+            .day {
+              padding: 10px 0;
+              display: flex;
+              justify-content: space-between;
+              font-weight: 500;
+              font-size: 18px;
+              font-family: chillax;
+            }
+          }
+        }
+        .drop-profile {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-left: 20px;
+          font-family: chillax-regular;
+          transition: 0.6s !important;
+          border-radius: 7px;
+          width: 95%;
+          cursor: pointer;
+          &:hover {
+            background-color: #c9d0da !important;
+          }
+          .logicon {
+            transform: rotate(270deg);
+          }
+          .day {
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            font-size: 18px;
+            font-family: chillax;
+          }
+        }
+        .day {
+          padding: 5px 0;
+          display: flex;
+          justify-content: space-between;
+          font-weight: 500;
+          font-size: 16px;
+          font-family: chillax;
+          cursor: pointer;
+        }
+      }
+      .av-content-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        right: 10px;
+        bottom: 60px;
+        padding: 12px 0;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        width: 250px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        .text-h4 {
+          text-align: center;
+          text-transform: capitalize;
+          font-family: chillax-regular;
+          color: black;
+          font-size: 18px;
+        }
+        .d {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .drop-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 20px;
+            font-family: chillax-regular;
+            transition: 0.6s !important;
+            border-radius: 7px;
+            width: 95%;
+            cursor: pointer;
+            &:hover {
+              background-color: #c9d0da !important;
+            }
+            .logicon {
+              transform: rotate(270deg);
+            }
+            .day {
+              padding: 10px 0;
+              display: flex;
+              justify-content: space-between;
+              font-weight: 500;
+              font-size: 18px;
+              font-family: chillax;
+            }
+          }
+        }
+        .drop-profile {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-left: 20px;
+          font-family: chillax-regular;
+          transition: 0.6s !important;
+          border-radius: 7px;
+          width: 95%;
+          cursor: pointer;
+          &:hover {
+            background-color: #c9d0da !important;
+          }
+          .logicon {
+            transform: rotate(270deg);
+          }
+          .day {
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            font-size: 18px;
+            font-family: chillax;
+          }
+        }
+        .day {
+          padding: 5px 0;
+          display: flex;
+          justify-content: space-between;
+          font-weight: 500;
+          font-size: 16px;
+          font-family: chillax;
+          cursor: pointer;
+        }
+      }
+      .av-btn {
+        font-size: 25px;
+        border: none;
+        border-radius: 50%;
+        padding: 5px 10px 5px 0;
+        background-color: white;
+        transition: 0.5s;
+        cursor: pointer;
+        .avatar {
+          width: 45px;
+          height: 45px;
+          @media only screen and (max-width: 478px) {
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
+    }
+
+    .av:hover .avbtn {
+      scale: 1.125;
+    }
+  }
+}

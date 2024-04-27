@@ -1,0 +1,87 @@
+.add-full {
+  display: flex;
+  .side-right {
+    width: 100%;
+    height: 100vh;
+    background-color: #eff3f6;
+    .side-down {
+      background-color: #eff3f6;
+      display: flex;
+      flex-direction: column;
+      padding-top: 130px;
+      padding-left: 350px;
+      padding-bottom: 36px;
+      .down-h1 {
+        font-family: chillax-regular;
+        font-size: 24px;
+      }
+      .white-div {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        margin-top: 25px;
+        width: 90%;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        gap: 30px;
+        div {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          width: 90%;
+          label {
+            font-family: chillax;
+            font-size: 18px;
+          }
+          input {
+            width: 100%;
+            color: #192d43;
+            font-size: 16px;
+            font-family: chillax-regular;
+            background: transparent;
+            border: 1px solid rgba(61, 57, 57, 0.6);
+            padding: 10px 0 10px 30px;
+            border-radius: 10px;
+            outline-color: #494949;
+            &::placeholder {
+              color: #192d43;
+              font-family: chillax-regular;
+              font-size: 17px;
+            }
+          }
+        }
+        .editing {
+          border: none;
+          background-color: #192d43;
+          padding: 10px 30px;
+          color: #face8d;
+          border: 2px solid #192d43;
+          font-family: chillax;
+          border-radius: 5px;
+          transition: 0.5s;
+          cursor: pointer;
+          &:hover {
+            background-color: white;
+            border: 2px solid #192d43;
+            color: #192d43;
+            scale: 1.05;
+            font-family: chillax;
+          }
+        }
+      }
+    }
+  }
+}
+
+.select {
+  background-color: white;
+  border: 1px solid gray;
+  padding: 10px 30px;
+  text-transform: capitalize;
+  color: black;
+  font-family: chillax-regular;
+  border-radius: 5px;
+}

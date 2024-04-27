@@ -1,0 +1,163 @@
+.restaurant {
+  position: absolute;
+  z-index: 999px;
+  left: 50%;
+  right: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+  @media only screen and (max-width: 991px) {
+    position: fixed;
+  }
+  .logo {
+    padding: 3rem 0;
+  }
+  .name {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    .pure {
+      color: #face8d;
+      font-family: bitter-rose;
+      font-size: 5rem;
+      font-weight: 400;
+      line-height: 72px;
+      @media only screen and (max-width: 991px) {
+        font-size: 4rem;
+      }
+      @media only screen and (max-width: 478px) {
+        font-size: 3rem;
+        line-height: 30px;
+      }
+    }
+    .country {
+      color: #ffffff;
+      font-family: chillax;
+      font-size: 10rem;
+      font-weight: 500;
+      line-height: 160px;
+      @media only screen and (max-width: 991px) {
+        font-size: 7rem;
+      }
+      @media only screen and (max-width: 767px) {
+        font-size: 4rem;
+      }
+      @media only screen and (max-width: 478px) {
+        line-height: 100px;
+      }
+    }
+  }
+}
+.outer-classes {
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(-90deg) translateX(-100vh);
+  transform-origin: top left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  @media only screen and (max-width: 991px) {
+    transform: none;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    overflow-x: auto;
+  }
+  .classes {
+    display: flex;
+    flex-direction: row;
+    width: 167vw;
+    transform: rotate(90deg) translateY(-100vh);
+    transform-origin: top left;
+    @media only screen and (max-width: 991px) {
+      transform: none;
+      display: block;
+      width: auto;
+    }
+    .slide {
+      width: 100vw;
+      height: 100vh;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.9;
+      transition: 0.4s;
+      object-fit: cover;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .one {
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      .opacity {
+        position: absolute;
+        z-index: 1;
+        background-color: #504f4f;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+        transition: 0.9s;
+        &:hover {
+          background-color: #33333300;
+        }
+      }
+      .class-name {
+        position: absolute;
+        z-index: 999;
+        top: 35%;
+
+        .pure {
+          color: #face8d;
+          text-transform: capitalize;
+          font-family: bitter-rose;
+          font-size: 4rem;
+          font-weight: 400;
+          line-height: 72px;
+          @media only screen and (max-width: 991px) {
+            font-size: 4rem;
+          }
+          @media only screen and (max-width: 478px) {
+            font-size: 4rem;
+            line-height: 30px;
+          }
+        }
+        .country {
+          color: #ffffff;
+          text-transform: capitalize;
+          font-family: chillax;
+          font-size: 4rem;
+          font-weight: 500;
+          @media only screen and (max-width: 991px) {
+            font-size: 3.5rem;
+          }
+          @media only screen and (max-width: 767px) {
+            font-size: 3rem;
+          }
+          @media only screen and (max-width: 478px) {
+            font-size: 2.75rem;
+          }
+        }
+        .about-name {
+          font-family: chillax-regular;
+          font-weight: 400;
+          font-size: 1rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

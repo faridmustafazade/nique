@@ -1,0 +1,126 @@
+.restaurant {
+  position: absolute;
+  z-index: 999px;
+  left: 50%;
+  right: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+  @media only screen and (max-width: 991px) {
+    position: fixed;
+  }
+  .logo {
+    padding: 3rem 0;
+  }
+  .name {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    .pure {
+      color: #face8d;
+      font-family: bitter-rose;
+      font-size: 5rem;
+      font-weight: 400;
+      line-height: 72px;
+      @media only screen and (max-width: 991px) {
+        font-size: 4rem;
+      }
+      @media only screen and (max-width: 478px) {
+        font-size: 3rem;
+        line-height: 30px;
+      }
+    }
+    .country {
+      color: #ffffff;
+      font-family: chillax;
+      font-size: 10rem;
+      font-weight: 500;
+      line-height: 160px;
+      @media only screen and (max-width: 991px) {
+        font-size: 7rem;
+      }
+      @media only screen and (max-width: 767px) {
+        font-size: 4rem;
+      }
+      @media only screen and (max-width: 478px) {
+        line-height: 100px;
+      }
+    }
+  }
+}
+.outer-wrapper {
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(-90deg) translateX(-100vh);
+  transform-origin: top left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  @media only screen and (max-width: 991px) {
+    transform: none;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    overflow-x: auto;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 350vw;
+    transform: rotate(90deg) translateY(-100vh);
+    transform-origin: top left;
+    @media only screen and (max-width: 991px) {
+      transform: none;
+      display: block;
+      width: auto;
+    }
+    .slide {
+      width: 100vw;
+      height: 100vh;
+    }
+    .one {
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf41f9793bf94a0c2326_restaurant-gallery-01-p-800.webp");
+      background-position: center;
+      background-size: cover;
+    }
+    .two {
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf412e7361747c4b45b9_restaurant-gallery-02-p-800.webp");
+      background-position: center;
+      background-size: cover;
+    }
+    .three {
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf4149201e1abd71e6cf_restaurant-gallery-03-p-800.webp");
+      background-position: center;
+      background-size: cover;
+    }
+    .four {
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf41f9793b00d80c2325_restaurant-gallery-04-p-800.webp");
+      background-position: center;
+      background-size: cover;
+    }
+    .five {
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf41df9dd73c23a777ce_restaurant-gallery-05-p-800.webp");
+      background-position: center;
+      background-size: cover;
+    }
+    .six {
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf422d0f0603673e48ae_restaurant-gallery-06-p-800.webp");
+      background-position: center;
+      background-size: cover;
+    }
+    .seven {
+      background-image: url("https://assets.website-files.com/6321d0d284b5b7ca3857fad3/6324bf416d1facb525f98a18_restaurant-gallery-07-p-800.webp");
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
