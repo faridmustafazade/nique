@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import PayButton from "./PayButton/PayButton";
 import useToken from "../../../Hooks/useToken";
 // import PayButton from "./PayButton";
+import Footer from "../../../Layouts/client/Footer";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -171,6 +172,7 @@ const Cart = () => {
         )}
       </div>
     </div>
+    <Footer/>
   );
 };
 
